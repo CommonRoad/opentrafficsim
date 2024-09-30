@@ -33,6 +33,7 @@
     <module>ots-parser-xml</module>
     <module>ots-demo</module>
     <module>ots-editor</module>
+    <module>ots-distribution</module>
   </modules>
 
   <properties>
