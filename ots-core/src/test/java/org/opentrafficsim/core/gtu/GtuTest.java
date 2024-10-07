@@ -42,7 +42,7 @@ import nl.tudelft.simulation.dsol.SimRuntimeException;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class GtuTest
 {
@@ -327,10 +327,10 @@ public class GtuTest
         private static final long serialVersionUID = 20151111L;
 
         /**
-         * @param id String; id of the new GTU
-         * @param gtuType GtuType; type of the new GTU
-         * @param simulator OtsSimulatorInterface; simulator that controls the new GTU
-         * @param perceivableContext PerceivableContext; the perceivable context of the new GTU
+         * @param id id of the new GTU
+         * @param gtuType type of the new GTU
+         * @param simulator simulator that controls the new GTU
+         * @param perceivableContext the perceivable context of the new GTU
          * @throws SimRuntimeException when something goes wrong in the scheduling of the first move event
          * @throws GtuException when something goes wrong during GTU instantiation
          */

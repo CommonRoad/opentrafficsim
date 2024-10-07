@@ -10,7 +10,7 @@ import org.djunits.value.vdouble.scalar.Length;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public abstract class RoadMarkerAcross implements Serializable
 {
@@ -24,9 +24,8 @@ public abstract class RoadMarkerAcross implements Serializable
     private final Length longitudinalPosition;
 
     /**
-     * @param crossSectionElement CrossSectionElement; Cross section element for which this is a road marker. Usually this will
-     *            be a Lane.
-     * @param longitudinalPosition Length; Longitudinal position on the cross section element.
+     * @param crossSectionElement Cross section element for which this is a road marker. Usually this will be a Lane.
+     * @param longitudinalPosition Longitudinal position on the cross section element.
      */
     public RoadMarkerAcross(final CrossSectionElement crossSectionElement, final Length longitudinalPosition)
     {

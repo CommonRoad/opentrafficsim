@@ -8,6 +8,7 @@ import org.opentrafficsim.road.gtu.lane.LaneBasedGtu;
 import org.opentrafficsim.road.gtu.lane.perception.categories.neighbors.HeadwayGtuType;
 import org.opentrafficsim.road.gtu.lane.perception.headway.HeadwayGtu;
 import org.opentrafficsim.road.gtu.lane.perception.structure.LaneRecordInterface;
+import org.opentrafficsim.road.network.lane.conflict.Conflict;
 
 /**
  * Iterable to find upstream GTU's.
@@ -16,10 +17,10 @@ import org.opentrafficsim.road.gtu.lane.perception.structure.LaneRecordInterface
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
-public class UpstreamNeighborsIterable extends AbstractPerceptionIterable<HeadwayGtu, LaneBasedGtu, Integer>
+public class UpstreamNeighborsIterable extends AbstractPerceptionIterable<Conflict, HeadwayGtu, LaneBasedGtu, Integer>
 {
 
     /** Margin in case of a left lane. */
@@ -39,19 +40,19 @@ public class UpstreamNeighborsIterable extends AbstractPerceptionIterable<Headwa
 
     /**
      * Constructor.
-     * @param perceivingGtu LaneBasedGtu; perceiving GTU
-     * @param root LaneRecord&lt;?&gt;; root record
-     * @param initialPosition Length; position on the root record
-     * @param maxDistance Length; maximum distance to search
-     * @param relativePosition RelativePosition; position to which distance are calculated by subclasses
-     * @param headwayGtuType HeadwayGtuType; type of HeadwayGtu to return
-     * @param lane RelativeLane; relative lane (used for a left/right distinction to prevent dead-locks)
+     * @param perceivingConflict perceiving conflict
+     * @param root root record
+     * @param initialPosition position on the root record
+     * @param maxDistance maximum distance to search
+     * @param relativePosition position to which distance are calculated by subclasses
+     * @param headwayGtuType type of HeadwayGtu to return
+     * @param lane relative lane (used for a left/right distinction to prevent dead-locks)
      */
-    public UpstreamNeighborsIterable(final LaneBasedGtu perceivingGtu, final LaneRecordInterface<?> root,
+    public UpstreamNeighborsIterable(final Conflict perceivingConflict, final LaneRecordInterface<?> root,
             final Length initialPosition, final Length maxDistance, final RelativePosition relativePosition,
             final HeadwayGtuType headwayGtuType, final RelativeLane lane)
     {
-        super(perceivingGtu, root, initialPosition, false, maxDistance, relativePosition, null);
+        super(perceivingConflict, root, initialPosition, false, maxDistance, relativePosition, null);
         this.headwayGtuType = headwayGtuType;
         this.margin = lane.getLateralDirectionality().isLeft() ? LEFT : RIGHT;
     }
@@ -83,7 +84,7 @@ public class UpstreamNeighborsIterable extends AbstractPerceptionIterable<Headwa
             n = record.getLane().indexOfGtu(next);
             pos = next.position(record.getLane(), next.getFront());
 
-            if (this.getGtu() != null && next.getId().equals(this.getGtu().getId()))
+            if (this.getObject() != null && next.getId().equals(this.getObject().getId()))
             {
                 // ignore self
                 pos = pos.minus(next.getLength());
@@ -112,10 +113,9 @@ public class UpstreamNeighborsIterable extends AbstractPerceptionIterable<Headwa
 
     /** {@inheritDoc} */
     @Override
-    public HeadwayGtu perceive(final LaneBasedGtu perceivingGtu, final LaneBasedGtu object, final Length distance)
-            throws GtuException, ParameterException
+    public HeadwayGtu perceive(final LaneBasedGtu object, final Length distance) throws GtuException, ParameterException
     {
-        return this.headwayGtuType.createUpstreamGtu(perceivingGtu, object, distance);
+        return this.headwayGtuType.createUpstreamGtu(null, object, distance);
     }
 
 }

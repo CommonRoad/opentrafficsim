@@ -12,7 +12,7 @@ import org.opentrafficsim.core.network.Node;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * <p>
  * $LastChangedDate$, @version $Revision$, by $Author$, initial version 20 mrt. 2015 <br>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class FixedRouteGenerator extends ConstantGenerator<Route> implements Serializable
 {
@@ -21,7 +21,7 @@ public class FixedRouteGenerator extends ConstantGenerator<Route> implements Ser
 
     /**
      * Construct a new FixedRouteGenerator.
-     * @param route Route; the CompleteRoute to generate
+     * @param route the CompleteRoute to generate
      */
     public FixedRouteGenerator(final Route route)
     {

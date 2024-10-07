@@ -17,14 +17,14 @@ import nl.tudelft.simulation.dsol.jetty.sse.OtsWebServer;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class TJunctionDemo extends OtsWebServer
 {
     /**
      * Create a T-Junction demo.
-     * @param title String; the tile for the model
+     * @param title the tile for the model
      * @param simulator DevsRealTimeAnimator.TimeDouble; the simulator
      * @param model the model
      * @throws Exception on jetty error

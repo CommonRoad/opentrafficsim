@@ -13,8 +13,8 @@ import org.djutils.base.Identifiable;
 import org.djutils.draw.line.PolyLine2d;
 import org.djutils.draw.point.OrientedPoint2d;
 import org.djutils.draw.point.Point2d;
-import org.opentrafficsim.base.geometry.OtsLocatable;
 import org.opentrafficsim.base.geometry.OtsRenderable;
+import org.opentrafficsim.draw.ClickableLineLocatable;
 import org.opentrafficsim.draw.DrawLevel;
 import org.opentrafficsim.draw.PaintLine;
 import org.opentrafficsim.draw.TextAlignment;
@@ -62,9 +62,9 @@ public class LinkAnimation extends OtsRenderable<LinkData>
     private boolean dynamic = false;
 
     /**
-     * @param link LinkData; link data.
-     * @param contextualized Contextualized; context provider.
-     * @param width float; width
+     * @param link link data.
+     * @param contextualized context provider.
+     * @param width width
      * @throws NamingException for problems with registering in context
      * @throws RemoteException on communication failure
      */
@@ -81,8 +81,8 @@ public class LinkAnimation extends OtsRenderable<LinkData>
 
     /**
      * Sets the animation as dynamic, obtaining geometry at each draw.
-     * @param dynamic boolean; whether it is dynamic {@code false} by default.
-     * @return LinkAnimation; for method chaining.
+     * @param dynamic whether it is dynamic {@code false} by default.
+     * @return for method chaining.
      */
     public LinkAnimation setDynamic(final boolean dynamic)
     {
@@ -96,7 +96,7 @@ public class LinkAnimation extends OtsRenderable<LinkData>
     {
         if (this.dynamic)
         {
-            PolyLine2d designLine = getSource().getDesignLine();
+            PolyLine2d designLine = getSource().getCenterLine();
             if (!designLine.equals(this.designLine))
             {
                 setPath();
@@ -114,15 +114,15 @@ public class LinkAnimation extends OtsRenderable<LinkData>
      */
     private void setPath()
     {
-        this.designLine = getSource().getDesignLine();
+        this.designLine = getSource().getCenterLine();
         this.path = PaintLine.getPath(getSource().getLocation(), this.designLine);
         this.startPoint = getEndPoint(this.designLine.getFirst(), this.designLine.get(1));
         this.endPoint = getEndPoint(this.designLine.getLast(), this.designLine.get(this.designLine.size() - 2));
     }
 
     /**
-     * @param endPoint Point2d; the end of the design line where a end point must be highlighted
-     * @param nextPoint Point2d; the point nearest <code>endPoint</code> (needed to figure out the direction of the design line)
+     * @param endPoint the end of the design line where a end point must be highlighted
+     * @param nextPoint the point nearest <code>endPoint</code> (needed to figure out the direction of the design line)
      * @return Path2D.Float; path to draw an end point.
      */
     private Path2D.Float getEndPoint(final Point2d endPoint, final Point2d nextPoint)
@@ -161,7 +161,7 @@ public class LinkAnimation extends OtsRenderable<LinkData>
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
     public class Text extends TextAnimation<LinkData, Text>
@@ -170,14 +170,14 @@ public class LinkAnimation extends OtsRenderable<LinkData>
         private static final long serialVersionUID = 20161211L;
 
         /**
-         * @param source LinkData; the object for which the text is displayed
-         * @param text Supplier&lt;String&gt;; the text to display
-         * @param dx float; the horizontal movement of the text, in meters
-         * @param dy float; the vertical movement of the text, in meters
-         * @param textPlacement TextAlignment; where to place the text
-         * @param color Color; the color of the text
-         * @param contextualized Contextualized; context provider.
-         * @param scaleDependentRendering ScaleDependentRendering; enables rendering in a scale dependent fashion
+         * @param source the object for which the text is displayed
+         * @param text the text to display
+         * @param dx the horizontal movement of the text, in meters
+         * @param dy the vertical movement of the text, in meters
+         * @param textPlacement where to place the text
+         * @param color the color of the text
+         * @param contextualized context provider.
+         * @param scaleDependentRendering enables rendering in a scale dependent fashion
          * @throws NamingException when animation context cannot be created or retrieved
          * @throws RemoteException - when remote context cannot be found
          */
@@ -205,7 +205,7 @@ public class LinkAnimation extends OtsRenderable<LinkData>
      * </p>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
-    public interface LinkData extends OtsLocatable, Identifiable
+    public interface LinkData extends ClickableLineLocatable, Identifiable
     {
         /** {@inheritDoc} */
         @Override
@@ -213,15 +213,15 @@ public class LinkAnimation extends OtsRenderable<LinkData>
 
         /**
          * Returns whether this is a connector.
-         * @return boolean; whether this is a connector.
+         * @return whether this is a connector.
          */
         boolean isConnector();
 
         /**
-         * Returns the design line.
-         * @return PolyLine2d; design line.
+         * Returns the center line in world coordinates.
+         * @return the center line in world coordinates.
          */
-        PolyLine2d getDesignLine();
+        PolyLine2d getCenterLine();
 
         /** {@inheritDoc} */
         @Override

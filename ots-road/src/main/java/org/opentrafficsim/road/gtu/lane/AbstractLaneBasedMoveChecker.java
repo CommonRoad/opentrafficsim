@@ -14,7 +14,7 @@ import org.opentrafficsim.core.network.Network;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public abstract class AbstractLaneBasedMoveChecker implements EventListener
@@ -27,7 +27,7 @@ public abstract class AbstractLaneBasedMoveChecker implements EventListener
 
     /**
      * Constructor.
-     * @param network Network; network
+     * @param network network
      */
     public AbstractLaneBasedMoveChecker(final Network network)
     {
@@ -68,7 +68,7 @@ public abstract class AbstractLaneBasedMoveChecker implements EventListener
 
     /**
      * Check the move of the given GTU.
-     * @param gtu LaneBasedGtu; GTU.
+     * @param gtu GTU.
      * @throws Exception thrown when something is not all right
      */
     public abstract void checkMove(LaneBasedGtu gtu) throws Exception;

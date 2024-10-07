@@ -27,7 +27,7 @@ import org.opentrafficsim.road.gtu.lane.tactical.lmrs.IncentiveSpeedWithCourtesy
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class LmrsSwitchableColorer extends SwitchableGtuColorer
@@ -38,7 +38,7 @@ public class LmrsSwitchableColorer extends SwitchableGtuColorer
 
     /**
      * Constructor.
-     * @param gtuTypeColors Map&lt;GtuType, Color&gt;; colors per GTU type in the GTU type colorer.
+     * @param gtuTypeColors colors per GTU type in the GTU type colorer.
      * @throws IndexOutOfBoundsException initial index out of bounds
      */
     public LmrsSwitchableColorer(final Map<GtuType, Color> gtuTypeColors) throws IndexOutOfBoundsException

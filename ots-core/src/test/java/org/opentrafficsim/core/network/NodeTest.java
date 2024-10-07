@@ -26,7 +26,7 @@ import org.opentrafficsim.core.mock.MockSimulator;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class NodeTest
@@ -405,8 +405,8 @@ public class NodeTest
 
     /**
      * Put some Links in a Set and return that Set.
-     * @param links Link...; the links
-     * @return Set&lt;Link&gt;; the set that contains only the given link
+     * @param links the links
+     * @return the set that contains only the given link
      */
     private Set<Link> wrap(final Link... links)
     {

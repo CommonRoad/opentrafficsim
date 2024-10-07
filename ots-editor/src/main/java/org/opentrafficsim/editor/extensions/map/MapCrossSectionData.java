@@ -5,8 +5,7 @@ import org.djutils.draw.line.PolyLine2d;
 import org.djutils.draw.line.Polygon2d;
 import org.djutils.draw.line.Ray2d;
 import org.djutils.draw.point.OrientedPoint2d;
-import org.opentrafficsim.base.geometry.BoundingPolygon;
-import org.opentrafficsim.base.geometry.OtsBounds2d;
+import org.opentrafficsim.base.geometry.OtsShape;
 import org.opentrafficsim.draw.road.CrossSectionElementAnimation.CrossSectionElementData;
 import org.opentrafficsim.editor.XsdTreeNode;
 import org.opentrafficsim.road.network.lane.SliceInfo;
@@ -27,22 +26,25 @@ public class MapCrossSectionData implements CrossSectionElementData
 
     /** Location. */
     private final OrientedPoint2d location;
-    
+
+    /** Contour. */
+    private final Polygon2d contour;
+
     /** Center line. */
     protected final PolyLine2d centerLine;
 
-    /** Bounds. */
-    private final OtsBounds2d bounds;
+    /** Shape (cached). */
+    private OtsShape shape;
 
     /** Slice info. */
     private SliceInfo sliceInfo;
 
     /**
      * Constructor.
-     * @param linkNode XsdTreeNode; node representing the element.
-     * @param centerLine PolyLine2d; center line.
-     * @param contour PolyLine2d; contour.
-     * @param sliceInfo SliceInfo; slice info.
+     * @param linkNode node representing the element.
+     * @param centerLine center line.
+     * @param contour contour.
+     * @param sliceInfo slice info.
      */
     public MapCrossSectionData(final XsdTreeNode linkNode, final PolyLine2d centerLine, final Polygon2d contour,
             final SliceInfo sliceInfo)
@@ -51,15 +53,8 @@ public class MapCrossSectionData implements CrossSectionElementData
         Ray2d ray = centerLine.getLocationFractionExtended(0.5);
         this.location = new OrientedPoint2d(ray.x, ray.y, ray.phi);
         this.centerLine = centerLine;
-        this.bounds = BoundingPolygon.geometryToBounds(this.location, contour);
+        this.contour = contour;
         this.sliceInfo = sliceInfo;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public OtsBounds2d getBounds()
-    {
-        return this.bounds;
     }
 
     /** {@inheritDoc} */
@@ -71,6 +66,24 @@ public class MapCrossSectionData implements CrossSectionElementData
 
     /** {@inheritDoc} */
     @Override
+    public Polygon2d getContour()
+    {
+        return this.contour;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public OtsShape getShape()
+    {
+        if (this.shape == null)
+        {
+            this.shape = CrossSectionElementData.super.getShape();
+        }
+        return this.shape;
+    }
+
+    /** {@inheritDoc} */
+    @Override
     public PolyLine2d getCenterLine()
     {
         return this.centerLine;
@@ -78,7 +91,7 @@ public class MapCrossSectionData implements CrossSectionElementData
 
     /**
      * Returns the link id.
-     * @return String; link id.
+     * @return link id.
      */
     @Override
     public String getLinkId()
@@ -88,8 +101,8 @@ public class MapCrossSectionData implements CrossSectionElementData
 
     /**
      * Returns the lane width at the give position.
-     * @param position Length; position along the lane.
-     * @return Length; lane width at the position.
+     * @param position position along the lane.
+     * @return lane width at the position.
      */
     public Length getWidth(final Length position)
     {

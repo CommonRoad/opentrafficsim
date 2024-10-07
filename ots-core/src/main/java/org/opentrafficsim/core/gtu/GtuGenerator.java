@@ -3,6 +3,8 @@ package org.opentrafficsim.core.gtu;
 import java.util.Set;
 
 import org.djutils.base.Identifiable;
+import org.djutils.draw.line.Polygon2d;
+import org.djutils.draw.point.OrientedPoint2d;
 import org.opentrafficsim.base.geometry.OtsLocatable;
 import org.opentrafficsim.core.object.NonLocatedObject;
 
@@ -13,7 +15,7 @@ import org.opentrafficsim.core.object.NonLocatedObject;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface GtuGenerator extends NonLocatedObject
@@ -21,7 +23,7 @@ public interface GtuGenerator extends NonLocatedObject
 
     /**
      * Returns the positions.
-     * @return Set&lt;GtuGeneratorPosition&gt;; set of positions.
+     * @return set of positions.
      */
     Set<GtuGeneratorPosition> getPositions();
 
@@ -33,16 +35,28 @@ public interface GtuGenerator extends NonLocatedObject
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
     interface GtuGeneratorPosition extends OtsLocatable, Identifiable
     {
         /**
          * Returns the number of GTUs in the queue.
-         * @return int; number of GTUs in the queue.
+         * @return number of GTUs in the queue.
          */
         int getQueueCount();
+
+        /** {@inheritDoc} */
+        @Override
+        OrientedPoint2d getLocation();
+
+        /** {@inheritDoc} */
+        @Override
+        default Polygon2d getContour()
+        {
+            throw new UnsupportedOperationException(
+                    "A GtuGeneratorPosition does not have geometry. Geometry should be defined in animation.");
+        }
     }
 
 }

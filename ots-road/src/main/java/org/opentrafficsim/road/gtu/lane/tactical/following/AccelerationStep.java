@@ -14,7 +14,7 @@ import org.djunits.value.vdouble.scalar.Time;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class AccelerationStep implements Serializable
 {
@@ -32,9 +32,9 @@ public class AccelerationStep implements Serializable
 
     /**
      * Create a new GtuFollowingModelResult.
-     * @param acceleration Acceleration; computed acceleration
-     * @param validUntil Time; time when this result expires
-     * @param duration Duration; duration of the time step
+     * @param acceleration computed acceleration
+     * @param validUntil time when this result expires
+     * @param duration duration of the time step
      */
     public AccelerationStep(final Acceleration acceleration, final Time validUntil, final Duration duration)
     {

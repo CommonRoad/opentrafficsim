@@ -23,7 +23,7 @@ import org.opentrafficsim.road.gtu.lane.perception.structure.LaneStructure.Entry
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class CaccPerception extends AbstractPerceptionCategory<LaneBasedGtu, LanePerception>
@@ -38,7 +38,7 @@ public class CaccPerception extends AbstractPerceptionCategory<LaneBasedGtu, Lan
 
     /**
      * Constructor using default sensors with zero delay.
-     * @param perception LanePerception; perception
+     * @param perception perception
      */
     public CaccPerception(final LanePerception perception)
     {
@@ -47,8 +47,8 @@ public class CaccPerception extends AbstractPerceptionCategory<LaneBasedGtu, Lan
 
     /**
      * Constructor using specified sensors.
-     * @param perception LanePerception; perception
-     * @param sensors HeadwayGtuType; onboard sensor information
+     * @param perception perception
+     * @param sensors onboard sensor information
      */
     public CaccPerception(final LanePerception perception, final HeadwayGtuType sensors)
     {
@@ -73,12 +73,12 @@ public class CaccPerception extends AbstractPerceptionCategory<LaneBasedGtu, Lan
         {
             Iterator<Entry<LaneBasedGtu>> leaders = getPerception().getLaneStructure().getDownstreamGtus(RelativeLane.CURRENT,
                     RelativePosition.FRONT, RelativePosition.REAR, RelativePosition.FRONT, RelativePosition.REAR).iterator();
-            return new AbstractPerceptionReiterable<HeadwayGtu, LaneBasedGtu>(getGtu())
+            return new AbstractPerceptionReiterable<LaneBasedGtu, HeadwayGtu, LaneBasedGtu>(getGtu())
             {
                 /** {@inheritDoc} */
                 @Override
-                protected Iterator<
-                        AbstractPerceptionReiterable<HeadwayGtu, LaneBasedGtu>.PrimaryIteratorEntry> primaryIterator()
+                protected Iterator<AbstractPerceptionReiterable<LaneBasedGtu, HeadwayGtu,
+                        LaneBasedGtu>.PrimaryIteratorEntry> primaryIterator()
                 {
                     return new Iterator<>()
                     {
@@ -106,7 +106,7 @@ public class CaccPerception extends AbstractPerceptionCategory<LaneBasedGtu, Lan
 
                         /** {@inheritDoc} */
                         @Override
-                        public AbstractPerceptionReiterable<HeadwayGtu, LaneBasedGtu>.PrimaryIteratorEntry next()
+                        public AbstractPerceptionReiterable<LaneBasedGtu, HeadwayGtu, LaneBasedGtu>.PrimaryIteratorEntry next()
                         {
                             hasNext();
                             return this.next;
@@ -116,10 +116,10 @@ public class CaccPerception extends AbstractPerceptionCategory<LaneBasedGtu, Lan
 
                 /** {@inheritDoc} */
                 @Override
-                protected HeadwayGtu perceive(final LaneBasedGtu perceivingGtu, final LaneBasedGtu object,
-                        final Length distance) throws GtuException, ParameterException
+                protected HeadwayGtu perceive(final LaneBasedGtu object, final Length distance)
+                        throws GtuException, ParameterException
                 {
-                    return CaccPerception.this.sensors.createDownstreamGtu(perceivingGtu, object, distance);
+                    return CaccPerception.this.sensors.createDownstreamGtu(getObject(), object, distance);
                 }
             };
         }

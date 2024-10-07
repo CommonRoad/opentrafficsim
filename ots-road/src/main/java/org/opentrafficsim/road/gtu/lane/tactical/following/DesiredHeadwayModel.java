@@ -12,7 +12,7 @@ import org.opentrafficsim.base.parameters.Parameters;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface DesiredHeadwayModel
@@ -20,8 +20,8 @@ public interface DesiredHeadwayModel
 
     /**
      * Determines the desired headway in equilibrium conditions, i.e. no speed difference with the leader.
-     * @param parameters Parameters; parameters
-     * @param speed Speed; speed to determine the desired headway at
+     * @param parameters parameters
+     * @param speed speed to determine the desired headway at
      * @throws ParameterException if parameter exception occurs
      * @return desired headway
      */

@@ -7,7 +7,6 @@ import java.util.Set;
 import org.djunits.value.vdouble.scalar.Length;
 import org.opentrafficsim.core.gtu.RelativePosition;
 import org.opentrafficsim.core.network.route.Route;
-import org.opentrafficsim.road.gtu.lane.LaneBasedGtu;
 import org.opentrafficsim.road.gtu.lane.perception.headway.Headway;
 import org.opentrafficsim.road.gtu.lane.perception.structure.LaneRecordInterface;
 import org.opentrafficsim.road.network.lane.object.LaneBasedObject;
@@ -19,13 +18,14 @@ import org.opentrafficsim.road.network.lane.object.LaneBasedObject;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
+ * @param <P> perceiving object type
  * @param <H> headway type
  * @param <L> lane based object type
  */
-public abstract class LaneBasedObjectIterable<H extends Headway, L extends LaneBasedObject>
-        extends AbstractPerceptionIterable<H, L, Boolean>
+public abstract class LaneBasedObjectIterable<P extends LaneBasedObject, H extends Headway, L extends LaneBasedObject>
+        extends AbstractPerceptionIterable<P, H, L, Boolean>
 {
 
     /** Margin for start and end of lane. */
@@ -36,20 +36,20 @@ public abstract class LaneBasedObjectIterable<H extends Headway, L extends LaneB
 
     /**
      * Constructor.
-     * @param perceivingGtu LaneBasedGtu; perceiving GTU
-     * @param clazz Class&lt;L&gt;; class of lane based objects to return
-     * @param root LaneRecord&lt;?&gt;; root record
-     * @param initialPosition Length; initial position
-     * @param downstream boolean; downstream
-     * @param maxDistance Length; max distance to search
-     * @param relativePosition RelativePosition; relative position
-     * @param route Route; route of the GTU, may be {@code null}
+     * @param perceivingObject perceiving GTU
+     * @param clazz class of lane based objects to return
+     * @param root root record
+     * @param initialPosition initial position
+     * @param downstream downstream
+     * @param maxDistance max distance to search
+     * @param relativePosition relative position
+     * @param route route of the GTU, may be {@code null}
      */
-    public LaneBasedObjectIterable(final LaneBasedGtu perceivingGtu, final Class<L> clazz, final LaneRecordInterface<?> root,
+    public LaneBasedObjectIterable(final P perceivingObject, final Class<L> clazz, final LaneRecordInterface<?> root,
             final Length initialPosition, final boolean downstream, final Length maxDistance,
             final RelativePosition relativePosition, final Route route)
     {
-        super(perceivingGtu, root, initialPosition, downstream, maxDistance, relativePosition, route);
+        super(perceivingObject, root, initialPosition, downstream, maxDistance, relativePosition, route);
         this.clazz = clazz;
     }
 

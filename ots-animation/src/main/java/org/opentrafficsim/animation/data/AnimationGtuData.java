@@ -6,9 +6,11 @@ import java.awt.geom.Rectangle2D;
 import java.awt.geom.RectangularShape;
 
 import org.djunits.value.vdouble.scalar.Length;
+import org.djutils.draw.bounds.Bounds2d;
+import org.djutils.draw.line.Polygon2d;
 import org.djutils.draw.point.OrientedPoint2d;
 import org.opentrafficsim.animation.gtu.colorer.GtuColorer;
-import org.opentrafficsim.base.geometry.OtsBounds2d;
+import org.opentrafficsim.base.geometry.OtsShape;
 import org.opentrafficsim.draw.gtu.DefaultCarAnimation.GtuData;
 import org.opentrafficsim.road.gtu.lane.LaneBasedGtu;
 
@@ -31,8 +33,8 @@ public class AnimationGtuData implements GtuData
 
     /**
      * Constructor.
-     * @param gtuColorer GtuColorer; factory.
-     * @param gtu LaneBasedGtu; GTU.
+     * @param gtuColorer factory.
+     * @param gtu GTU.
      */
     public AnimationGtuData(final GtuColorer gtuColorer, final LaneBasedGtu gtu)
     {
@@ -49,9 +51,23 @@ public class AnimationGtuData implements GtuData
 
     /** {@inheritDoc} */
     @Override
-    public OtsBounds2d getBounds()
+    public Polygon2d getContour()
+    {
+        return this.gtu.getContour();
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Bounds2d getBounds()
     {
         return this.gtu.getBounds();
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public OtsShape getShape()
+    {
+        return this.gtu.getShape();
     }
 
     /** {@inheritDoc} */
@@ -134,7 +150,7 @@ public class AnimationGtuData implements GtuData
 
     /**
      * Returns the GTU.
-     * @return LaneBasedGtu; GTU.
+     * @return GTU.
      */
     public LaneBasedGtu getGtu()
     {

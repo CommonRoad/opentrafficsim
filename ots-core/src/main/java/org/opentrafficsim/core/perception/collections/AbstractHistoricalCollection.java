@@ -24,7 +24,7 @@ import org.opentrafficsim.core.perception.collections.AbstractHistoricalCollecti
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <E> element type
  * @param <C> collection type
@@ -38,8 +38,8 @@ public abstract class AbstractHistoricalCollection<E, C extends Collection<E>>
 
     /**
      * Constructor.
-     * @param historyManager HistoryManager; history manager
-     * @param collection C; initial collection
+     * @param historyManager history manager
+     * @param collection initial collection
      */
     protected AbstractHistoricalCollection(final HistoryManager historyManager, final C collection)
     {
@@ -49,7 +49,7 @@ public abstract class AbstractHistoricalCollection<E, C extends Collection<E>>
 
     /**
      * Returns the internal collection.
-     * @return C; internal collection
+     * @return internal collection
      */
     protected final C getCollection()
     {
@@ -58,8 +58,8 @@ public abstract class AbstractHistoricalCollection<E, C extends Collection<E>>
 
     /**
      * Fill collection with the current collection.
-     * @param collection C; collection to fill
-     * @return C; input collection filled
+     * @param collection collection to fill
+     * @return input collection filled
      */
     protected final C fill(final C collection)
     {
@@ -69,9 +69,9 @@ public abstract class AbstractHistoricalCollection<E, C extends Collection<E>>
 
     /**
      * Fill collection with the collection at the given simulation time.
-     * @param time Time; time
-     * @param collection C; collection to fill
-     * @return C; input collection filled
+     * @param time time
+     * @param collection collection to fill
+     * @return input collection filled
      */
     protected final C fill(final Time time, final C collection)
     {
@@ -219,7 +219,7 @@ public abstract class AbstractHistoricalCollection<E, C extends Collection<E>>
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      * @param <E> element type
      * @param <C> collection type
@@ -229,8 +229,8 @@ public abstract class AbstractHistoricalCollection<E, C extends Collection<E>>
 
         /**
          * Constructor.
-         * @param time double; time of event
-         * @param value E; value of event
+         * @param time time of event
+         * @param value value of event
          */
         public EventCollection(final double time, final E value)
         {
@@ -239,7 +239,7 @@ public abstract class AbstractHistoricalCollection<E, C extends Collection<E>>
 
         /**
          * Restores the collection to the state of before the event.
-         * @param collection C; collection to restore
+         * @param collection collection to restore
          */
         public abstract void restore(C collection);
 
@@ -260,7 +260,7 @@ public abstract class AbstractHistoricalCollection<E, C extends Collection<E>>
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      * @param <E> element type
      * @param <C> collection type
@@ -270,8 +270,8 @@ public abstract class AbstractHistoricalCollection<E, C extends Collection<E>>
 
         /**
          * Constructor.
-         * @param time double; time of event
-         * @param value E; value of event
+         * @param time time of event
+         * @param value value of event
          */
         public AddEvent(final double time, final E value)
         {
@@ -302,7 +302,7 @@ public abstract class AbstractHistoricalCollection<E, C extends Collection<E>>
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      * @param <E> element type
      * @param <C> collection type
@@ -312,8 +312,8 @@ public abstract class AbstractHistoricalCollection<E, C extends Collection<E>>
 
         /**
          * Constructor.
-         * @param time double; time of event
-         * @param value E; value of event
+         * @param time time of event
+         * @param value value of event
          */
         public RemoveEvent(final double time, final E value)
         {

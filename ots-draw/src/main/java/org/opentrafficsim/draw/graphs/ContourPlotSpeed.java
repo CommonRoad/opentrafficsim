@@ -14,7 +14,7 @@ import org.opentrafficsim.draw.graphs.ContourDataSource.ContourDataType;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class ContourPlotSpeed extends AbstractContourPlot<Speed>
@@ -22,9 +22,9 @@ public class ContourPlotSpeed extends AbstractContourPlot<Speed>
 
     /**
      * Constructor.
-     * @param caption String; caption
-     * @param scheduler PlotScheduler; scheduler.
-     * @param dataPool ContourDataSource; data pool
+     * @param caption caption
+     * @param scheduler scheduler.
+     * @param dataPool data pool
      */
     public ContourPlotSpeed(final String caption, final PlotScheduler scheduler, final ContourDataSource dataPool)
     {
@@ -34,7 +34,7 @@ public class ContourPlotSpeed extends AbstractContourPlot<Speed>
 
     /**
      * Creates a paint scale from red, via yellow to green.
-     * @return ContinuousColorPaintScale; paint scale
+     * @return paint scale
      */
     private static BoundsPaintScale createPaintScale()
     {

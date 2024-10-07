@@ -11,15 +11,15 @@ import org.sim0mq.Sim0MQException;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public interface ReturnWrapper
 {
     /**
      * Encode a String reply and transmit it while patching the message type id field by adding a vertical bar and a suffix.
-     * @param status Boolean; if null, the payload is transmitted as is; if true, a boolean true is prepended to the payload; if
-     *            false, a boolean false is prepended to the payload
-     * @param payload Object []; payload of the reply message
+     * @param status if null, the payload is transmitted as is; if true, a boolean true is prepended to the payload; if false, a
+     *            boolean false is prepended to the payload
+     * @param payload payload of the reply message
      * @throws Sim0MQException not sure if that can happen
      * @throws SerializationException when an object in payload cannot be serialized
      */
@@ -27,7 +27,7 @@ public interface ReturnWrapper
 
     /**
      * Encode a String reply and transmit it.
-     * @param payload String; payload of the reply message
+     * @param payload payload of the reply message
      * @throws Sim0MQException not sure if that can happen
      * @throws SerializationException when an object in payload cannot be serialized
      */
@@ -39,7 +39,7 @@ public interface ReturnWrapper
 
     /**
      * Encode a String reply and transmit it.
-     * @param payload Object[]; payload of the reply message
+     * @param payload payload of the reply message
      * @throws Sim0MQException not sure if that can happen
      * @throws SerializationException when an object in payload cannot be serialized
      */
@@ -51,9 +51,9 @@ public interface ReturnWrapper
 
     /**
      * Encode a String reply and transmit it.
-     * @param status Boolean; if null, the payload is transmitted as is; if true, a boolean true is prepended to the payload; if
-     *            false, a boolean false is prepended to the payload
-     * @param payload String; payload of the reply message
+     * @param status if null, the payload is transmitted as is; if true, a boolean true is prepended to the payload; if false, a
+     *            boolean false is prepended to the payload
+     * @param payload payload of the reply message
      * @throws Sim0MQException not sure if that can happen
      * @throws SerializationException when an object in payload cannot be serialized
      */
@@ -66,7 +66,7 @@ public interface ReturnWrapper
 
     /**
      * Signal successful execution of a request.
-     * @param payload String; additional description of the result
+     * @param payload additional description of the result
      * @throws Sim0MQException not sure if that can happen
      * @throws SerializationException when an object in payload cannot be serialized
      */
@@ -77,7 +77,7 @@ public interface ReturnWrapper
 
     /**
      * Signal failure of execution of a request.
-     * @param payload String; additional description of the failure
+     * @param payload additional description of the failure
      * @throws Sim0MQException not sure if that can happen
      * @throws SerializationException when an object in payload cannot be serialized
      */

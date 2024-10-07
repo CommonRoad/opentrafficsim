@@ -11,7 +11,7 @@ import org.opentrafficsim.core.compatibility.GtuCompatibleInfraType;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class LinkType extends GtuCompatibleInfraType<LinkType, Link>
 {
@@ -20,7 +20,7 @@ public class LinkType extends GtuCompatibleInfraType<LinkType, Link>
 
     /**
      * Constructor for root-level Link types. The parent will be {@code null}.
-     * @param id String; the id of the link type (may not be {@code null}).
+     * @param id the id of the link type (may not be {@code null}).
      */
     public LinkType(final String id)
     {
@@ -29,8 +29,8 @@ public class LinkType extends GtuCompatibleInfraType<LinkType, Link>
 
     /**
      * Create a new Link type.
-     * @param id String; the id of the link type (may not be {@code null}).
-     * @param parent LinkType; the parent type (may be {@code null}).
+     * @param id the id of the link type (may not be {@code null}).
+     * @param parent the parent type (may be {@code null}).
      */
     public LinkType(final String id, final LinkType parent)
     {

@@ -15,7 +15,7 @@ import org.opentrafficsim.core.perception.HistoryManager;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <K> key type
  * @param <V> value type
@@ -28,8 +28,8 @@ public class HistoricalEnumMap<K extends Enum<K>, V> extends AbstractHistoricalM
 
     /**
      * Constructor.
-     * @param historyManager HistoryManager; history manager
-     * @param clazz Class&lt;K&gt;; enum class
+     * @param historyManager history manager
+     * @param clazz enum class
      */
     public HistoricalEnumMap(final HistoryManager historyManager, final Class<K> clazz)
     {
@@ -39,9 +39,9 @@ public class HistoricalEnumMap<K extends Enum<K>, V> extends AbstractHistoricalM
 
     /**
      * Constructor.
-     * @param historyManager HistoryManager; history manager
-     * @param m EnumMap&lt;K, ? extends V&gt;; initial map
-     * @param clazz Class&lt;K&gt;; enum class
+     * @param historyManager history manager
+     * @param m initial map
+     * @param clazz enum class
      */
     public HistoricalEnumMap(final HistoryManager historyManager, final EnumMap<K, ? extends V> m, final Class<K> clazz)
     {

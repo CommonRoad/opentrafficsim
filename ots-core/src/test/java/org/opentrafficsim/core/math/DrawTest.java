@@ -20,7 +20,7 @@ import nl.tudelft.simulation.jstats.streams.StreamInterface;
  * Copyright (c) 2013-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class DrawTest
 {
@@ -90,8 +90,8 @@ public class DrawTest
         {
             assertEquals(1, Draw.drawWeighted(population, new FixedStream(0.01 * step)), 0, "result should be 1");
         }
-        assertEquals(1, Draw.drawWeighted(population, new FixedStream(1.01)),
-                0, "If rounding errors cause no element to be selected; last element with nonzero probability is returned");
+        assertEquals(1, Draw.drawWeighted(population, new FixedStream(1.01)), 0,
+                "If rounding errors cause no element to be selected; last element with nonzero probability is returned");
         population.put(2, 0.9);
         for (int step = 0; step < 100; step++)
         {
@@ -168,8 +168,7 @@ public class DrawTest
 
         /**
          * Construct a new FixedStream.
-         * @param result double; the result of the nextDouble method. All other methods return a suitable approximation of this
-         *            value.
+         * @param result the result of the nextDouble method. All other methods return a suitable approximation of this value.
          */
         FixedStream(final double result)
         {

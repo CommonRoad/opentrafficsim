@@ -13,15 +13,15 @@ import org.opentrafficsim.road.gtu.lane.perception.LanePerception;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class ConstantTask extends AbstractTask
 {
     /**
      * Constructor.
-     * @param id String; id
-     * @param taskDemand double; task demand
+     * @param id id
+     * @param taskDemand task demand
      */
     public ConstantTask(final String id, final double taskDemand)
     {

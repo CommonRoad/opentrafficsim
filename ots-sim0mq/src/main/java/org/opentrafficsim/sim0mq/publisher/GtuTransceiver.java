@@ -21,7 +21,7 @@ import org.sim0mq.Sim0MQException;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class GtuTransceiver extends AbstractEventTransceiver
@@ -34,8 +34,8 @@ public class GtuTransceiver extends AbstractEventTransceiver
 
     /**
      * Construct a GtuTransceiver.
-     * @param network Network; the Network
-     * @param gtuIdSource GtuIdTransceiver; the transceiver that can produce all active GTU ids in the Network
+     * @param network the Network
+     * @param gtuIdSource the transceiver that can produce all active GTU ids in the Network
      */
     public GtuTransceiver(final Network network, final GtuIdTransceiver gtuIdSource)
     {

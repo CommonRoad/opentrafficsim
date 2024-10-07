@@ -28,7 +28,7 @@ import nl.tudelft.simulation.jstats.streams.StreamInterface;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public final class DefaultsNl extends Defaults implements BiFunction<GtuType, StreamInterface, GtuTemplate>
@@ -81,7 +81,7 @@ public final class DefaultsNl extends Defaults implements BiFunction<GtuType, St
 
     /** Super type for motorcycles. */
     public static final GtuType MOTORCYCLE = new GtuType("NL.MOTORCYCLE", VEHICLE);
-    
+
     /** Super type for vans. */
     public static final GtuType VAN = new GtuType("NL.VAN", VEHICLE);
 
@@ -118,9 +118,9 @@ public final class DefaultsNl extends Defaults implements BiFunction<GtuType, St
      * <br>
      * Note: implementations should not cache the template per GTU type, as different simulations may request templates for the
      * same GTU type, while having their separate random streams.
-     * @param gtuType GtuType; GTU type.
-     * @param randomStream StreamInterface; random stream.
-     * @return TemplateGtuType; template, {@code null} if no default is defined.
+     * @param gtuType GTU type.
+     * @param randomStream random stream.
+     * @return template, {@code null} if no default is defined.
      */
     @Override
     public GtuTemplate apply(final GtuType gtuType, final StreamInterface randomStream)
@@ -182,7 +182,7 @@ public final class DefaultsNl extends Defaults implements BiFunction<GtuType, St
 
     /** Connector type. */
     public static final LinkType CONNECTOR = new LinkType("NL.CONNECTOR");
-    
+
     /** Super type for all roads. */
     public static final LinkType ROAD = new LinkType("NL.ROAD");
 

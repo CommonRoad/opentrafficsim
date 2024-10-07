@@ -18,7 +18,7 @@ import org.djutils.immutablecollections.ImmutableIterator;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class FilterDataSet
@@ -37,7 +37,7 @@ public class FilterDataSet
 
     /**
      * Constructor that copies the input.
-     * @param filterDataSet FilterDataSet; set of filter data to copy into new filter data set
+     * @param filterDataSet set of filter data to copy into new filter data set
      */
     public FilterDataSet(final FilterDataSet filterDataSet)
     {
@@ -50,9 +50,9 @@ public class FilterDataSet
 
     /**
      * Add filter data for type.
-     * @param filterDataType FilterDataType&lt;T, ?&gt;; filter data type
+     * @param filterDataType filter data type
      * @param <T> class of filter data
-     * @param values Set&lt;T&gt;; values of filter data
+     * @param values values of filter data
      */
     public final <T> void put(final FilterDataType<T, ?> filterDataType, final Set<T> values)
     {
@@ -63,7 +63,7 @@ public class FilterDataSet
 
     /**
      * Returns whether the filter data type is contained.
-     * @param filterDataType FilterDataType&lt;?, ?&gt;; filter data type
+     * @param filterDataType filter data type
      * @return whether the trajectory contains the filter data of give type
      */
     public final boolean contains(final FilterDataType<?, ?> filterDataType)
@@ -73,7 +73,7 @@ public class FilterDataSet
 
     /**
      * Returns the value set of a filter data type.
-     * @param filterDataType FilterDataType&lt;T, ?&gt;; filter data type
+     * @param filterDataType filter data type
      * @param <T> class of filter data
      * @return value of filter data
      */

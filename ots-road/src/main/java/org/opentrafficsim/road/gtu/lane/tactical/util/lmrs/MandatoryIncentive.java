@@ -13,7 +13,7 @@ import org.opentrafficsim.road.gtu.lane.tactical.following.CarFollowingModel;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface MandatoryIncentive extends Incentive
@@ -21,10 +21,10 @@ public interface MandatoryIncentive extends Incentive
 
     /**
      * Determines level of lane change desire for a lane change incentive.
-     * @param parameters Parameters; parameters
-     * @param perception LanePerception; perception
-     * @param carFollowingModel CarFollowingModel; car-following model
-     * @param mandatoryDesire Desire; level of mandatory desire at current time
+     * @param parameters parameters
+     * @param perception perception
+     * @param carFollowingModel car-following model
+     * @param mandatoryDesire level of mandatory desire at current time
      * @return level of lane change desire for this incentive
      * @throws ParameterException if a parameter is not given or out of bounds
      * @throws OperationalPlanException in case of a perception exception

@@ -55,7 +55,7 @@ import nl.tudelft.simulation.dsol.SimRuntimeException;
  * Copyright (c) 2013-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class CarTest implements UNITS
 {
@@ -113,15 +113,15 @@ public class CarTest implements UNITS
 
     /**
      * Create a new Car.
-     * @param id String; the name (number) of the Car
-     * @param gtuType GtuType; the type of the new car
-     * @param lane Lane; the lane on which the new Car is positioned
-     * @param initialPosition Length; the initial longitudinal position of the new Car
-     * @param initialSpeed Speed; the initial speed
-     * @param gtuFollowingModel GtuFollowingModel; the GTU following model
-     * @param laneChangeModel LaneChangeModel; the lane change model
+     * @param id the name (number) of the Car
+     * @param gtuType the type of the new car
+     * @param lane the lane on which the new Car is positioned
+     * @param initialPosition the initial longitudinal position of the new Car
+     * @param initialSpeed the initial speed
+     * @param gtuFollowingModel the GTU following model
+     * @param laneChangeModel the lane change model
      * @param network the network
-     * @return Car; the new Car
+     * @return the new Car
      * @throws NamingException on network error when making the animation
      * @throws NetworkException when the GTU cannot be placed on the given lane.
      * @throws SimRuntimeException when the move method cannot be scheduled.
@@ -147,9 +147,9 @@ public class CarTest implements UNITS
     }
 
     /**
-     * @param network RoadNetwork; the network
-     * @param laneType LaneType&lt;String&gt;; the type of the lane
-     * @param simulator OtsSimulatorInterface; simulator
+     * @param network the network
+     * @param laneType the type of the lane
+     * @param simulator simulator
      * @return a lane of 1000 m long.
      * @throws NetworkException on network error
      * @throws OtsGeometryException when center line or contour of a link or lane cannot be generated

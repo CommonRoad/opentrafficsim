@@ -16,7 +16,7 @@ import org.jfree.chart.plot.XYPlot;
  * Copyright (c) 2013-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public abstract class PointerHandler implements MouseListener, MouseMotionListener
 {
@@ -58,8 +58,8 @@ public abstract class PointerHandler implements MouseListener, MouseMotionListen
     /**
      * Called when the pointer is positioned inside the data area of the graph, or when it leaves the data area. <br>
      * When the mouse is outside the data area both parameters are set to Double.NaN.
-     * @param domainValue double; the X-value (in domain units), or Double.NaN if the pointer is outside the data area
-     * @param rangeValue double; the Y-value (in domain units), or Double.NaN if the pointer is outside the data area
+     * @param domainValue the X-value (in domain units), or Double.NaN if the pointer is outside the data area
+     * @param rangeValue the Y-value (in domain units), or Double.NaN if the pointer is outside the data area
      */
     public abstract void updateHint(double domainValue, double rangeValue);
 

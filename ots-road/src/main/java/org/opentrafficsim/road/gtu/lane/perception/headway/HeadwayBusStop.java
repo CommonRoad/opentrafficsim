@@ -15,7 +15,7 @@ import org.opentrafficsim.road.network.lane.object.BusStop;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class HeadwayBusStop extends AbstractHeadwayLaneBasedObject
@@ -34,11 +34,11 @@ public class HeadwayBusStop extends AbstractHeadwayLaneBasedObject
     private final Set<String> conflictIds;
 
     /**
-     * @param busStop BusStop; bus stop
-     * @param distance Length; distance
-     * @param relativeLane RelativeLane; relative lane
-     * @param conflictIds Set&lt;String&gt;; conflicts downstream of the bus stop
-     * @param lane Lane; lane
+     * @param busStop bus stop
+     * @param distance distance
+     * @param relativeLane relative lane
+     * @param conflictIds conflicts downstream of the bus stop
+     * @param lane lane
      * @throws GtuException when id is null, or parameters are inconsistent
      */
     public HeadwayBusStop(final BusStop busStop, final Length distance, final RelativeLane relativeLane,

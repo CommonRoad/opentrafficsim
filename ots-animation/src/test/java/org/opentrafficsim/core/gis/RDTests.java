@@ -17,7 +17,7 @@ import org.opentrafficsim.animation.gis.TransformWgs84DutchRdNew;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class RDTests
@@ -25,8 +25,8 @@ public class RDTests
 
     /**
      * Perform conversion to WGS84 and back and compare the results.
-     * @param description String; description of the test
-     * @param rdIn Point2D; location to test
+     * @param description description of the test
+     * @param rdIn location to test
      */
     final void forwardReverseCompare(final String description, final Point2D rdIn)
     {

@@ -1,14 +1,13 @@
 package org.opentrafficsim.editor.extensions.map;
 
-import org.opentrafficsim.base.geometry.BoundingRectangle;
-import org.opentrafficsim.base.geometry.OtsBounds2d;
+import org.djutils.draw.bounds.Bounds2d;
 import org.opentrafficsim.draw.DrawLevel;
 import org.opentrafficsim.draw.road.GtuGeneratorPositionAnimation.GtuGeneratorPositionData;
 import org.opentrafficsim.editor.OtsEditor;
 import org.opentrafficsim.editor.XsdTreeNode;
 
 /**
- * Generator data for the editor Map. 
+ * Generator data for the editor Map.
  * <p>
  * Copyright (c) 2024-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
@@ -20,15 +19,18 @@ public class MapGeneratorData extends MapLaneBasedObjectData implements GtuGener
 
     /** */
     private static final long serialVersionUID = 20240310L;
-    
+
     /** Type, 'Generator' or 'List generator'. */
     private final String type;
 
+    /** Bounds. */
+    private Bounds2d bounds = new Bounds2d(0.0, 4.75, -1.0, 1.0);
+
     /**
      * Constructor.
-     * @param map Map; map.
-     * @param node XsdTreeNode; node.
-     * @param editor OtsEditor; editor.
+     * @param map map.
+     * @param node node.
+     * @param editor editor.
      */
     public MapGeneratorData(final EditorMap map, final XsdTreeNode node, final OtsEditor editor)
     {
@@ -38,9 +40,9 @@ public class MapGeneratorData extends MapLaneBasedObjectData implements GtuGener
 
     /** {@inheritDoc} */
     @Override
-    protected OtsBounds2d calculateBounds()
+    public Bounds2d getBounds()
     {
-        return new BoundingRectangle(0.0, 4.75, -1.0, 1.0);
+        return this.bounds;
     }
 
     /** {@inheritDoc} */

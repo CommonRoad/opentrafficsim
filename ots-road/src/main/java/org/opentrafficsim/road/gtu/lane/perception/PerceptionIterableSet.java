@@ -15,7 +15,7 @@ import org.opentrafficsim.road.gtu.lane.perception.headway.Headway;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <H> headway type
  */
@@ -35,7 +35,7 @@ public class PerceptionIterableSet<H extends Headway> implements PerceptionItera
 
     /**
      * Creates a single-value iterable.
-     * @param headway H; headway
+     * @param headway headway
      */
     public PerceptionIterableSet(final H headway)
     {
@@ -45,7 +45,7 @@ public class PerceptionIterableSet<H extends Headway> implements PerceptionItera
 
     /**
      * Creates an iterable from a sorted set.
-     * @param headways SortedSet&lt;H&gt;; set of headway
+     * @param headways set of headway
      */
     public PerceptionIterableSet(final SortedSet<H> headways)
     {

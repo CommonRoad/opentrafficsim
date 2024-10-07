@@ -27,7 +27,7 @@ import org.opentrafficsim.road.network.speed.SpeedLimitInfo;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class ToledoCarFollowing extends AbstractCarFollowingModel
@@ -188,7 +188,7 @@ public class ToledoCarFollowing extends AbstractCarFollowingModel
 
     /**
      * Returns the density based on the leaders in veh/km.
-     * @param leaders PerceptionIterable&lt;? extends Headway&gt;; leading vehicles
+     * @param leaders leading vehicles
      * @return density based on the leaders in veh/km
      */
     private double getDensity(final PerceptionIterable<? extends Headway> leaders)

@@ -13,20 +13,20 @@ import org.opentrafficsim.core.geometry.OtsLine2d;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
- * @param lane Lane; the lane for the position
- * @param position Length; the position on the lane, relative to the cross section link (design line) line, or against it
+ * @param lane the lane for the position
+ * @param position the position on the lane, relative to the cross section link (design line) line, or against it
  */
 public record LanePosition(Lane lane, Length position) implements Serializable
 {
-    
+
     /** */
     private static final long serialVersionUID = 20151111L;
 
     /**
      * Retrieve the location and direction of the GTU on the lane.
-     * @return OrientedPoint2d; the location and direction of the GTU on the lane
+     * @return the location and direction of the GTU on the lane
      */
     public final OrientedPoint2d getLocation()
     {

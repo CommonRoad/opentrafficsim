@@ -11,7 +11,7 @@ import org.opentrafficsim.draw.OtsDrawingException;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <T> model type
  */
@@ -25,8 +25,8 @@ public class OtsSimulationApplication<T extends OtsModelInterface> extends OtsSw
     private final OtsAnimationPanel animationPanel;
 
     /**
-     * @param model T; model
-     * @param panel OtsAnimationPanel; animation panel
+     * @param model model
+     * @param panel animation panel
      * @throws OtsDrawingException on animation error
      */
     public OtsSimulationApplication(final T model, final OtsAnimationPanel panel) throws OtsDrawingException
@@ -67,7 +67,7 @@ public class OtsSimulationApplication<T extends OtsModelInterface> extends OtsSw
 
     /**
      * Returns the animation panel.
-     * @return OtsAnimationPanel; animation panel
+     * @return animation panel
      */
     public OtsAnimationPanel getAnimationPanel()
     {

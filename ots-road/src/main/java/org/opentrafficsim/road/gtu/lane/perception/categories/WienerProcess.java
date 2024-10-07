@@ -24,7 +24,7 @@ import nl.tudelft.simulation.jstats.streams.StreamInterface;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class WienerProcess extends DistNormal
@@ -52,11 +52,11 @@ public class WienerProcess extends DistNormal
     private Time prevTime;
 
     /**
-     * @param stream StreamInterface; random number stream
-     * @param mu double; mean
-     * @param sigma double; standard deviation
-     * @param tau Duration; correlation time
-     * @param simulator OtsSimulatorInterface; simulator
+     * @param stream random number stream
+     * @param mu mean
+     * @param sigma standard deviation
+     * @param tau correlation time
+     * @param simulator simulator
      */
     public WienerProcess(final StreamInterface stream, final double mu, final double sigma, final Duration tau,
             final OtsSimulatorInterface simulator)

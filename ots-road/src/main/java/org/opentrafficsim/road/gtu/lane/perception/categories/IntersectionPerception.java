@@ -14,7 +14,7 @@ import org.opentrafficsim.road.network.lane.object.trafficlight.TrafficLight;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface IntersectionPerception extends LaneBasedPerceptionCategory
@@ -22,14 +22,14 @@ public interface IntersectionPerception extends LaneBasedPerceptionCategory
 
     /**
      * Returns a set of traffic lights along the route. Traffic lights are sorted by headway value.
-     * @param lane RelativeLane; lane
+     * @param lane lane
      * @return set of traffic lights along the route
      */
     PerceptionCollectable<HeadwayTrafficLight, TrafficLight> getTrafficLights(RelativeLane lane);
 
     /**
      * Returns a set of conflicts along the route. Conflicts are sorted by headway value.
-     * @param lane RelativeLane; lane
+     * @param lane lane
      * @return set of conflicts along the route
      */
     PerceptionCollectable<HeadwayConflict, Conflict> getConflicts(RelativeLane lane);

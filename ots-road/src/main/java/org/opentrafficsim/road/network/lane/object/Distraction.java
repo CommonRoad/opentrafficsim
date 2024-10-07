@@ -13,7 +13,7 @@ import org.opentrafficsim.road.network.lane.Lane;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class Distraction extends AbstractLaneBasedObject
@@ -26,18 +26,17 @@ public class Distraction extends AbstractLaneBasedObject
     private final DistractionProfile profile;
 
     /**
-     * @param id String; id
-     * @param lane Lane; lane
-     * @param longitudinalPosition Length; longitudinal position
-     * @param simulator OtsSimulatorInterface; simulator
-     * @param profile DistractionProfile; distraction profile
+     * @param id id
+     * @param lane lane
+     * @param longitudinalPosition longitudinal position
+     * @param simulator simulator
+     * @param profile distraction profile
      * @throws NetworkException on network exception
      */
     public Distraction(final String id, final Lane lane, final Length longitudinalPosition,
             final OtsSimulatorInterface simulator, final DistractionProfile profile) throws NetworkException
     {
-        super(id, lane, longitudinalPosition, LaneBasedObject.makeGeometry(lane, longitudinalPosition),
-                Length.ZERO);
+        super(id, lane, longitudinalPosition, LaneBasedObject.makeLine(lane, longitudinalPosition), Length.ZERO);
         this.profile = profile;
 
         init();
@@ -45,8 +44,8 @@ public class Distraction extends AbstractLaneBasedObject
 
     /**
      * Returns the level of distraction at the given distance.
-     * @param distance Distance to distraction; negative when approaching
-     * @return Double; level of distraction (task-demand), or {@code null} if the distraction is no longer important
+     * @param distance negative when approaching
+     * @return level of distraction (task-demand), or {@code null} if the distraction is no longer important
      */
     public Double getDistraction(final Length distance)
     {
@@ -61,7 +60,7 @@ public class Distraction extends AbstractLaneBasedObject
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
     @FunctionalInterface
@@ -69,8 +68,8 @@ public class Distraction extends AbstractLaneBasedObject
     {
         /**
          * Returns the level of distraction at the given distance.
-         * @param distance Distance to distraction; negative when approaching
-         * @return Double; level of distraction (task-demand), or {@code null} if the distraction is no longer important
+         * @param distance negative when approaching
+         * @return level of distraction (task-demand), or {@code null} if the distraction is no longer important
          */
         Double getDistraction(Length distance);
     }
@@ -83,7 +82,7 @@ public class Distraction extends AbstractLaneBasedObject
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
     public static class TrapezoidProfile implements DistractionProfile
@@ -101,10 +100,10 @@ public class Distraction extends AbstractLaneBasedObject
         private final Length dMax;
 
         /**
-         * @param maxDistraction double; maximum distraction (task-demand)
-         * @param dMin Length; distance before distraction where distraction starts to have effect (&lt;0)
-         * @param dMed Length; distance beyond distraction where distraction has maximum effect (&gt;0)
-         * @param dMax Length; distance beyond distraction where distraction no longer has effect (&gt;dMed)
+         * @param maxDistraction maximum distraction (task-demand)
+         * @param dMin distance before distraction where distraction starts to have effect (&lt;0)
+         * @param dMed distance beyond distraction where distraction has maximum effect (&gt;0)
+         * @param dMax distance beyond distraction where distraction no longer has effect (&gt;dMed)
          */
         public TrapezoidProfile(final double maxDistraction, final Length dMin, final Length dMed, final Length dMax)
         {

@@ -12,7 +12,7 @@ import org.djutils.base.Identifiable;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <L> lane data type
  */
@@ -21,13 +21,13 @@ public interface LinkData<L extends LaneData<L>> extends Identifiable
 
     /**
      * Returns the length of the link.
-     * @return Length; length of the link
+     * @return length of the link
      */
     Length getLength();
 
     /**
      * Returns the lanes of the link.
-     * @return List&lt;L&gt;; list of lanes of the link
+     * @return list of lanes of the link
      */
     List<L> getLaneDatas();
 

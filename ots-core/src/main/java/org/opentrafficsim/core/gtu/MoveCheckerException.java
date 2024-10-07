@@ -7,7 +7,7 @@ package org.opentrafficsim.core.gtu;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class MoveCheckerException extends RuntimeException
@@ -17,7 +17,7 @@ public class MoveCheckerException extends RuntimeException
     private static final long serialVersionUID = 20190806L;
 
     /**
-     * @param cause Throwable; original cause
+     * @param cause original cause
      */
     public MoveCheckerException(final Throwable cause)
     {

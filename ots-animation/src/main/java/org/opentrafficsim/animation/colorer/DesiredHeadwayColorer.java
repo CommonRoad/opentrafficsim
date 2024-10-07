@@ -19,7 +19,7 @@ import org.opentrafficsim.draw.ColorInterpolator;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class DesiredHeadwayColorer implements GtuColorer, Serializable
@@ -65,8 +65,8 @@ public class DesiredHeadwayColorer implements GtuColorer, Serializable
 
     /**
      * Constructor using input Tmin and Tmax.
-     * @param tMin Duration; minimum headway
-     * @param tMax Duration; maximum headway
+     * @param tMin minimum headway
+     * @param tMax maximum headway
      */
     public DesiredHeadwayColorer(final Duration tMin, final Duration tMax)
     {

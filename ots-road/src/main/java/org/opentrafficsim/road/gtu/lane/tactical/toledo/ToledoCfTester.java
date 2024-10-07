@@ -22,7 +22,7 @@ import org.opentrafficsim.road.gtu.lane.tactical.util.CarFollowingUtil.CarFollow
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 
@@ -30,7 +30,7 @@ public class ToledoCfTester
 {
 
     /**
-     * @param args String[]; arguments for the run (should be empty at the moment)
+     * @param args arguments for the run (should be empty at the moment)
      * @throws ParameterException when Toledo parameters cannot be found
      * @throws GtuException when CarFollowingHeadway cannot be calculated
      */

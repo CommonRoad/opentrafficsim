@@ -8,8 +8,6 @@ import org.djunits.value.vdouble.scalar.Length;
 import org.djutils.exceptions.Throw;
 import org.djutils.exceptions.Try;
 import org.opentrafficsim.base.parameters.ParameterException;
-import org.opentrafficsim.base.parameters.ParameterTypeLength;
-import org.opentrafficsim.base.parameters.ParameterTypes;
 import org.opentrafficsim.core.gtu.GtuException;
 import org.opentrafficsim.core.gtu.RelativePosition;
 import org.opentrafficsim.core.gtu.perception.AbstractPerceptionCategory;
@@ -29,7 +27,7 @@ import org.opentrafficsim.road.gtu.lane.perception.structure.LaneStructure.Entry
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class DirectNeighborsPerception extends AbstractPerceptionCategory<LaneBasedGtu, LanePerception>
@@ -39,19 +37,13 @@ public class DirectNeighborsPerception extends AbstractPerceptionCategory<LaneBa
     /** */
     private static final long serialVersionUID = 20160811L;
 
-    /** Look ahead parameter type. */
-    protected static final ParameterTypeLength LOOKAHEAD = ParameterTypes.LOOKAHEAD;
-
-    /** Look back parameter type. */
-    protected static final ParameterTypeLength LOOKBACK = ParameterTypes.LOOKBACK;
-
     /** Headway GTU type that should be used. */
     private final HeadwayGtuType headwayGtuType;
 
     /**
      * Constructor.
-     * @param perception LanePerception; perception
-     * @param headwayGtuType HeadwayGtuType; type of headway gtu to generate
+     * @param perception perception
+     * @param headwayGtuType type of headway gtu to generate
      */
     public DirectNeighborsPerception(final LanePerception perception, final HeadwayGtuType headwayGtuType)
     {
@@ -70,17 +62,16 @@ public class DirectNeighborsPerception extends AbstractPerceptionCategory<LaneBa
 
     /**
      * Computes the first leaders regarding splits.
-     * @param lat LateralDirectionality; lateral directionality
-     * @return SortedSet&lt;HeadwayGtu&gt;; first leaders
+     * @param lat lateral directionality
+     * @return first leaders
      */
     private SortedSet<HeadwayGtu> computeFirstLeaders(final LateralDirectionality lat)
     {
         try
         {
             SortedSet<HeadwayGtu> set = new TreeSet<>();
-            for (Entry<LaneBasedGtu> entry : getPerception().getLaneStructure().getFirstDownstreamGtus(
-                    new RelativeLane(lat, 1), RelativePosition.FRONT, RelativePosition.REAR, RelativePosition.FRONT,
-                    RelativePosition.REAR))
+            for (Entry<LaneBasedGtu> entry : getPerception().getLaneStructure().getFirstDownstreamGtus(new RelativeLane(lat, 1),
+                    RelativePosition.FRONT, RelativePosition.REAR, RelativePosition.FRONT, RelativePosition.REAR))
             {
                 set.add(this.headwayGtuType.createDownstreamGtu(getGtu(), entry.object(), entry.distance()));
             }
@@ -103,8 +94,8 @@ public class DirectNeighborsPerception extends AbstractPerceptionCategory<LaneBa
 
     /**
      * Computes the first followers regarding splits.
-     * @param lat LateralDirectionality; lateral directionality
-     * @return SortedSet&lt;HeadwayGtu&gt;; first followers
+     * @param lat lateral directionality
+     * @return first followers
      */
     private SortedSet<HeadwayGtu> computeFirstFollowers(final LateralDirectionality lat)
     {
@@ -135,17 +126,16 @@ public class DirectNeighborsPerception extends AbstractPerceptionCategory<LaneBa
 
     /**
      * Computes whether there is a GTU alongside.
-     * @param lat LateralDirectionality; lateral directionality
-     * @return boolean; whether there is a GTU alongside
+     * @param lat lateral directionality
+     * @return whether there is a GTU alongside
      */
     public boolean computeGtuAlongside(final LateralDirectionality lat)
     {
         try
         {
             // check if any GTU is downstream of the rear, within the vehicle length
-            for (Entry<LaneBasedGtu> entry : getPerception().getLaneStructure().getFirstDownstreamGtus(
-                    new RelativeLane(lat, 1), RelativePosition.REAR, RelativePosition.FRONT, RelativePosition.FRONT,
-                    RelativePosition.REAR))
+            for (Entry<LaneBasedGtu> entry : getPerception().getLaneStructure().getFirstDownstreamGtus(new RelativeLane(lat, 1),
+                    RelativePosition.REAR, RelativePosition.FRONT, RelativePosition.FRONT, RelativePosition.REAR))
             {
                 if (entry.distance().le0())
                 {
@@ -181,7 +171,7 @@ public class DirectNeighborsPerception extends AbstractPerceptionCategory<LaneBa
 
     /**
      * Computes leaders.
-     * @param lane RelativeLane; lane
+     * @param lane lane
      * @return perception iterable for leaders
      */
     private PerceptionCollectable<HeadwayGtu, LaneBasedGtu> computeLeaders(final RelativeLane lane)
@@ -206,7 +196,7 @@ public class DirectNeighborsPerception extends AbstractPerceptionCategory<LaneBa
 
                     /** {@inheritDoc} */
                     @Override
-                    public AbstractPerceptionReiterable<HeadwayGtu, LaneBasedGtu>.PrimaryIteratorEntry next()
+                    public AbstractPerceptionReiterable<LaneBasedGtu, HeadwayGtu, LaneBasedGtu>.PrimaryIteratorEntry next()
                     {
                         Entry<LaneBasedGtu> entry = iterator.next();
                         return new PrimaryIteratorEntry(entry.object(), entry.distance());
@@ -216,10 +206,10 @@ public class DirectNeighborsPerception extends AbstractPerceptionCategory<LaneBa
 
             /** {@inheritDoc} */
             @Override
-            protected HeadwayGtu perceive(final LaneBasedGtu perceivingGtu, final LaneBasedGtu object, final Length distance)
+            protected HeadwayGtu perceive(final LaneBasedGtu object, final Length distance)
                     throws GtuException, ParameterException
             {
-                return DirectNeighborsPerception.this.headwayGtuType.createDownstreamGtu(perceivingGtu, object, distance);
+                return DirectNeighborsPerception.this.headwayGtuType.createDownstreamGtu(getObject(), object, distance);
             }
         };
     }
@@ -234,7 +224,7 @@ public class DirectNeighborsPerception extends AbstractPerceptionCategory<LaneBa
 
     /**
      * Computes followers.
-     * @param lane RelativeLane; lane
+     * @param lane lane
      * @return perception iterable for followers
      */
     private PerceptionCollectable<HeadwayGtu, LaneBasedGtu> computeFollowers(final RelativeLane lane)
@@ -259,7 +249,7 @@ public class DirectNeighborsPerception extends AbstractPerceptionCategory<LaneBa
 
                     /** {@inheritDoc} */
                     @Override
-                    public AbstractPerceptionReiterable<HeadwayGtu, LaneBasedGtu>.PrimaryIteratorEntry next()
+                    public AbstractPerceptionReiterable<LaneBasedGtu, HeadwayGtu, LaneBasedGtu>.PrimaryIteratorEntry next()
                     {
                         Entry<LaneBasedGtu> entry = iterator.next();
                         return new PrimaryIteratorEntry(entry.object(), entry.distance());
@@ -269,17 +259,17 @@ public class DirectNeighborsPerception extends AbstractPerceptionCategory<LaneBa
 
             /** {@inheritDoc} */
             @Override
-            protected HeadwayGtu perceive(final LaneBasedGtu perceivingGtu, final LaneBasedGtu object, final Length distance)
+            protected HeadwayGtu perceive(final LaneBasedGtu object, final Length distance)
                     throws GtuException, ParameterException
             {
-                return DirectNeighborsPerception.this.headwayGtuType.createUpstreamGtu(perceivingGtu, object, distance);
+                return DirectNeighborsPerception.this.headwayGtuType.createUpstreamGtu(getObject(), object, distance);
             }
         };
     }
 
     /**
      * Checks that lateral directionality is either left or right and an existing lane.
-     * @param lat LateralDirectionality; LEFT or RIGHT
+     * @param lat LEFT or RIGHT
      * @throws ParameterException if parameter is not defined
      * @throws NullPointerException if {@code lat} is {@code null}
      * @throws IllegalArgumentException if {@code lat} is {@code NONE}
@@ -298,7 +288,7 @@ public class DirectNeighborsPerception extends AbstractPerceptionCategory<LaneBa
     @Override
     public final String toString()
     {
-        return "DirectNeighborsPesrception";
+        return "DirectNeighborsPerception";
     }
 
 }

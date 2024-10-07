@@ -23,7 +23,7 @@ import org.opentrafficsim.draw.egtf.Quantity;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <U> unit of data
  * @param <T> data type
@@ -88,8 +88,8 @@ public class TypedQuantity<U extends Unit<U>, T extends Scalar<U, T>, K extends 
 
     /**
      * Constructor.
-     * @param name String; name
-     * @param converter Converter&lt;K&gt;; converter for output format
+     * @param name name
+     * @param converter converter for output format
      */
     public TypedQuantity(final String name, final Converter<K> converter)
     {
@@ -98,9 +98,9 @@ public class TypedQuantity<U extends Unit<U>, T extends Scalar<U, T>, K extends 
 
     /**
      * Constructor. Private so only the default SPEED quantity is speed.
-     * @param name String; name
-     * @param speed boolean; whether this quantity is speed
-     * @param converter Converter&lt;K&gt;; converter for output format
+     * @param name name
+     * @param speed whether this quantity is speed
+     * @param converter converter for output format
      */
     protected TypedQuantity(final String name, final boolean speed, final Converter<K> converter)
     {

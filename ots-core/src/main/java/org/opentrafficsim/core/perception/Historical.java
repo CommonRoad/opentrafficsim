@@ -9,7 +9,7 @@ import org.djunits.value.vdouble.scalar.Time;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <T> value type
  */
@@ -19,20 +19,20 @@ public interface Historical<T>
     /**
      * Set value at the current simulation time. If a value is already given at this time, it is overwritten. Values should be
      * set in chronological order.
-     * @param value T; value
+     * @param value value
      */
     void set(T value);
 
     /**
      * Get value at current simulation time.
-     * @return T; value at current simulation time
+     * @return value at current simulation time
      */
     T get();
 
     /**
      * Get value at given time.
-     * @param time Time; time to get the value
-     * @return T; value at current time
+     * @param time time to get the value
+     * @return value at current time
      * @throws NullPointerException when time is null
      */
     T get(Time time);

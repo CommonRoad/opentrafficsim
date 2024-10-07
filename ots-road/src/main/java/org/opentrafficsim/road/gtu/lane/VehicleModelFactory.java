@@ -9,7 +9,7 @@ import org.opentrafficsim.core.gtu.GtuType;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface VehicleModelFactory
@@ -23,7 +23,7 @@ public interface VehicleModelFactory
 
     /**
      * Factory returning the same instance always.
-     * @param vehicleModel VehicleModel; vehicle model
+     * @param vehicleModel vehicle model
      * @return fixed vehicle model
      */
     static VehicleModelFactory fixed(final VehicleModel vehicleModel)
@@ -40,7 +40,7 @@ public interface VehicleModelFactory
 
     /**
      * Create next vehicle model for given GTU type.
-     * @param gtuType GtuType; GTU type
+     * @param gtuType GTU type
      * @return next vehicle model for given GTU type
      */
     VehicleModel create(GtuType gtuType);

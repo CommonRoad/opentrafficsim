@@ -25,7 +25,7 @@ import org.opentrafficsim.road.network.speed.SpeedLimitInfo;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface Cooperation extends LmrsParameters
@@ -163,12 +163,12 @@ public interface Cooperation extends LmrsParameters
 
     /**
      * Determine acceleration for cooperation.
-     * @param perception LanePerception; perception
-     * @param params Parameters; parameters
-     * @param sli SpeedLimitInfo; speed limit info
-     * @param cfm CarFollowingModel; car-following model
-     * @param lat LateralDirectionality; lateral direction for cooperation
-     * @param ownDesire Desire; own lane change desire
+     * @param perception perception
+     * @param params parameters
+     * @param sli speed limit info
+     * @param cfm car-following model
+     * @param lat lateral direction for cooperation
+     * @param ownDesire own lane change desire
      * @return acceleration for synchronization
      * @throws ParameterException if a parameter is not defined
      * @throws OperationalPlanException perception exception

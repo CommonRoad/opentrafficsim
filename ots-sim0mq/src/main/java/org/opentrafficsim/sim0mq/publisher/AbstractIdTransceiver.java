@@ -16,7 +16,7 @@ import org.sim0mq.Sim0MQException;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public abstract class AbstractIdTransceiver extends AbstractTransceiver
@@ -26,8 +26,8 @@ public abstract class AbstractIdTransceiver extends AbstractTransceiver
 
     /**
      * Construct a GtuIdTransceiver.
-     * @param network Network; the OTS network
-     * @param id String; name of the IdTransceiver
+     * @param network the OTS network
+     * @param id name of the IdTransceiver
      */
     public AbstractIdTransceiver(final Network network, final String id)
     {
@@ -40,8 +40,8 @@ public abstract class AbstractIdTransceiver extends AbstractTransceiver
 
     /**
      * Retrieve the set of names of objects that can be individually subscribed to.
-     * @return Set&lt;?&gt;; the set of names of objects whose that can be subscribed to. Each object in this set should
-     *         implement <code>Identifiable</code>
+     * @return the set of names of objects whose that can be subscribed to. Each object in this set should implement
+     *         <code>Identifiable</code>
      */
     abstract ImmutableSet<?> getSet();
 
@@ -68,7 +68,7 @@ public abstract class AbstractIdTransceiver extends AbstractTransceiver
 
     /**
      * Retrieve the network.
-     * @return Network; the network
+     * @return the network
      */
     final Network getNetwork()
     {

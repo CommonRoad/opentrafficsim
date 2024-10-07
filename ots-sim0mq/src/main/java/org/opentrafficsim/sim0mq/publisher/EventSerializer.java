@@ -16,7 +16,7 @@ import org.djutils.serialization.serializers.Serializer;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <E> event type
  */
@@ -27,7 +27,7 @@ public class EventSerializer<E extends Event> implements Serializer<Event>
 
     /**
      * Construct a new EventSerializer for the specified <code>EventType</code>.
-     * @param eventType EventType; the event type
+     * @param eventType the event type
      */
     EventSerializer(final EventType eventType)
     {

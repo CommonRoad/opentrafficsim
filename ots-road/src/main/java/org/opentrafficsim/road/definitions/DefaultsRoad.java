@@ -13,7 +13,7 @@ import org.opentrafficsim.core.definitions.Defaults;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public abstract class DefaultsRoad extends Defaults
@@ -24,7 +24,7 @@ public abstract class DefaultsRoad extends Defaults
 
     /**
      * Constructor.
-     * @param locale Locale; locale.
+     * @param locale locale.
      */
     protected DefaultsRoad(final Locale locale)
     {
@@ -34,10 +34,10 @@ public abstract class DefaultsRoad extends Defaults
     /**
      * Returns a default value of a type, indicated by its name. This should only be used by parsers. Simulations defined in
      * code should access the relevant static fields directly for code maintainability.
-     * @param clazz Class&lt;T&gt;; class instance of type T.
-     * @param name String; name referring to a default through static field names, e.g. "NL.FREEWAY".
+     * @param clazz class instance of type T.
+     * @param name name referring to a default through static field names, e.g. "NL.FREEWAY".
      * @param <T> type of the value.
-     * @return T; returned default value, {@code null} if the default could not be found.
+     * @return returned default value, {@code null} if the default could not be found.
      */
     public static <T> T getByName(final Class<T> clazz, final String name)
     {

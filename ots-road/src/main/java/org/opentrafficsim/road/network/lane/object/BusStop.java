@@ -26,7 +26,7 @@ import org.opentrafficsim.road.network.lane.conflict.Conflict;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class BusStop extends AbstractLaneBasedObject
@@ -48,18 +48,18 @@ public class BusStop extends AbstractLaneBasedObject
     private final GtuType busType;
 
     /**
-     * @param id String; id
-     * @param lane Lane; lane
-     * @param longitudinalPosition Length; position
-     * @param name String; name of stop
-     * @param simulator OtsSimulatorInterface; the simulator to schedule on
-     * @param busType GtuType; bus type.
+     * @param id id
+     * @param lane lane
+     * @param longitudinalPosition position
+     * @param name name of stop
+     * @param simulator the simulator to schedule on
+     * @param busType bus type.
      * @throws NetworkException when the position on the lane is out of bounds
      */
     public BusStop(final String id, final Lane lane, final Length longitudinalPosition, final String name,
             final OtsSimulatorInterface simulator, final GtuType busType) throws NetworkException
     {
-        super(id, lane, longitudinalPosition, LaneBasedObject.makeGeometry(lane, longitudinalPosition), Length.ZERO);
+        super(id, lane, longitudinalPosition, LaneBasedObject.makeLine(lane, longitudinalPosition), Length.ZERO);
         this.name = name;
         this.busType = busType;
         init();
@@ -67,7 +67,7 @@ public class BusStop extends AbstractLaneBasedObject
 
     /**
      * Sets the lines.
-     * @param lines Set&lt;String&gt;; lines that stop at this location
+     * @param lines lines that stop at this location
      */
     public final void setLines(final Set<String> lines)
     {

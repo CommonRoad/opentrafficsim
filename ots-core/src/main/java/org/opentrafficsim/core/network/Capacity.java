@@ -8,7 +8,7 @@ import org.djunits.value.vdouble.scalar.Frequency;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public interface Capacity
 {
@@ -17,7 +17,7 @@ public interface Capacity
 
     /**
      * Set the link capacity.
-     * @param capacity Frequency; the new capacity of the link as a frequency in GTUs per time unit.
+     * @param capacity the new capacity of the link as a frequency in GTUs per time unit.
      */
     void setCapacity(Frequency capacity);
 

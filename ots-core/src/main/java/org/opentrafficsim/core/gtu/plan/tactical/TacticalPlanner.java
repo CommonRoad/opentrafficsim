@@ -31,7 +31,7 @@ import org.opentrafficsim.core.network.NetworkException;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @param <G> GTU type
  * @param <P> perception type
  */
@@ -41,7 +41,7 @@ public interface TacticalPlanner<G extends Gtu, P extends Perception<G>>
     /** Parameter type for tactical planner. */
     @SuppressWarnings("rawtypes")
     ParameterTypeClass<TacticalPlanner> TACTICAL_PLANNER =
-            new ParameterTypeClass<>("tac.plan.", "Tactical planner", ParameterTypeClass.getValueClass(TacticalPlanner.class));
+            new ParameterTypeClass<>("tac.plan.", "Tactical planner", TacticalPlanner.class);
 
     /**
      * Returns the GTU.
@@ -51,8 +51,8 @@ public interface TacticalPlanner<G extends Gtu, P extends Perception<G>>
 
     /**
      * generate an operational plan, for now or for in the future.
-     * @param startTime Time; the time from which the new operational plan has to be operational
-     * @param locationAtStartTime OrientedPoint2d; the location of the GTU at the start time of the new plan
+     * @param startTime the time from which the new operational plan has to be operational
+     * @param locationAtStartTime the location of the GTU at the start time of the new plan
      * @return a new operational plan
      * @throws OperationalPlanException when there is a problem planning a path in the network
      * @throws GtuException when there is a problem with the state of the GTU when planning a path

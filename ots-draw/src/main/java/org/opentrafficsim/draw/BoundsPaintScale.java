@@ -14,7 +14,7 @@ import org.djutils.logger.CategoryLogger;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class BoundsPaintScale implements ColorPaintScale, Serializable
@@ -38,8 +38,8 @@ public class BoundsPaintScale implements ColorPaintScale, Serializable
 
     /**
      * Constructor.
-     * @param bounds double[]; value bounds
-     * @param boundColors Color[]; colors at bounds
+     * @param bounds value bounds
+     * @param boundColors colors at bounds
      * @throws IllegalArgumentException if less than 2 bounds, unequal number of bounds and colors, or duplicate bounds
      */
     public BoundsPaintScale(final double[] bounds, final Color[] boundColors) throws IllegalArgumentException
@@ -73,8 +73,8 @@ public class BoundsPaintScale implements ColorPaintScale, Serializable
 
     /**
      * Reverses the color array.
-     * @param colors Color[]; array of colors
-     * @return Color[]; reversed color array
+     * @param colors array of colors
+     * @return reversed color array
      */
     public static Color[] reverse(final Color[] colors)
     {
@@ -88,8 +88,8 @@ public class BoundsPaintScale implements ColorPaintScale, Serializable
 
     /**
      * Creates an array of {@code n} colors with varying hue.
-     * @param n int; number of colors.
-     * @return Color[]; array of {@code n} colors with varying hue
+     * @param n number of colors.
+     * @return array of {@code n} colors with varying hue
      */
     public static Color[] hue(final int n)
     {

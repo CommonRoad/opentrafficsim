@@ -6,6 +6,8 @@ import java.util.Set;
 
 import org.djunits.value.vdouble.scalar.Length;
 import org.djutils.base.Identifiable;
+import org.djutils.draw.bounds.Bounds2d;
+import org.djutils.draw.line.PolyLine2d;
 import org.djutils.draw.line.Polygon2d;
 import org.djutils.draw.point.OrientedPoint2d;
 import org.djutils.event.EventType;
@@ -14,12 +16,10 @@ import org.djutils.exceptions.Throw;
 import org.djutils.metadata.MetaData;
 import org.djutils.metadata.ObjectDescriptor;
 import org.opentrafficsim.base.HierarchicallyTyped;
-import org.opentrafficsim.base.geometry.BoundingPolygon;
-import org.opentrafficsim.base.geometry.ClickableBounds;
-import org.opentrafficsim.base.geometry.OtsBounds2d;
 import org.opentrafficsim.base.geometry.OtsLocatable;
-import org.opentrafficsim.core.SpatialObject;
-import org.opentrafficsim.core.animation.Drawable;
+import org.opentrafficsim.base.geometry.OtsShape;
+import org.opentrafficsim.base.geometry.PolygonShape;
+import org.opentrafficsim.base.geometry.SpatialObject;
 import org.opentrafficsim.core.dsol.OtsSimulatorInterface;
 import org.opentrafficsim.core.geometry.FractionalLengthData;
 import org.opentrafficsim.core.geometry.OtsLine2d;
@@ -33,10 +33,10 @@ import org.opentrafficsim.core.gtu.Gtu;
  * <p>
  * $LastChangedDate$, @version $Revision$, by $Author$, initial version Aug 19, 2014 <br>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class Link extends LocalEventProducer
-        implements HierarchicallyTyped<LinkType, Link>, SpatialObject, OtsLocatable, Serializable, Identifiable, Drawable
+        implements HierarchicallyTyped<LinkType, Link>, SpatialObject, OtsLocatable, Serializable, Identifiable
 {
 
     /** */
@@ -82,10 +82,13 @@ public class Link extends LocalEventProducer
     private final FractionalLengthData elevation;
 
     /** the shape. */
-    private final Polygon2d shape;
+    private final Polygon2d contour;
 
     /** Bounds. */
-    private final OtsBounds2d bounds;
+    private final Bounds2d bounds;
+    
+    /** Shape. */
+    private final OtsShape shape;
 
     /** The GTUs on this Link. */
     private final Set<Gtu> gtus = new LinkedHashSet<>();
@@ -95,13 +98,13 @@ public class Link extends LocalEventProducer
 
     /**
      * Construct a new link.
-     * @param network Network; the network to which the link belongs
-     * @param id String; the link id
-     * @param startNode Node; start node (directional)
-     * @param endNode Node; end node (directional)
-     * @param linkType LinkType; Link type to indicate compatibility with GTU types
-     * @param designLine OtsLine2d; the OtsLine2d design line of the Link
-     * @param elevation FractionalLengthData; elevation given over fractional length, may be {@code null}.
+     * @param network the network to which the link belongs
+     * @param id the link id
+     * @param startNode start node (directional)
+     * @param endNode end node (directional)
+     * @param linkType Link type to indicate compatibility with GTU types
+     * @param designLine the OtsLine2d design line of the Link
+     * @param elevation elevation given over fractional length, may be {@code null}.
      * @throws NetworkException if link already exists in the network, if name of the link is not unique, or if the start node
      *             or the end node of the link are not registered in the network.
      */
@@ -124,17 +127,19 @@ public class Link extends LocalEventProducer
         this.endNode.addLink(this);
         this.designLine = designLine;
         this.elevation = elevation;
-        this.shape = new Polygon2d(this.designLine.offsetLine(0.5).getPoints());
+        this.contour = new Polygon2d(
+                PolyLine2d.concatenate(this.designLine.getLine2d(), this.designLine.getLine2d().reverse()).getPoints());
         this.location = this.designLine.getLocationFractionExtended(0.5);
-        this.bounds =
-                BoundingPolygon.geometryToBounds(this.location, ClickableBounds.get(this.designLine.getLine2d()).asPolygon());
+        Polygon2d relativeContour = OtsLocatable.relativeContour(this);
+        this.shape = new PolygonShape(relativeContour);
+        this.bounds = relativeContour.getBounds();
         this.network.addLink(this);
     }
 
     /**
      * Add a GTU to this link (e.g., for statistical purposes, or for a model on macro level). It is safe to add a GTU again. No
      * warning or error will be given. The GTU_ADD_EVENT will only be fired when the GTU was not already on the link.
-     * @param gtu Gtu; the GTU to add.
+     * @param gtu the GTU to add.
      */
     public final void addGTU(final Gtu gtu)
     {
@@ -150,7 +155,7 @@ public class Link extends LocalEventProducer
     /**
      * Remove a GTU from this link. It is safe to try to remove a GTU again. No warning or error will be given. The
      * GTU_REMOVE_EVENT will only be fired when the GTU was on the link.
-     * @param gtu Gtu; the GTU to remove.
+     * @param gtu the GTU to remove.
      */
     public final void removeGTU(final Gtu gtu)
     {
@@ -165,7 +170,7 @@ public class Link extends LocalEventProducer
 
     /**
      * Provide a safe copy of the set of GTUs.
-     * @return Set&lt;GTU&gt;; a safe copy of the set of GTUs
+     * @return a safe copy of the set of GTUs
      */
     public final Set<Gtu> getGTUs()
     {
@@ -174,7 +179,7 @@ public class Link extends LocalEventProducer
 
     /**
      * Provide the number of GTUs on this link.
-     * @return int; the number of GTUs on this link
+     * @return the number of GTUs on this link
      */
     public final int getGTUCount()
     {
@@ -183,7 +188,7 @@ public class Link extends LocalEventProducer
 
     /**
      * Returns whether the link is a connector. By default this returns {@code false}.
-     * @return boolean; whether the link is a connector, by default this returns {@code false}.
+     * @return whether the link is a connector, by default this returns {@code false}.
      */
     public boolean isConnector()
     {
@@ -192,7 +197,7 @@ public class Link extends LocalEventProducer
 
     /**
      * Return the network in which this link is registered. Cannot be null.
-     * @return Network; the network in which this link is registered
+     * @return the network in which this link is registered
      */
     public Network getNetwork()
     {
@@ -208,7 +213,7 @@ public class Link extends LocalEventProducer
 
     /**
      * Returns the start node.
-     * @return Node; start node.
+     * @return start node.
      */
     public final Node getStartNode()
     {
@@ -217,7 +222,7 @@ public class Link extends LocalEventProducer
 
     /**
      * Returns the end node.
-     * @return Node; end node.
+     * @return end node.
      */
     public final Node getEndNode()
     {
@@ -233,7 +238,7 @@ public class Link extends LocalEventProducer
 
     /**
      * Returns the design line.
-     * @return OtsLine2d; design line.
+     * @return design line.
      */
     public final OtsLine2d getDesignLine()
     {
@@ -242,14 +247,21 @@ public class Link extends LocalEventProducer
 
     /** {@inheritDoc} */
     @Override
-    public Polygon2d getShape()
+    public Polygon2d getContour()
+    {
+        return this.contour;
+    }
+    
+    /** {@inheritDoc} */
+    @Override
+    public OtsShape getShape()
     {
         return this.shape;
     }
 
     /**
      * Returns the simulator.
-     * @return OtsSimulatorInterface; simulator.
+     * @return simulator.
      */
     public final OtsSimulatorInterface getSimulator()
     {
@@ -258,7 +270,7 @@ public class Link extends LocalEventProducer
 
     /**
      * Returns the length of the link.
-     * @return Length; length of the link.
+     * @return length of the link.
      */
     public final Length getLength()
     {
@@ -276,15 +288,15 @@ public class Link extends LocalEventProducer
     /** {@inheritDoc} */
     @Override
     @SuppressWarnings("checkstyle:designforextension")
-    public OtsBounds2d getBounds()
+    public Bounds2d getBounds()
     {
         return this.bounds;
     }
 
     /**
      * Returns the elevation at the given position.
-     * @param position Length; position.
-     * @return Length; elevation at the given position.
+     * @param position position.
+     * @return elevation at the given position.
      */
     public Length getElevation(final Length position)
     {
@@ -293,8 +305,8 @@ public class Link extends LocalEventProducer
 
     /**
      * Returns the elevation at the given fractional position.
-     * @param fractionalPosition double; fractional position.
-     * @return Length; elevation at the given fractional position.
+     * @param fractionalPosition fractional position.
+     * @return elevation at the given fractional position.
      */
     public Length getElevation(final double fractionalPosition)
     {
@@ -307,8 +319,8 @@ public class Link extends LocalEventProducer
 
     /**
      * Returns the grade at the given position, given as delta_h / delta_f, where f is fractional position.
-     * @param position Length; position.
-     * @return double; grade at the given position.
+     * @param position position.
+     * @return grade at the given position.
      */
     public double getGrade(final Length position)
     {
@@ -317,8 +329,8 @@ public class Link extends LocalEventProducer
 
     /**
      * Returns the grade at the given fractional position, given as delta_h / delta_f, where f is fractional position.
-     * @param fractionalPosition double; fractional position.
-     * @return double; grade at the given fractional position.
+     * @param fractionalPosition fractional position.
+     * @return grade at the given fractional position.
      */
     public double getGrade(final double fractionalPosition)
     {

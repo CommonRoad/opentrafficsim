@@ -13,7 +13,7 @@ import org.opentrafficsim.core.distributions.ProbabilityException;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class LaneBasedGtuTemplateDistribution implements LaneBasedGtuCharacteristicsGenerator, Serializable
 {
@@ -26,11 +26,9 @@ public class LaneBasedGtuTemplateDistribution implements LaneBasedGtuCharacteris
 
     /**
      * Construct a new LaneBasedTemplateGTUTypeDistribution.
-     * @param distributionOfLanebasedTemplateGTUType Distribution&lt;LaneBasedTemplateGTUType&gt;; the distribution of
-     *            LaneBasedTemplateGTUTypes
+     * @param distributionOfLanebasedTemplateGTUType the distribution of LaneBasedTemplateGTUTypes
      */
-    public LaneBasedGtuTemplateDistribution(
-            final Distribution<LaneBasedGtuTemplate> distributionOfLanebasedTemplateGTUType)
+    public LaneBasedGtuTemplateDistribution(final Distribution<LaneBasedGtuTemplate> distributionOfLanebasedTemplateGTUType)
     {
         this.distribution = distributionOfLanebasedTemplateGTUType;
     }

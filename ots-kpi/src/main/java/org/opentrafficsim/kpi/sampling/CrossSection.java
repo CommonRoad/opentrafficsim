@@ -18,7 +18,7 @@ import org.opentrafficsim.kpi.interfaces.LinkData;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class CrossSection implements Serializable
@@ -32,7 +32,7 @@ public class CrossSection implements Serializable
 
     /**
      * Constructor with set of lane positions.
-     * @param lanePositions Set&lt;LanePosition&gt;; set of lane locations
+     * @param lanePositions set of lane locations
      */
     public CrossSection(final Set<LanePosition> lanePositions)
     {
@@ -42,8 +42,8 @@ public class CrossSection implements Serializable
 
     /**
      * Constructor with link and fraction.
-     * @param link LinkData&lt;?&gt;; link
-     * @param fraction double; fraction on link
+     * @param link link
+     * @param fraction fraction on link
      * @throws SamplingException if an input is null
      */
     public CrossSection(final LinkData<?> link, final double fraction) throws SamplingException

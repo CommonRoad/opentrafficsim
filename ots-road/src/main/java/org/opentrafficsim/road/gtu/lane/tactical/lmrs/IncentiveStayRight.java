@@ -24,7 +24,7 @@ import org.opentrafficsim.road.network.LaneChangeInfo;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class IncentiveStayRight implements VoluntaryIncentive
@@ -67,10 +67,10 @@ public class IncentiveStayRight implements VoluntaryIncentive
 
     /**
      * Returns the urgency to leave a lane.
-     * @param laneChangeInfo SortedSet&lt;InfrastructureLaneChangeInfo&gt;; lane change info on the lane
-     * @param parameters Parameters; parameters
-     * @param speed Speed; current speed
-     * @return double; urgency to leave the lane
+     * @param laneChangeInfo lane change info on the lane
+     * @param parameters parameters
+     * @param speed current speed
+     * @return urgency to leave the lane
      * @throws ParameterException if parameter is not given
      */
     private double urgency(final SortedSet<LaneChangeInfo> laneChangeInfo, final Parameters parameters, final Speed speed)

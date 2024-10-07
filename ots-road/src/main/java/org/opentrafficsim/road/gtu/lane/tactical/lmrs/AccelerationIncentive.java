@@ -25,7 +25,7 @@ import org.opentrafficsim.road.network.speed.SpeedLimitInfo;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface AccelerationIncentive
@@ -33,15 +33,15 @@ public interface AccelerationIncentive
 
     /**
      * Determine acceleration.
-     * @param simplePlan SimpleOperationalPlan; simple plan to set the acceleration
-     * @param lane RelativeLane; lane on which to consider the acceleration
-     * @param mergeDistance Length; distance over which a lane change is impossible
-     * @param gtu LaneBasedGtu; gtu
-     * @param perception LanePerception; perception
-     * @param carFollowingModel CarFollowingModel; car-following model
-     * @param speed Speed; current speed
-     * @param params Parameters; parameters
-     * @param speedLimitInfo SpeedLimitInfo; speed limit info
+     * @param simplePlan simple plan to set the acceleration
+     * @param lane lane on which to consider the acceleration
+     * @param mergeDistance distance over which a lane change is impossible
+     * @param gtu gtu
+     * @param perception perception
+     * @param carFollowingModel car-following model
+     * @param speed current speed
+     * @param params parameters
+     * @param speedLimitInfo speed limit info
      * @throws OperationalPlanException in case of an error
      * @throws ParameterException on missing parameter
      * @throws GtuException when there is a problem with the state of the GTU when planning a path
@@ -53,10 +53,10 @@ public interface AccelerationIncentive
     /**
      * Returns an iterable with only those lane-based objects that are on the route, accounting for longitudinal direction of
      * the GTU type.
-     * @param iterable Iterable&lt;T&gt;; iterable
-     * @param gtu LaneBasedGtu; gtu
+     * @param iterable iterable
+     * @param gtu gtu
      * @param <T> type of lane-based object
-     * @return Iterable&lt;T&gt;; iterable with only those lane-based objects that are on the route
+     * @return iterable with only those lane-based objects that are on the route
      */
     default <T extends HeadwayLaneBasedObject> Iterable<T> onRoute(final Iterable<T> iterable, final LaneBasedGtu gtu)
     {

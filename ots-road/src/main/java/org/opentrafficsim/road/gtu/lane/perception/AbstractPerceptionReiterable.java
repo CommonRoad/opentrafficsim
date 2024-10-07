@@ -2,13 +2,14 @@ package org.opentrafficsim.road.gtu.lane.perception;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import org.djunits.value.vdouble.scalar.Length;
 import org.opentrafficsim.base.parameters.ParameterException;
 import org.opentrafficsim.core.gtu.GtuException;
-import org.opentrafficsim.road.gtu.lane.LaneBasedGtu;
 import org.opentrafficsim.road.gtu.lane.perception.headway.Headway;
+import org.opentrafficsim.road.network.lane.object.LaneBasedObject;
 
 /**
  * This class uses a single primary iterator which a subclass defines, and makes sure that all elements are only looked up and
@@ -20,12 +21,14 @@ import org.opentrafficsim.road.gtu.lane.perception.headway.Headway;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
+ * @param <P> perceiving object type
  * @param <H> headway type
  * @param <U> underlying object type
  */
-public abstract class AbstractPerceptionReiterable<H extends Headway, U> implements PerceptionCollectable<H, U>
+public abstract class AbstractPerceptionReiterable<P extends LaneBasedObject, H extends Headway, U>
+        implements PerceptionCollectable<H, U>
 {
 
     /** First entry. */
@@ -37,30 +40,30 @@ public abstract class AbstractPerceptionReiterable<H extends Headway, U> impleme
     /** Primary iterator. */
     private Iterator<PrimaryIteratorEntry> primaryIterator;
 
-    /** Perceiving GTU. */
-    private final LaneBasedGtu gtu;
+    /** Perceiving object. */
+    private final P perceivingObject;
 
     /**
      * Constructor.
-     * @param perceivingGtu LaneBasedGtu; perceiving GTU
+     * @param perceivingObject perceiving object.
      */
-    protected AbstractPerceptionReiterable(final LaneBasedGtu perceivingGtu)
+    protected AbstractPerceptionReiterable(final P perceivingObject)
     {
-        this.gtu = perceivingGtu;
+        this.perceivingObject = perceivingObject;
     }
 
     /**
-     * Returns the GTU.
-     * @return LaneBasedGtu; GTU
+     * Returns the perceiving object.
+     * @return perceiving object.
      */
-    protected LaneBasedGtu getGtu()
+    protected P getObject()
     {
-        return this.gtu;
+        return this.perceivingObject;
     }
 
     /**
      * Returns the primary iterator.
-     * @return Iterator; primary iterator
+     * @return primary iterator
      */
     final Iterator<PrimaryIteratorEntry> getPrimaryIterator()
     {
@@ -73,21 +76,19 @@ public abstract class AbstractPerceptionReiterable<H extends Headway, U> impleme
 
     /**
      * Returns the primary iterator. This method is called once by AbstractPerceptionReiterable.
-     * @return Iterator; primary iterator
+     * @return primary iterator
      */
     protected abstract Iterator<PrimaryIteratorEntry> primaryIterator();
 
     /**
      * Returns a perceived version of the underlying object.
-     * @param perceivingGtu LaneBasedGtu; perceiving GTU
-     * @param object U; underlying object
-     * @param distance Length; distance to the object
-     * @return H; perceived version of the underlying object
+     * @param object underlying object
+     * @param distance distance to the object
+     * @return perceived version of the underlying object
      * @throws GtuException on exception
      * @throws ParameterException on invalid parameter value or missing parameter
      */
-    protected abstract H perceive(LaneBasedGtu perceivingGtu, U object, Length distance)
-            throws GtuException, ParameterException;
+    protected abstract H perceive(U object, Length distance) throws GtuException, ParameterException;
 
     /** {@inheritDoc} */
     @Override
@@ -114,7 +115,7 @@ public abstract class AbstractPerceptionReiterable<H extends Headway, U> impleme
 
     /**
      * Adds an iterator entry to the internal linked list.
-     * @param next PrimaryIteratorEntry; next object
+     * @param next next object
      */
     @SuppressWarnings("synthetic-access")
     final void addNext(final PrimaryIteratorEntry next)
@@ -149,7 +150,7 @@ public abstract class AbstractPerceptionReiterable<H extends Headway, U> impleme
     /** {@inheritDoc} */
     @Override
     public final <C, I> C collect(final Supplier<I> identity, final PerceptionAccumulator<? super U, I> accumulator,
-            final PerceptionFinalizer<C, I> finalizer)
+            final Function<I, C> finalizer)
     {
         Intermediate<I> intermediate = new Intermediate<>(identity.get());
         assureFirst();
@@ -167,7 +168,7 @@ public abstract class AbstractPerceptionReiterable<H extends Headway, U> impleme
                 next = assureNext(next, lastReturned);
             }
         }
-        return finalizer.collect(intermediate.getObject());
+        return finalizer.apply(intermediate.getObject());
     }
 
     /** {@inheritDoc} */
@@ -257,7 +258,7 @@ public abstract class AbstractPerceptionReiterable<H extends Headway, U> impleme
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
     public class PerceptionIterator implements Iterator<H>
@@ -302,9 +303,9 @@ public abstract class AbstractPerceptionReiterable<H extends Headway, U> impleme
     /**
      * Helper method that assures that a next entry is available, if the primary iterator has a next value. This method may be
      * used by any process that derives from the primary iterator.
-     * @param next SecondaryIteratorEntry; currently known next entry
-     * @param lastReturned SecondaryIteratorEntry; entry of last returned object or value
-     * @return IteratorEntry; next entry
+     * @param next currently known next entry
+     * @param lastReturned entry of last returned object or value
+     * @return next entry
      */
     synchronized SecondaryIteratorEntry assureNext(final SecondaryIteratorEntry next, final SecondaryIteratorEntry lastReturned)
     {
@@ -338,7 +339,7 @@ public abstract class AbstractPerceptionReiterable<H extends Headway, U> impleme
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
     protected class PrimaryIteratorEntry implements Comparable<PrimaryIteratorEntry>
@@ -351,8 +352,8 @@ public abstract class AbstractPerceptionReiterable<H extends Headway, U> impleme
 
         /**
          * Constructor.
-         * @param object U; object
-         * @param distance Length; distance
+         * @param object object
+         * @param distance distance
          */
         public PrimaryIteratorEntry(final U object, final Length distance)
         {
@@ -369,7 +370,7 @@ public abstract class AbstractPerceptionReiterable<H extends Headway, U> impleme
 
         /**
          * Returns the object.
-         * @return U; object
+         * @return object
          */
         protected U getObject()
         {
@@ -385,7 +386,7 @@ public abstract class AbstractPerceptionReiterable<H extends Headway, U> impleme
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
     private class SecondaryIteratorEntry
@@ -404,8 +405,8 @@ public abstract class AbstractPerceptionReiterable<H extends Headway, U> impleme
 
         /**
          * Constructor.
-         * @param object U; object
-         * @param distance Length; distance to object
+         * @param object object
+         * @param distance distance to object
          */
         SecondaryIteratorEntry(final U object, final Length distance)
         {
@@ -415,7 +416,7 @@ public abstract class AbstractPerceptionReiterable<H extends Headway, U> impleme
 
         /**
          * Returns the perceived version of the object.
-         * @return H; perceived version of the object
+         * @return perceived version of the object
          */
         H getValue()
         {
@@ -427,7 +428,7 @@ public abstract class AbstractPerceptionReiterable<H extends Headway, U> impleme
                 */
                 try
                 {
-                    this.value = perceive(AbstractPerceptionReiterable.this.getGtu(), this.object, this.distance);
+                    this.value = perceive(this.object, this.distance);
                 }
                 catch (Exception e)
                 {

@@ -48,7 +48,7 @@ import org.opentrafficsim.road.network.lane.conflict.DefaultConflictRule;
  * Copyright (c) 2013-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class ConflictTest implements EventListener
 {
@@ -176,8 +176,8 @@ public class ConflictTest implements EventListener
         assertEquals(conflictBStart, conflictB.getLongitudinalPosition(), "longitudinal position");
         assertEquals(new Length(conflictEnd.x - conflictStart.x, LengthUnit.SI), conflictA.getLength(), "length");
         assertEquals(conflictBLength, conflictB.getLength(), "length");
-        assertEquals(geometry1, conflictA.getGeometry(), "geometry");
-        assertEquals(geometry2, conflictB.getGeometry(), "geometry");
+        assertEquals(geometry1, conflictA.getContour(), "contour");
+        assertEquals(geometry2, conflictB.getContour(), "contour");
         assertTrue(conflictA.getConflictRule() instanceof DefaultConflictRule, "conflict rule");
         assertTrue(conflictB.getConflictRule() instanceof DefaultConflictRule, "conflict rule");
         assertFalse(conflictA.isPermitted(), "conflict A is not permitted");
@@ -189,9 +189,9 @@ public class ConflictTest implements EventListener
 
     /**
      * Find all 2D (ignoring Z) intersections between two OtsLine2d objects.
-     * @param a Polygon2d; the first polyline
-     * @param b Polygon2d; the second polyline
-     * @return Set&lt;Point2d&gt;; the intersections
+     * @param a the first polyline
+     * @param b the second polyline
+     * @return the intersections
      */
     public Set<Point2d> intersections(final Polygon2d a, final Polygon2d b)
     {

@@ -14,7 +14,7 @@ import org.opentrafficsim.road.gtu.lane.tactical.util.lmrs.Incentive;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class IncentiveColorer extends DesireColorer
@@ -27,7 +27,7 @@ public class IncentiveColorer extends DesireColorer
     private Class<? extends Incentive> incentiveClass;
 
     /**
-     * @param incentiveClass Class&lt;? extends Incentive&gt;; incentive class
+     * @param incentiveClass incentive class
      */
     public IncentiveColorer(final Class<? extends Incentive> incentiveClass)
     {

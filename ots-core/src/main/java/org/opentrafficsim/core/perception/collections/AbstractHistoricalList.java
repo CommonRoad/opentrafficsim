@@ -18,7 +18,7 @@ import org.opentrafficsim.core.perception.HistoryManager;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <E> element type
  * @param <L> list type
@@ -29,8 +29,8 @@ public abstract class AbstractHistoricalList<E, L extends List<E>> extends Abstr
 
     /**
      * Constructor.
-     * @param historyManager HistoryManager; history manager
-     * @param list L; initial list
+     * @param historyManager history manager
+     * @param list initial list
      */
     protected AbstractHistoricalList(final HistoryManager historyManager, final L list)
     {
@@ -158,7 +158,7 @@ public abstract class AbstractHistoricalList<E, L extends List<E>> extends Abstr
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      * @param <E> element type
      * @param <L> list type
@@ -171,9 +171,9 @@ public abstract class AbstractHistoricalList<E, L extends List<E>> extends Abstr
 
         /**
          * Constructor.
-         * @param time double; time of event
-         * @param value E; value of event
-         * @param index int; index
+         * @param time time of event
+         * @param value value of event
+         * @param index index
          */
         public EventList(final double time, final E value, final int index)
         {
@@ -200,7 +200,7 @@ public abstract class AbstractHistoricalList<E, L extends List<E>> extends Abstr
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      * @param <E> element type
      * @param <L> list type
@@ -210,9 +210,9 @@ public abstract class AbstractHistoricalList<E, L extends List<E>> extends Abstr
 
         /**
          * Constructor.
-         * @param time double; time of event
-         * @param value E; value of event
-         * @param index int; index
+         * @param time time of event
+         * @param value value of event
+         * @param index index
          */
         public AddEvent(final double time, final E value, final int index)
         {
@@ -243,7 +243,7 @@ public abstract class AbstractHistoricalList<E, L extends List<E>> extends Abstr
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      * @param <E> element type
      * @param <L> list type
@@ -253,9 +253,9 @@ public abstract class AbstractHistoricalList<E, L extends List<E>> extends Abstr
 
         /**
          * Constructor.
-         * @param time double; time of event
-         * @param value E; value of event
-         * @param index int; index the value is at
+         * @param time time of event
+         * @param value value of event
+         * @param index index the value is at
          */
         public RemoveEvent(final double time, final E value, final int index)
         {

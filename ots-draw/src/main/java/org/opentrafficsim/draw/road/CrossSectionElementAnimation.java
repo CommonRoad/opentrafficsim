@@ -13,6 +13,7 @@ import javax.naming.NamingException;
 import org.djutils.draw.line.PolyLine2d;
 import org.opentrafficsim.base.geometry.OtsLocatable;
 import org.opentrafficsim.base.geometry.OtsRenderable;
+import org.opentrafficsim.draw.ClickableLocatable;
 import org.opentrafficsim.draw.DrawLevel;
 import org.opentrafficsim.draw.PaintPolygons;
 import org.opentrafficsim.draw.road.CrossSectionElementAnimation.CrossSectionElementData;
@@ -41,9 +42,9 @@ public class CrossSectionElementAnimation<L extends CrossSectionElementData> ext
     private final Set<Path2D.Float> paths;
 
     /**
-     * @param source L; cross section element
-     * @param contextualized Contextualized; context provider
-     * @param color Color; the color to draw the shoulder with
+     * @param source cross section element
+     * @param contextualized context provider
+     * @param color the color to draw the shoulder with
      * @throws NamingException ne
      * @throws RemoteException on communication failure
      */
@@ -52,7 +53,7 @@ public class CrossSectionElementAnimation<L extends CrossSectionElementData> ext
     {
         super(source, contextualized);
         this.color = color;
-        this.paths = PaintPolygons.getPaths(getSource().getBounds().asPolygon().getPointList());
+        this.paths = PaintPolygons.getPaths(OtsLocatable.relativeContour(source).getPointList());
     }
 
     /** {@inheritDoc} */
@@ -84,17 +85,17 @@ public class CrossSectionElementAnimation<L extends CrossSectionElementData> ext
      * </p>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
-    public interface CrossSectionElementData extends OtsLocatable
+    public interface CrossSectionElementData extends ClickableLocatable
     {
         /**
-         * Returns the center line.
-         * @return PolyLine2d; center line.
+         * Returns the center line in world coordinates.
+         * @return the center line in world coordinates
          */
         PolyLine2d getCenterLine();
 
         /**
          * Return the id of the link.
-         * @return String; link id.
+         * @return link id.
          */
         String getLinkId();
     }
@@ -112,7 +113,7 @@ public class CrossSectionElementAnimation<L extends CrossSectionElementData> ext
     {
         /** {@inheritDoc} */
         @Override
-        default public double getZ()
+        default double getZ()
         {
             return DrawLevel.SHOULDER.getZ();
         }

@@ -11,7 +11,7 @@ import org.opentrafficsim.core.gtu.GtuException;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <T> class of the strategical planner generated
  */
@@ -27,13 +27,13 @@ public interface StrategicalPlannerFactory<T extends StrategicalPlanner>
 
     /**
      * Set parameters to use with the next creation of a strategical planner. Only the next planner will use this.
-     * @param parameters Parameters; parameters to use with the next creation of a strategical planner
+     * @param parameters parameters to use with the next creation of a strategical planner
      */
     void setParameters(Parameters parameters);
 
     /**
      * Creates a new strategical planner for the given GTU. If no default parameters are set, the default values will be used.
-     * @param gtu Gtu; GTU
+     * @param gtu GTU
      * @return strategical planner for the given GTU
      * @throws GtuException if the gtu is not suitable in any way for the creation of the strategical planner
      */

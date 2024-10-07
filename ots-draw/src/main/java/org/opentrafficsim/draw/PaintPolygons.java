@@ -18,7 +18,7 @@ import org.opentrafficsim.base.geometry.OtsRenderable;
  * Copyright (c) 2013-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public final class PaintPolygons
@@ -34,8 +34,8 @@ public final class PaintPolygons
 
     /**
      * Returns drawable paths of a polygon.
-     * @param referencePoint Point2d; the reference point
-     * @param line List&lt;Point2d&gt;; array of points
+     * @param referencePoint the reference point
+     * @param line array of points
      * @return Set&lt;Path2D.Float&gt;; drawable paths.
      */
     public static Set<Path2D.Float> getPaths(final Point2d referencePoint, final List<Point2d> line)
@@ -45,8 +45,8 @@ public final class PaintPolygons
 
     /**
      * Returns drawable paths of a polygon.
-     * @param referencePoint Point2d; the reference point
-     * @param line List&lt;Point2d&gt;; array of points
+     * @param referencePoint the reference point
+     * @param line array of points
      * @return Set&lt;Path2D.Float&gt;; drawable paths.
      */
     public static Set<Path2D.Float> getPaths(final OrientedPoint2d referencePoint, final List<Point2d> line)
@@ -89,7 +89,7 @@ public final class PaintPolygons
 
     /**
      * Returns drawable paths of a polygon.
-     * @param line List&lt;Point2d&gt;; array of points
+     * @param line array of points
      * @return Set&lt;Path2D.Float&gt;; drawable paths.
      */
     public static Set<Path2D.Float> getPaths(final List<Point2d> line)
@@ -99,10 +99,10 @@ public final class PaintPolygons
 
     /**
      * Paint (fill) a polygon or a series of polygons.
-     * @param graphics Graphics2D; the graphics environment
-     * @param color Color; the color to use
+     * @param graphics the graphics environment
+     * @param color the color to use
      * @param paths Set&lt;Path2D.Float&gt;; drawable paths.
-     * @param fill boolean; fill or just contour
+     * @param fill fill or just contour
      */
     public static void paintPaths(final Graphics2D graphics, final Color color, final Set<Path2D.Float> paths,
             final boolean fill)

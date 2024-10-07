@@ -13,7 +13,7 @@ import org.djunits.value.vdouble.scalar.Speed;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class GtuCharacteristics implements Serializable
 {
@@ -44,13 +44,13 @@ public class GtuCharacteristics implements Serializable
 
     /**
      * Construct a new set of GtuCharacteristics.
-     * @param gtuType GtuType; type of the (not yet constructed) GTU
-     * @param length Length; the length of the (non yet constructed) GTU
-     * @param width Length; the width of the (non yet constructed) GTU
-     * @param maximumSpeed Speed; the maximum speed of the (non yet constructed) GTU
-     * @param maximumAcceleration Acceleration; maximum acceleration
-     * @param maximumDeceleration Acceleration; maximum deceleration
-     * @param front Length; front position relative to the reference position
+     * @param gtuType type of the (not yet constructed) GTU
+     * @param length the length of the (non yet constructed) GTU
+     * @param width the width of the (non yet constructed) GTU
+     * @param maximumSpeed the maximum speed of the (non yet constructed) GTU
+     * @param maximumAcceleration maximum acceleration
+     * @param maximumDeceleration maximum deceleration
+     * @param front front position relative to the reference position
      */
     public GtuCharacteristics(final GtuType gtuType, final Length length, final Length width, final Speed maximumSpeed,
             final Acceleration maximumAcceleration, final Acceleration maximumDeceleration, final Length front)

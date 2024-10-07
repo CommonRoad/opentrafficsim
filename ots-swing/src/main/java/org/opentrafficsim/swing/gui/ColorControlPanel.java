@@ -21,7 +21,7 @@ import org.opentrafficsim.animation.gtu.colorer.SwitchableGtuColorer;
  * Copyright (c) 2013-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class ColorControlPanel extends JPanel implements ActionListener
 {
@@ -43,7 +43,7 @@ public class ColorControlPanel extends JPanel implements ActionListener
     /**
      * Add a ColorControlPanel to an AnimationPanel. Initially the ColorControlPanel will have no items. Items are added with
      * the <code>addItem</code> method. The first item added automatically becomes the active one.
-     * @param gtuColorer GtuColorer; the switchable GTU colorer that will be controlled by this ColorControlPanel
+     * @param gtuColorer the switchable GTU colorer that will be controlled by this ColorControlPanel
      */
     public ColorControlPanel(final GtuColorer gtuColorer)
     {
@@ -75,7 +75,7 @@ public class ColorControlPanel extends JPanel implements ActionListener
 
     /**
      * Add one item to this ColorControlPanel. The <cite>getName</cite> method of the
-     * @param colorer GtuColorer; the GtuColorer that will be added
+     * @param colorer the GtuColorer that will be added
      */
     public final void addItem(final GtuColorer colorer)
     {

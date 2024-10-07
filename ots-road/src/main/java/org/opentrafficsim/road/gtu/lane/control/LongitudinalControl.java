@@ -12,7 +12,7 @@ import org.opentrafficsim.road.gtu.lane.LaneBasedGtu;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface LongitudinalControl
@@ -20,9 +20,9 @@ public interface LongitudinalControl
 
     /**
      * Calculate acceleration.
-     * @param gtu LaneBasedGtu; controlled GTU
-     * @param settings Parameters; system settings
-     * @return Acceleration; level of acceleration, may be {@code null} if the controller is unable to deal with a situation
+     * @param gtu controlled GTU
+     * @param settings system settings
+     * @return level of acceleration, may be {@code null} if the controller is unable to deal with a situation
      */
     Acceleration getAcceleration(LaneBasedGtu gtu, Parameters settings);
 

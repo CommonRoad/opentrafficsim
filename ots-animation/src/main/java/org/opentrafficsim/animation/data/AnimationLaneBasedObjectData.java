@@ -1,9 +1,12 @@
 package org.opentrafficsim.animation.data;
 
 import org.djunits.value.vdouble.scalar.Length;
+import org.djutils.draw.line.PolyLine2d;
+import org.djutils.draw.line.Polygon2d;
 import org.djutils.draw.point.OrientedPoint2d;
-import org.opentrafficsim.base.geometry.ClickableBounds;
-import org.opentrafficsim.base.geometry.OtsBounds2d;
+import org.opentrafficsim.base.geometry.OtsLocatable;
+import org.opentrafficsim.base.geometry.OtsShape;
+import org.opentrafficsim.draw.ClickableLineLocatable;
 import org.opentrafficsim.draw.road.AbstractLineAnimation.LaneBasedObjectData;
 import org.opentrafficsim.road.network.lane.object.LaneBasedObject;
 
@@ -16,15 +19,19 @@ import org.opentrafficsim.road.network.lane.object.LaneBasedObject;
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <T> lane based object type
  */
-public abstract class AnimationLaneBasedObjectData<T extends LaneBasedObject> implements LaneBasedObjectData
+public abstract class AnimationLaneBasedObjectData<T extends LaneBasedObject>
+        implements LaneBasedObjectData, ClickableLineLocatable
 {
 
     /** Lane based object. */
     private final T laneBasedObject;
 
+    /** Shape (cached). */
+    private OtsShape shape;
+
     /**
      * Constructor.
-     * @param laneBasedObject T; laneBasedObject.
+     * @param laneBasedObject laneBasedObject.
      */
     public AnimationLaneBasedObjectData(final T laneBasedObject)
     {
@@ -47,9 +54,27 @@ public abstract class AnimationLaneBasedObjectData<T extends LaneBasedObject> im
 
     /** {@inheritDoc} */
     @Override
-    public OtsBounds2d getBounds()
+    public Polygon2d getContour()
     {
-        return ClickableBounds.get(this.laneBasedObject.getBounds());
+        return this.laneBasedObject.getContour();
+    }
+    
+    /** {@inheritDoc} */
+    @Override
+    public OtsShape getShape()
+    {
+        if (this.shape == null)
+        {
+            this.shape = LaneBasedObjectData.super.getShape();
+        }
+        return this.shape;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public PolyLine2d getLine()
+    {
+        return OtsLocatable.transformLine(this.laneBasedObject.getLine(), getLocation());
     }
 
     /** {@inheritDoc} */
@@ -61,7 +86,7 @@ public abstract class AnimationLaneBasedObjectData<T extends LaneBasedObject> im
 
     /**
      * Returns the wrapped object.
-     * @return T; wrapped object.
+     * @return wrapped object.
      */
     public T getObject()
     {

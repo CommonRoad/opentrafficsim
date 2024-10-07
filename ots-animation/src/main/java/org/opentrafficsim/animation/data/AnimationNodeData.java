@@ -1,7 +1,7 @@
 package org.opentrafficsim.animation.data;
 
+import org.djutils.draw.line.Polygon2d;
 import org.djutils.draw.point.OrientedPoint2d;
-import org.opentrafficsim.base.geometry.OtsBounds2d;
 import org.opentrafficsim.core.network.Node;
 import org.opentrafficsim.draw.network.NodeAnimation.NodeData;
 
@@ -16,12 +16,12 @@ import org.opentrafficsim.draw.network.NodeAnimation.NodeData;
 public class AnimationNodeData implements NodeData
 {
 
-    /** Node */
+    /** Node. */
     private final Node node;
 
     /**
      * Constructor.
-     * @param node Node; node.
+     * @param node node.
      */
     public AnimationNodeData(final Node node)
     {
@@ -30,9 +30,9 @@ public class AnimationNodeData implements NodeData
 
     /** {@inheritDoc} */
     @Override
-    public OtsBounds2d getBounds()
+    public Polygon2d getContour()
     {
-        return this.node.getBounds();
+        throw new UnsupportedOperationException("Nodes do not have a drawable contour.");
     }
 
     /** {@inheritDoc} */
@@ -51,7 +51,7 @@ public class AnimationNodeData implements NodeData
 
     /**
      * Returns the node.
-     * @return Node; node.
+     * @return node.
      */
     public Node getNode()
     {

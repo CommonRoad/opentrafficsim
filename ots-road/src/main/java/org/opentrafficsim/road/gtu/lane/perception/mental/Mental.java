@@ -12,7 +12,7 @@ import org.opentrafficsim.road.gtu.lane.perception.LanePerception;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface Mental
@@ -20,7 +20,7 @@ public interface Mental
 
     /**
      * Apply mental model on perception.
-     * @param perception LanePerception; perception
+     * @param perception perception
      * @throws ParameterException if a parameter is missing or out of bounds
      * @throws GtuException exceptions pertaining to the GTU
      */

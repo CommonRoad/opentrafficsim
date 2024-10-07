@@ -18,7 +18,7 @@ import org.opentrafficsim.road.gtu.lane.LaneBasedGtu;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class DesiredSpeedColorer implements GtuColorer, Serializable
@@ -37,8 +37,8 @@ public class DesiredSpeedColorer implements GtuColorer, Serializable
 
     /**
      * Construct a new SpeedGtuColorer.
-     * @param minimumSpeed Speed; the speed at (and below) which the returned color will be red
-     * @param maximumSpeed Speed; the speed at (and above) which the returned color will be green
+     * @param minimumSpeed the speed at (and below) which the returned color will be red
+     * @param maximumSpeed the speed at (and above) which the returned color will be green
      */
     public DesiredSpeedColorer(final Speed minimumSpeed, final Speed maximumSpeed)
     {

@@ -10,7 +10,7 @@ import org.opentrafficsim.core.dsol.OtsSimulatorInterface;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public abstract class AbstractTrafficController extends LocalEventProducer implements TrafficController
@@ -24,8 +24,8 @@ public abstract class AbstractTrafficController extends LocalEventProducer imple
 
     /**
      * Constructor for traffic controller.
-     * @param id String; id
-     * @param simulator OtsSimulatorInterface; simulator
+     * @param id id
+     * @param simulator simulator
      */
     public AbstractTrafficController(final String id, final OtsSimulatorInterface simulator)
     {

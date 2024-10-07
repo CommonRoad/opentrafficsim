@@ -16,7 +16,7 @@ import org.opentrafficsim.core.perception.HistoryManager;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <K> key type
  * @param <V> value type
@@ -26,7 +26,7 @@ public class HistoricalHashMap<K, V> extends AbstractHistoricalMap<K, V, LinkedH
 
     /**
      * Constructor.
-     * @param historyManager HistoryManager; history manager
+     * @param historyManager history manager
      */
     public HistoricalHashMap(final HistoryManager historyManager)
     {
@@ -35,8 +35,8 @@ public class HistoricalHashMap<K, V> extends AbstractHistoricalMap<K, V, LinkedH
 
     /**
      * Constructor.
-     * @param historyManager HistoryManager; history manager
-     * @param m Map&lt;? extends K, ? extends V&gt;; initial map
+     * @param historyManager history manager
+     * @param m initial map
      */
     public HistoricalHashMap(final HistoryManager historyManager, final Map<? extends K, ? extends V> m)
     {

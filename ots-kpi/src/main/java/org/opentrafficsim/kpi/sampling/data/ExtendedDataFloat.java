@@ -17,21 +17,21 @@ import org.opentrafficsim.kpi.sampling.SamplingException;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <U> unit
  * @param <T> type in vector
  * @param <O> vector type
  * @param <G> gtu data type
  */
-public abstract class ExtendedDataFloat<U extends Unit<U>, T extends FloatScalar<U, T>,
-        O extends FloatVector<U, T, O>, G extends GtuData> extends ExtendedDataType<T, O, float[], G>
+public abstract class ExtendedDataFloat<U extends Unit<U>, T extends FloatScalar<U, T>, O extends FloatVector<U, T, O>,
+        G extends GtuData> extends ExtendedDataType<T, O, float[], G>
 {
     /**
      * Constructor setting the id.
-     * @param id String; id
-     * @param description String; description
-     * @param type Class&lt;T&gt;; type class
+     * @param id id
+     * @param description description
+     * @param type type class
      */
     public ExtendedDataFloat(final String id, final String description, final Class<T> type)
     {
@@ -87,7 +87,7 @@ public abstract class ExtendedDataFloat<U extends Unit<U>, T extends FloatScalar
 
     /**
      * Convert float to typed value.
-     * @param value float; float value
+     * @param value float value
      * @return typed value
      */
     protected abstract T convertValue(float value);
@@ -109,7 +109,7 @@ public abstract class ExtendedDataFloat<U extends Unit<U>, T extends FloatScalar
 
     /**
      * Convert float array to typed array.
-     * @param storage float[]; float array storage
+     * @param storage float array storage
      * @return typed array
      * @throws ValueRuntimeException when float array cannot be converted
      */

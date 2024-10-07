@@ -17,7 +17,7 @@ import org.opentrafficsim.road.gtu.lane.perception.LanePerception;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface Task extends Identifiable
@@ -25,10 +25,10 @@ public interface Task extends Identifiable
 
     /**
      * Returns the gross task demand to be managed by a task manager.
-     * @param perception LanePerception; perception
-     * @param gtu LaneBasedGtu; gtu
-     * @param parameters Parameters; parameters
-     * @return double; gross task demand
+     * @param perception perception
+     * @param gtu gtu
+     * @param parameters parameters
+     * @return gross task demand
      * @throws ParameterException if a parameter is missing or out of bounds
      * @throws GtuException exceptions pertaining to the GTU
      */
@@ -37,25 +37,25 @@ public interface Task extends Identifiable
 
     /**
      * Sets (gross) task demand.
-     * @param taskDemand double; set task demand
+     * @param taskDemand set task demand
      */
     void setTaskDemand(double taskDemand);
 
     /**
      * Returns the gross demand of this task, i.e without considering anticipation reliance.
-     * @return double; gross demand of this task, i.e. without considering anticipation reliance
+     * @return gross demand of this task, i.e. without considering anticipation reliance
      */
     double getTaskDemand();
 
     /**
      * Set anticipation reliance.
-     * @param anticipationReliance double; set anticipation reliance
+     * @param anticipationReliance set anticipation reliance
      */
     void setAnticipationReliance(double anticipationReliance);
 
     /**
      * Returns the level of anticipation reliance.
-     * @return double; anticipation reliance
+     * @return anticipation reliance
      */
     double getAnticipationReliance();
 

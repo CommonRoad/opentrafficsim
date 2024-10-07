@@ -11,12 +11,12 @@ import javax.naming.NamingException;
 
 import org.djutils.base.Identifiable;
 import org.djutils.draw.line.PolyLine2d;
+import org.djutils.draw.line.Polygon2d;
 import org.djutils.draw.point.OrientedPoint2d;
-import org.opentrafficsim.base.geometry.BoundingPolygon;
-import org.opentrafficsim.base.geometry.ClickableBounds;
-import org.opentrafficsim.base.geometry.OtsBounds2d;
 import org.opentrafficsim.base.geometry.OtsLocatable;
 import org.opentrafficsim.base.geometry.OtsRenderable;
+import org.opentrafficsim.base.geometry.OtsShape;
+import org.opentrafficsim.draw.ClickableLineLocatable;
 import org.opentrafficsim.draw.DrawLevel;
 import org.opentrafficsim.draw.PaintLine;
 import org.opentrafficsim.draw.TextAlignment;
@@ -51,9 +51,9 @@ public class LaneAnimation extends CrossSectionElementAnimation<LaneData>
 
     /**
      * Animate a Lane.
-     * @param lane LaneData; the lane
-     * @param contextualized Contextualized; context provider
-     * @param color Color; Color of the lane.
+     * @param lane the lane
+     * @param contextualized context provider
+     * @param color Color of the lane.
      * @throws NamingException in case of registration failure of the animation
      * @throws RemoteException on communication failure
      */
@@ -94,7 +94,7 @@ public class LaneAnimation extends CrossSectionElementAnimation<LaneData>
     /**
      * Draw center line of a lane.
      */
-    public static class CenterLine implements OtsLocatable
+    public static class CenterLine implements ClickableLineLocatable
     {
         /** The center line. */
         private final PolyLine2d centerLine;
@@ -102,22 +102,21 @@ public class LaneAnimation extends CrossSectionElementAnimation<LaneData>
         /** Location. */
         private final OrientedPoint2d location;
 
-        /** Bounds. */
-        private final OtsBounds2d bounds;
+        /** Shape (cached). */
+        private OtsShape shape;
 
         /** Lane id. */
         private final String fullId;
 
         /**
          * Construct a new CenterLine.
-         * @param centerLine OtsLine2d; the center line of a lane
-         * @param fullId String; lane id.
+         * @param centerLine the center line of a lane
+         * @param fullId lane id.
          */
         CenterLine(final PolyLine2d centerLine, final String fullId)
         {
             this.centerLine = centerLine;
             this.location = new OrientedPoint2d(this.centerLine.getBounds().midPoint(), 0.0);
-            this.bounds = ClickableBounds.get(BoundingPolygon.geometryToBounds(this.location, centerLine).asPolygon());
             this.fullId = fullId;
         }
 
@@ -130,18 +129,36 @@ public class LaneAnimation extends CrossSectionElementAnimation<LaneData>
 
         /** {@inheritDoc} */
         @Override
-        public final OtsBounds2d getBounds()
+        public OtsShape getShape()
         {
-            return this.bounds;
+            if (this.shape == null)
+            {
+                this.shape = ClickableLineLocatable.super.getShape();
+            }
+            return this.shape;
+        }
+
+        /** {@inheritDoc} */
+        @Override
+        public Polygon2d getContour()
+        {
+            return new Polygon2d(this.centerLine.getPoints());
         }
 
         /**
-         * Retrieve the center line.
-         * @return OtsLine2d; the center line
+         * Returns the center line.
+         * @return the center line
          */
         public PolyLine2d getCenterLine()
         {
             return this.centerLine;
+        }
+
+        /** {@inheritDoc} */
+        @Override
+        public PolyLine2d getLine()
+        {
+            return OtsLocatable.transformLine(this.centerLine, getLocation());
         }
 
         /** {@inheritDoc} */
@@ -157,6 +174,7 @@ public class LaneAnimation extends CrossSectionElementAnimation<LaneData>
         {
             return "Center line " + this.fullId;
         }
+
     }
 
     /**
@@ -175,8 +193,8 @@ public class LaneAnimation extends CrossSectionElementAnimation<LaneData>
 
         /**
          * Construct a new CenterLineAnimation.
-         * @param centerLine CemterLine; the center line of a lane
-         * @param contextualized Contextualized; context provider
+         * @param centerLine the center line of a lane
+         * @param contextualized context provider
          * @throws NamingException when the name of this object is not unique
          * @throws RemoteException when communication with a remote process fails
          */
@@ -206,7 +224,7 @@ public class LaneAnimation extends CrossSectionElementAnimation<LaneData>
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
     public class Text extends TextAnimation<LaneData, Text>
@@ -215,13 +233,13 @@ public class LaneAnimation extends CrossSectionElementAnimation<LaneData>
         private static final long serialVersionUID = 20161211L;
 
         /**
-         * @param source LaneData; the object for which the text is displayed
-         * @param text Supplier&lt;String&gt;; the text to display
-         * @param dx float; the horizontal movement of the text, in meters
-         * @param dy float; the vertical movement of the text, in meters
-         * @param textPlacement TextAlignment; where to place the text
-         * @param color Color; the color of the text
-         * @param contextualized Contextualized; context provider
+         * @param source the object for which the text is displayed
+         * @param text the text to display
+         * @param dx the horizontal movement of the text, in meters
+         * @param dy the vertical movement of the text, in meters
+         * @param textPlacement where to place the text
+         * @param color the color of the text
+         * @param contextualized context provider
          * @throws NamingException when animation context cannot be created or retrieved
          * @throws RemoteException - when remote context cannot be found
          */

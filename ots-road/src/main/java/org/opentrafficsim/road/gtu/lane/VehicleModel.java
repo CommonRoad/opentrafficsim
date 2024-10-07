@@ -10,7 +10,7 @@ import org.djunits.value.vdouble.scalar.Mass;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface VehicleModel
@@ -54,9 +54,9 @@ public interface VehicleModel
 
     /**
      * Returns a bounded acceleration.
-     * @param acceleration Acceleration; intended acceleration
-     * @param gtu LaneBasedGtu; gtu
-     * @return Acceleration; possible acceleration
+     * @param acceleration intended acceleration
+     * @param gtu gtu
+     * @return possible acceleration
      */
     Acceleration boundAcceleration(Acceleration acceleration, LaneBasedGtu gtu);
 
@@ -86,7 +86,7 @@ public interface VehicleModel
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
     class MassBased implements VehicleModel
@@ -98,8 +98,8 @@ public interface VehicleModel
         private final double momentOfInertiaAboutZ;
 
         /**
-         * @param mass Mass; mass
-         * @param momentOfInertiaAboutZ double; moment of inertia about z-axis
+         * @param mass mass
+         * @param momentOfInertiaAboutZ moment of inertia about z-axis
          */
         public MassBased(final Mass mass, final double momentOfInertiaAboutZ)
         {

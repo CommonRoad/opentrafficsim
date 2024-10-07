@@ -25,7 +25,7 @@ import nl.tudelft.simulation.dsol.SimRuntimeException;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class ParserTest
@@ -33,7 +33,7 @@ public class ParserTest
     /**
      * test the XML parser.
      * @throws NamingException on error
-     * @throws SimRuntimeException on error 
+     * @throws SimRuntimeException on error
      */
     @Test
     public void testParser() throws SimRuntimeException, NamingException
@@ -41,12 +41,12 @@ public class ParserTest
         OtsSimulator simulator = new OtsSimulator("Test");
         final TestModel testModel = new TestModel(simulator);
         simulator.initialize(Time.ZERO, Duration.ZERO, Duration.instantiateSI(3600.0), testModel);
-        
+
         // test node
         RoadNetwork nw = testModel.getNetwork();
         assertEquals(300.0, nw.getNode("BLE").getPoint().x, 0.0001);
         assertEquals(0.0, nw.getNode("BLE").getPoint().y, 0.0001);
-        
+
         // test link
         Link wwc = nw.getLink("WWC");
         assertEquals("URBAN", wwc.getType().getId());
@@ -67,7 +67,7 @@ public class ParserTest
         private RoadNetwork network;
 
         /**
-         * @param simulator OtsSimulatorInterface; the simulator for this model
+         * @param simulator the simulator for this model
          */
         public TestModel(final OtsSimulatorInterface simulator)
         {

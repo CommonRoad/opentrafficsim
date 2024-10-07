@@ -13,7 +13,7 @@ import org.opentrafficsim.road.gtu.lane.perception.headway.Headway;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <T> type
  */
@@ -27,8 +27,8 @@ public class FilteredIterable<T extends Headway> implements Iterable<T>
     private final Predicate<T> predicate;
 
     /**
-     * @param iterable Iterable&lt;T&gt;; iterable
-     * @param predicate Predicate&lt;T&gt;; predicate
+     * @param iterable iterable
+     * @param predicate predicate
      */
     public FilteredIterable(final Iterable<T> iterable, final Predicate<T> predicate)
     {

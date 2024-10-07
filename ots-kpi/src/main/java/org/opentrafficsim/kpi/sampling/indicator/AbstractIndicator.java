@@ -17,7 +17,7 @@ import org.opentrafficsim.kpi.sampling.TrajectoryGroup;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <T> class of the value
  */
@@ -39,9 +39,9 @@ public abstract class AbstractIndicator<T extends DoubleScalar<?, ?>>
     /**
      * Get value for given query over time interval, returning earlier calculated value if possible. This method uses
      * {@code Time.ZERO} as start time.
-     * @param query Query&lt;G, ?&gt;; query
-     * @param endTime Time; start time of interval to calculate indicator over
-     * @param trajectoryGroups List&lt;TrajectoryGroup&lt;G&gt;&gt;; group of trajectories to calculate the indicator for
+     * @param query query
+     * @param endTime start time of interval to calculate indicator over
+     * @param trajectoryGroups group of trajectories to calculate the indicator for
      * @param <G> gtu data type
      * @return value for given query
      */
@@ -53,10 +53,10 @@ public abstract class AbstractIndicator<T extends DoubleScalar<?, ?>>
 
     /**
      * Get value for given query over time interval, returning earlier calculated value if possible.
-     * @param query Query&lt;G, ?&gt;; query
-     * @param startTime Time; start time of interval to calculate indicator over
-     * @param endTime Time; start time of interval to calculate indicator over
-     * @param trajectoryGroups List&lt;TrajectoryGroup&lt;G&gt;&gt;; group of trajectories to calculate the indicator for
+     * @param query query
+     * @param startTime start time of interval to calculate indicator over
+     * @param endTime start time of interval to calculate indicator over
+     * @param trajectoryGroups group of trajectories to calculate the indicator for
      * @param <G> gtu data type
      * @return value for given query
      */
@@ -79,10 +79,10 @@ public abstract class AbstractIndicator<T extends DoubleScalar<?, ?>>
 
     /**
      * Calculate value for given trajectory group.
-     * @param query Query&lt;G, ?&gt;; query
-     * @param startTime Time; start time of interval to calculate indicator over
-     * @param endTime Time; start time of interval to calculate indicator over
-     * @param trajectoryGroups List&lt;TrajectoryGroup&lt;G&gt;&gt;; group of trajectories to calculate the indicator for
+     * @param query query
+     * @param startTime start time of interval to calculate indicator over
+     * @param endTime start time of interval to calculate indicator over
+     * @param trajectoryGroups group of trajectories to calculate the indicator for
      * @param <G> gtu data type
      * @return value for given trajectory group
      */

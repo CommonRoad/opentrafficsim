@@ -1,6 +1,9 @@
 package org.opentrafficsim.animation.data;
 
+import org.djutils.draw.bounds.Bounds2d;
+import org.djutils.draw.line.Polygon2d;
 import org.djutils.draw.point.Point2d;
+import org.opentrafficsim.base.geometry.OtsLocatable;
 import org.opentrafficsim.draw.road.PriorityAnimation.PriorityData;
 import org.opentrafficsim.road.network.lane.CrossSectionLink;
 
@@ -16,15 +19,22 @@ public class AnimationPriorityData implements PriorityData
 {
 
     /** Link. */
-    final private CrossSectionLink link;
+    private final CrossSectionLink link;
+    
+    /** Bounds. */
+    private final Bounds2d bounds = new Bounds2d(2.0, 2.0);
+    
+    /** Contour. */
+    private final Polygon2d contour;
 
     /**
      * Constructor.
-     * @param link CrossSectionLink; link.
+     * @param link link.
      */
     public AnimationPriorityData(final CrossSectionLink link)
     {
         this.link = link;
+        this.contour = OtsLocatable.boundsAsContour(this);
     }
 
     /** {@inheritDoc} */
@@ -32,6 +42,20 @@ public class AnimationPriorityData implements PriorityData
     public Point2d getLocation()
     {
         return this.link.getDesignLine().getLocationFractionExtended(0.5);
+    }
+    
+    /** {@inheritDoc} */
+    @Override
+    public Polygon2d getContour()
+    {
+        return this.contour;
+    }
+    
+    /** {@inheritDoc} */
+    @Override
+    public Bounds2d getBounds()
+    {
+        return this.bounds;
     }
 
     /** {@inheritDoc} */

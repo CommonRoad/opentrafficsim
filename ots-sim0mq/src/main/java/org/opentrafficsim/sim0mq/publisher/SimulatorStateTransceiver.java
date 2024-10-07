@@ -23,7 +23,7 @@ import nl.tudelft.simulation.dsol.simulators.SimulatorInterface;
  * Copyright (c) 2020-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class SimulatorStateTransceiver extends AbstractTransceiver
 {
@@ -41,7 +41,7 @@ public class SimulatorStateTransceiver extends AbstractTransceiver
 
     /**
      * Construct a new SimulatorStateTransceiver.
-     * @param simulator OtsSimulatorInterface; the simulator
+     * @param simulator the simulator
      * @throws RemoteException on network error
      */
     public SimulatorStateTransceiver(final OtsSimulatorInterface simulator) throws RemoteException
@@ -102,7 +102,7 @@ public class SimulatorStateTransceiver extends AbstractTransceiver
 
     /**
      * Retrieve the event LookupEventProducer.
-     * @return EventProducerInterface; the event multiplexer
+     * @return the event multiplexer
      */
     public LookupEventProducer getLookupEventProducer()
     {
@@ -121,7 +121,7 @@ class EventMultiplexer extends LocalEventProducer implements EventListener
     private static final long serialVersionUID = 20200618L;
 
     /**
-     * @param simulator OtsSimulatorInterface; the simulator
+     * @param simulator the simulator
      * @throws RemoteException on network error
      */
     EventMultiplexer(final OtsSimulatorInterface simulator) throws RemoteException

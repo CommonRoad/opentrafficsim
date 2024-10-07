@@ -14,7 +14,7 @@ import org.opentrafficsim.core.perception.HistoryManager;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <E> element type
  * @param <Q> queue type
@@ -25,8 +25,8 @@ public abstract class AbstractHistoricalQueue<E, Q extends Queue<E>> extends Abs
 
     /**
      * Constructor.
-     * @param historyManager HistoryManager; history manager
-     * @param queue Q; initial queue
+     * @param historyManager history manager
+     * @param queue initial queue
      */
     protected AbstractHistoricalQueue(final HistoryManager historyManager, final Q queue)
     {

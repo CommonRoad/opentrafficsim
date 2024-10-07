@@ -16,7 +16,7 @@ import org.opentrafficsim.road.network.lane.object.detector.LoopDetector;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class AlineaSwitch extends SingleCrossSectionSwitch
@@ -41,7 +41,7 @@ public class AlineaSwitch extends SingleCrossSectionSwitch
     private Frequency lastFlow;
 
     /**
-     * @param detectors List&lt;Detector&gt;; detectors
+     * @param detectors detectors
      */
     public AlineaSwitch(final List<LoopDetector> detectors)
     {

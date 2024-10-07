@@ -15,7 +15,7 @@ import org.djunits.value.vdouble.scalar.Time;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <E> element type
  */
@@ -24,15 +24,15 @@ public interface HistoricalList<E> extends HistoricalCollection<E>, List<E>
 
     /**
      * Returns the current list.
-     * @return List; current list
+     * @return current list
      */
     @Override
     List<E> get();
 
     /**
      * Returns a past list.
-     * @param time Time; time to obtain the list at
-     * @return List; past list
+     * @param time time to obtain the list at
+     * @return past list
      */
     @Override
     List<E> get(Time time);

@@ -10,7 +10,7 @@ import java.util.Set;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <T> value type
  */
@@ -28,7 +28,7 @@ public class MultiConstraint<T> implements Constraint<T>
 
     /**
      * Creates a {@code MultiConstraint} from given constraints.
-     * @param constraints Constraint&lt;? super T&gt;...; constraints
+     * @param constraints constraints
      * @param <T> value type
      * @return {@code MultiConstraint}
      */
@@ -45,7 +45,7 @@ public class MultiConstraint<T> implements Constraint<T>
 
     /**
      * Constructor.
-     * @param constraints Set&lt;Constraint&lt;? super T&gt;&gt;; constraints
+     * @param constraints constraints
      */
     public MultiConstraint(final Set<Constraint<? super T>> constraints)
     {

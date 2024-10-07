@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Copyright (c) 2013-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @param <T> type of the objects stored on this PeekStack
  */
 public class PeekStack<T> extends ArrayList<T>
@@ -18,7 +18,7 @@ public class PeekStack<T> extends ArrayList<T>
 
     /**
      * Push an element on this stack.
-     * @param element T; the element to push onto this stack
+     * @param element the element to push onto this stack
      */
     public final void push(final T element)
     {
@@ -27,7 +27,7 @@ public class PeekStack<T> extends ArrayList<T>
 
     /**
      * Pop an element off this stack.
-     * @return T; the element that was popped of this stack
+     * @return the element that was popped of this stack
      */
     public final T pop()
     {
@@ -39,9 +39,9 @@ public class PeekStack<T> extends ArrayList<T>
 
     /**
      * Return the N-from-last element of this PeekStack.
-     * @param offset int; if 0 the last pushed, but not yet popped element is returned; if offset is 1, the before last pushed,
-     *            but not yet popped element is returned; etc.
-     * @return T; the addressed element
+     * @param offset if 0 the last pushed, but not yet popped element is returned; if offset is 1, the before last pushed, but
+     *            not yet popped element is returned; etc.
+     * @return the addressed element
      */
     public final T peekNthLast(final int offset)
     {
@@ -50,9 +50,8 @@ public class PeekStack<T> extends ArrayList<T>
 
     /**
      * Check if the elements on the top of this PeekStack are equal to the provided entries.
-     * @param entries T...; the provided entries
-     * @return boolean; true if this PeekStack contains, at the top, the provided entries in the specified order; false
-     *         otherwise
+     * @param entries the provided entries
+     * @return true if this PeekStack contains, at the top, the provided entries in the specified order; false otherwise
      */
     public final boolean topEntriesEqual(@SuppressWarnings("unchecked") final T... entries)
     {

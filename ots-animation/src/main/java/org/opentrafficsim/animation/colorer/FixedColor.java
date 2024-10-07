@@ -15,7 +15,7 @@ import org.opentrafficsim.core.gtu.Gtu;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class FixedColor implements GtuColorer, Serializable
@@ -32,8 +32,8 @@ public class FixedColor implements GtuColorer, Serializable
 
     /**
      * Constructor.
-     * @param color Color; the color
-     * @param name String; color name
+     * @param color the color
+     * @param name color name
      */
     public FixedColor(final Color color, final String name)
     {
@@ -43,7 +43,7 @@ public class FixedColor implements GtuColorer, Serializable
 
     /**
      * Constructor.
-     * @param color Color; the color
+     * @param color the color
      */
     public FixedColor(final Color color)
     {

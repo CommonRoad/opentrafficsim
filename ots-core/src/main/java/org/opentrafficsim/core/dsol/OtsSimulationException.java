@@ -7,7 +7,7 @@ package org.opentrafficsim.core.dsol;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class OtsSimulationException extends Exception
 {
@@ -22,7 +22,7 @@ public class OtsSimulationException extends Exception
     }
 
     /**
-     * @param message String; exception message
+     * @param message exception message
      */
     public OtsSimulationException(final String message)
     {
@@ -30,7 +30,7 @@ public class OtsSimulationException extends Exception
     }
 
     /**
-     * @param cause Throwable; exception that triggered this exception
+     * @param cause exception that triggered this exception
      */
     public OtsSimulationException(final Throwable cause)
     {
@@ -38,8 +38,8 @@ public class OtsSimulationException extends Exception
     }
 
     /**
-     * @param message String; exception message
-     * @param cause Throwable; exception that triggered this exception
+     * @param message exception message
+     * @param cause exception that triggered this exception
      */
     public OtsSimulationException(final String message, final Throwable cause)
     {
@@ -47,10 +47,10 @@ public class OtsSimulationException extends Exception
     }
 
     /**
-     * @param message String; exception message
-     * @param cause Throwable; exception that triggered this exception
-     * @param enableSuppression boolean; whether or not suppression is enabled or disabled
-     * @param writableStackTrace boolean; whether or not the stack trace should be writable
+     * @param message exception message
+     * @param cause exception that triggered this exception
+     * @param enableSuppression whether or not suppression is enabled or disabled
+     * @param writableStackTrace whether or not the stack trace should be writable
      */
     public OtsSimulationException(final String message, final Throwable cause, final boolean enableSuppression,
             final boolean writableStackTrace)

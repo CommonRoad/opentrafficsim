@@ -9,7 +9,7 @@ import org.opentrafficsim.base.parameters.Parameters;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 
@@ -19,7 +19,7 @@ public interface ControlTacticalPlanner
     /**
      * Returns the system settings. This is used for sub-components that have no direct access to the settings. For example,
      * when initiating sensor perception.
-     * @return Parameters; system settings
+     * @return system settings
      */
     Parameters getSettings();
 

@@ -12,7 +12,7 @@ import org.opentrafficsim.road.network.speed.SpeedLimitInfo;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface DesiredSpeedModel
@@ -20,8 +20,8 @@ public interface DesiredSpeedModel
 
     /**
      * Determines the desired speed.
-     * @param parameters Parameters; parameters
-     * @param speedInfo SpeedLimitInfo; info regarding the desired speed for car-following
+     * @param parameters parameters
+     * @param speedInfo info regarding the desired speed for car-following
      * @throws ParameterException if parameter exception occurs
      * @return desired speed
      */

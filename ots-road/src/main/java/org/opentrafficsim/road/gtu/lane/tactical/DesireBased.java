@@ -10,7 +10,7 @@ import org.opentrafficsim.road.gtu.lane.tactical.util.lmrs.Incentive;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface DesireBased
@@ -18,7 +18,7 @@ public interface DesireBased
 
     /**
      * Returns the latest desire from the specified incentive.
-     * @param incentiveClass Class&lt;? extends Incentive&gt;; incentive class
+     * @param incentiveClass incentive class
      * @return latest desire from the specified incentive
      */
     Desire getLatestDesire(Class<? extends Incentive> incentiveClass);

@@ -14,8 +14,8 @@ import javax.naming.NamingException;
 
 import org.djutils.base.Identifiable;
 import org.djutils.draw.point.OrientedPoint2d;
-import org.opentrafficsim.base.geometry.OtsLocatable;
 import org.opentrafficsim.base.geometry.OtsRenderable;
+import org.opentrafficsim.draw.ClickablePointLocatable;
 import org.opentrafficsim.draw.DrawLevel;
 import org.opentrafficsim.draw.TextAlignment;
 import org.opentrafficsim.draw.TextAnimation;
@@ -41,8 +41,8 @@ public class NodeAnimation extends OtsRenderable<NodeData>
     private Text text;
 
     /**
-     * @param node NodeData; node data.
-     * @param contextualized Contextualized; context provider
+     * @param node node data.
+     * @param contextualized context provider
      * @throws NamingException when animation context cannot be found.
      * @throws RemoteException on communication failure
      */
@@ -96,7 +96,7 @@ public class NodeAnimation extends OtsRenderable<NodeData>
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
     public class Text extends TextAnimation<NodeData, Text>
@@ -105,14 +105,14 @@ public class NodeAnimation extends OtsRenderable<NodeData>
         private static final long serialVersionUID = 20161211L;
 
         /**
-         * @param source NodeData; the object for which the text is displayed
-         * @param text Supplier&lt;String&gt;; the text to display
-         * @param dx float; the horizontal movement of the text, in meters
-         * @param dy float; the vertical movement of the text, in meters
-         * @param textPlacement TextAlignment; where to place the text
-         * @param color Color; the color of the text
-         * @param contextualized Contextualized; context provider
-         * @param scaleDependentRendering ScaleDependendentRendering; size limiter for text animation
+         * @param source the object for which the text is displayed
+         * @param text the text to display
+         * @param dx the horizontal movement of the text, in meters
+         * @param dy the vertical movement of the text, in meters
+         * @param textPlacement where to place the text
+         * @param color the color of the text
+         * @param contextualized context provider
+         * @param scaleDependentRendering size limiter for text animation
          * @throws NamingException when animation context cannot be created or retrieved
          * @throws RemoteException - when remote context cannot be found
          */
@@ -143,11 +143,11 @@ public class NodeAnimation extends OtsRenderable<NodeData>
      * </p>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
-    public interface NodeData extends OtsLocatable, Identifiable
+    public interface NodeData extends ClickablePointLocatable, Identifiable
     {
         /** {@inheritDoc} */
         @Override
-        public OrientedPoint2d getLocation();
+        OrientedPoint2d getLocation();
 
         /** {@inheritDoc} */
         @Override

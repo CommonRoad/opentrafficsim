@@ -9,7 +9,7 @@ import org.opentrafficsim.core.compatibility.GtuCompatibleInfraType;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class DetectorType extends GtuCompatibleInfraType<DetectorType, Detector>
@@ -20,7 +20,7 @@ public class DetectorType extends GtuCompatibleInfraType<DetectorType, Detector>
 
     /**
      * Constructor for root-level types.
-     * @param id String; id.
+     * @param id id.
      */
     public DetectorType(final String id)
     {
@@ -29,8 +29,8 @@ public class DetectorType extends GtuCompatibleInfraType<DetectorType, Detector>
 
     /**
      * Constructor for types with parent.
-     * @param id String; id.
-     * @param parent DetectorType; parent type,
+     * @param id id.
+     * @param parent parent type,
      */
     public DetectorType(final String id, final DetectorType parent)
     {

@@ -15,14 +15,14 @@ import org.opentrafficsim.road.network.lane.object.trafficlight.TrafficLightColo
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface TrafficController extends EventProducer, EventListener, NonLocatedObject
 {
     /**
      * Retrieve the Id of the traffic light controller.
-     * @return String; the id of the traffic light controller
+     * @return the id of the traffic light controller
      */
     @Override
     String getId();

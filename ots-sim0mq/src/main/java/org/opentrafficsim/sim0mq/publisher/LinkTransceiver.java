@@ -18,7 +18,7 @@ import org.sim0mq.Sim0MQException;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class LinkTransceiver extends AbstractTransceiver
@@ -31,8 +31,8 @@ public class LinkTransceiver extends AbstractTransceiver
 
     /**
      * Construct a new LinkTransceiver.
-     * @param network Network; the network
-     * @param linkIdSource LinkIdTransceiver; the transceiver that can produce all Link ids in the Network
+     * @param network the network
+     * @param linkIdSource the transceiver that can produce all Link ids in the Network
      */
     public LinkTransceiver(final Network network, final LinkIdTransceiver linkIdSource)
     {

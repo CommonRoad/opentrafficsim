@@ -6,7 +6,7 @@ package org.opentrafficsim.sim0mq.kpi;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class RouteData
@@ -21,9 +21,9 @@ public class RouteData
     private final String endNode;
 
     /**
-     * @param routeName String; name of the route
-     * @param startNode String; data of the start node of the route
-     * @param endNode String; data of the end node of the route
+     * @param routeName name of the route
+     * @param startNode data of the start node of the route
+     * @param endNode data of the end node of the route
      */
     public RouteData(final String routeName, final String startNode, final String endNode)
     {

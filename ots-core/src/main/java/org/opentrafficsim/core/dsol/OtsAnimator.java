@@ -21,7 +21,7 @@ import nl.tudelft.simulation.jstats.streams.StreamInterface;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class OtsAnimator extends DevsRealTimeAnimator<Duration> implements OtsAnimatorInterface, Serializable
 {
@@ -62,12 +62,11 @@ public class OtsAnimator extends DevsRealTimeAnimator<Duration> implements OtsAn
 
     /**
      * Initialize a simulation engine without animation; the easy way. PauseOnError is set to true;
-     * @param startTime Time; the start time of the simulation
-     * @param warmupPeriod Duration; the warm up period of the simulation (use new Duration(0, SECOND) if you don't know what
-     *            this is)
-     * @param runLength Duration; the duration of the simulation
-     * @param model OtsModelInterface; the simulation to execute
-     * @param streams Map&lt;String, StreamInterface&gt;; streams
+     * @param startTime the start time of the simulation
+     * @param warmupPeriod the warm up period of the simulation (use new Duration(0, SECOND) if you don't know what this is)
+     * @param runLength the duration of the simulation
+     * @param model the simulation to execute
+     * @param streams streams
      * @throws SimRuntimeException when e.g., warmupPeriod is larger than runLength
      * @throws NamingException when the context for the replication cannot be created
      */

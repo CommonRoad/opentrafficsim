@@ -12,8 +12,8 @@ import javax.naming.NamingException;
 
 import org.djunits.unit.SpeedUnit;
 import org.djunits.value.vdouble.scalar.Speed;
-import org.opentrafficsim.base.geometry.OtsLocatable;
 import org.opentrafficsim.base.geometry.OtsRenderable;
+import org.opentrafficsim.draw.ClickableLocatable;
 import org.opentrafficsim.draw.DrawLevel;
 import org.opentrafficsim.draw.road.SpeedSignAnimation.SpeedSignData;
 
@@ -25,7 +25,7 @@ import nl.tudelft.simulation.naming.context.Contextualized;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 
@@ -42,8 +42,8 @@ public class SpeedSignAnimation extends OtsRenderable<SpeedSignData>
     private static final double EDGE = 1.3;
 
     /**
-     * @param source SpeedSignData; speed sign
-     * @param contextualized Contextualized; context provider
+     * @param source speed sign
+     * @param contextualized context provider
      * @throws NamingException ne
      * @throws RemoteException on communication failure
      */
@@ -97,11 +97,11 @@ public class SpeedSignAnimation extends OtsRenderable<SpeedSignData>
      * </p>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
-    public interface SpeedSignData extends OtsLocatable
+    public interface SpeedSignData extends ClickableLocatable
     {
         /**
          * Returns the speed.
-         * @return Speed; speed.
+         * @return speed.
          */
         Speed getSpeed();
 

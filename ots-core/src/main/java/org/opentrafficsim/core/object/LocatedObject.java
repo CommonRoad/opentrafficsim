@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import org.djunits.value.vdouble.scalar.Length;
 import org.djutils.base.Identifiable;
-import org.djutils.draw.line.PolyLine2d;
 import org.djutils.event.EventProducer;
 import org.opentrafficsim.base.geometry.OtsLocatable;
 
@@ -15,18 +14,22 @@ import org.opentrafficsim.base.geometry.OtsLocatable;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public interface LocatedObject extends OtsLocatable, Identifiable, EventProducer, Serializable
 {
 
-    /** @return the outline geometry of the object. */
-    PolyLine2d getGeometry();
-
-    /** @return the height of the object (can be Length.ZERO). */
+    /**
+     * Returns the object height. 
+     * @return the height of the object (can be Length.ZERO).
+     */
     Length getHeight();
 
-    /** @return the full id that makes the id unique in the network. */
+    
+    /**
+     * Returns the full id that makes the id unique in the network.
+     * @return the full id that makes the id unique in the network.
+     */
     String getFullId();
 
 }

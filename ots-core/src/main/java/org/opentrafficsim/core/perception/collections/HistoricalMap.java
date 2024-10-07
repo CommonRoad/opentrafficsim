@@ -15,7 +15,7 @@ import org.djunits.value.vdouble.scalar.Time;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <K> key type
  * @param <V> value type
@@ -25,14 +25,14 @@ public interface HistoricalMap<K, V> extends Map<K, V>
 
     /**
      * Returns the current map.
-     * @return Map; current map
+     * @return current map
      */
     Map<K, V> get();
 
     /**
      * Returns a past map.
-     * @param time Time; time to obtain the map at
-     * @return Map; past map
+     * @param time time to obtain the map at
+     * @return past map
      */
     Map<K, V> get(Time time);
 

@@ -9,7 +9,7 @@ import org.djunits.value.vdouble.scalar.Duration;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface RampMeteringSwitch
@@ -17,19 +17,19 @@ public interface RampMeteringSwitch
 
     /**
      * Returns the control interval.
-     * @return Duration; the control interval
+     * @return the control interval
      */
     Duration getInterval();
 
     /**
      * Evaluates whether the ramp metering should be enabled.
-     * @return boolean; whether the ramp metering should be enabled
+     * @return whether the ramp metering should be enabled
      */
     boolean isEnabled();
 
     /**
      * Returns the cycle time.
-     * @return Duration; the cycle time
+     * @return the cycle time
      */
     Duration getCycleTime();
 

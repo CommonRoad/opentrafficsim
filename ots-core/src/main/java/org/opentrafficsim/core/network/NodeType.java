@@ -12,7 +12,7 @@ import org.opentrafficsim.base.HierarchicalType;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class NodeType extends HierarchicalType<NodeType, Node>
 {
@@ -33,7 +33,7 @@ public class NodeType extends HierarchicalType<NodeType, Node>
 
     /**
      * Create a new Node type.
-     * @param id String; the id of the node type (may not be null)
+     * @param id the id of the node type (may not be null)
      */
     public NodeType(final String id)
     {
@@ -42,8 +42,8 @@ public class NodeType extends HierarchicalType<NodeType, Node>
 
     /**
      * Create a new default Node type.
-     * @param id String; the id of the node type (may not be null)
-     * @param parent NodeType; the parent type (may be null)
+     * @param id the id of the node type (may not be null)
+     * @param parent the parent type (may be null)
      */
     public NodeType(final String id, final NodeType parent)
     {

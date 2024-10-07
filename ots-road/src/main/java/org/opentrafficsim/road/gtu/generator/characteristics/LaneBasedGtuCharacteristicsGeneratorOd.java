@@ -14,7 +14,7 @@ import nl.tudelft.simulation.jstats.streams.StreamInterface;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 @FunctionalInterface
@@ -23,10 +23,10 @@ public interface LaneBasedGtuCharacteristicsGeneratorOd
 
     /**
      * Generate new {@code LaneBasedGtuCharacteristics} using given input from OD.
-     * @param origin Node; origin
-     * @param destination Node; destination
-     * @param category Category; category (GTU type, route, or more)
-     * @param randomStream StreamInterface; stream for random numbers
+     * @param origin origin
+     * @param destination destination
+     * @param category category (GTU type, route, or more)
+     * @param randomStream stream for random numbers
      * @return LaneBasedGtuCharacteristics
      * @throws GtuException if characteristics could not be generated for the GTUException
      */

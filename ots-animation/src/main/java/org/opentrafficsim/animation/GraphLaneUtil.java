@@ -33,7 +33,7 @@ import org.opentrafficsim.road.network.sampling.LaneDataRoad;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public final class GraphLaneUtil
@@ -49,8 +49,8 @@ public final class GraphLaneUtil
 
     /**
      * Creates a path starting at the provided lane and moving downstream until a dead-end, split, or loop.
-     * @param name String; path name
-     * @param first Lane; first lane
+     * @param name path name
+     * @param first first lane
      * @return GraphPath&lt;LaneDataRoad&gt; path
      * @throws NetworkException when the lane does not have any set speed limit
      */
@@ -82,8 +82,8 @@ public final class GraphLaneUtil
     /**
      * Creates a path starting at the provided lanes and moving downstream for as long as no lane finds a loop (on to any of the
      * lanes) and there's a unique link all lanes have downstream. The length and speed limit are taken from the first lane.
-     * @param names List&lt;String&gt;; lane names
-     * @param first List&lt;Lane&gt;; first lanes
+     * @param names lane names
+     * @param first first lanes
      * @return GraphPath&lt;LaneDataRoad&gt; path
      * @throws NetworkException when a lane does not have any set speed limit
      */
@@ -186,8 +186,8 @@ public final class GraphLaneUtil
 
     /**
      * Creates a single-lane path.
-     * @param name String; name
-     * @param lane Lane; lane
+     * @param name name
+     * @param lane lane
      * @return GraphPath&lt;LaneDataRoad&gt; path
      * @throws NetworkException when a lane does not have any set speed limit
      */
@@ -203,8 +203,8 @@ public final class GraphLaneUtil
 
     /**
      * Creates a cross section at the provided lane and position.
-     * @param name String; name
-     * @param lanePosition LanePosition; lane position
+     * @param name name
+     * @param lanePosition lane position
      * @return GraphCrossSection&lt;LaneDataRoad&gt; cross section
      * @throws NetworkException when the lane does not have any set speed limit
      */
@@ -225,8 +225,8 @@ public final class GraphLaneUtil
 
     /**
      * Creates a cross section at the provided link and position.
-     * @param names List&lt;String&gt;; lane names
-     * @param linkPosition LinkPosition; link position
+     * @param names lane names
+     * @param linkPosition link position
      * @return GraphCrossSection&lt;LaneDataRoad&gt; cross section
      * @throws NetworkException when a lane does not have any set speed limit
      */
@@ -266,9 +266,9 @@ public final class GraphLaneUtil
      * Creates a cross section.
      * @param names List&lt;String&gt;;; names
      * @param lanes List&lt;LaneDataRoad&gt;;; lanes
-     * @param positions List&lt;Length&gt;; positions
-     * @param speed Speed; speed
-     * @return GraphCrossSection&lt;LaneDataRoad&gt;; cross section
+     * @param positions positions
+     * @param speed speed
+     * @return cross section
      */
     public static GraphCrossSection<LaneDataRoad> createCrossSection(final List<String> names, final List<LaneDataRoad> lanes,
             final List<Length> positions, final Speed speed)

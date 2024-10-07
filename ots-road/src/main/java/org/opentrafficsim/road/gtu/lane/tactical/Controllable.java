@@ -7,7 +7,7 @@ package org.opentrafficsim.road.gtu.lane.tactical;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface Controllable
@@ -15,7 +15,7 @@ public interface Controllable
 
     /**
      * Returns the control state.
-     * @return State; control state
+     * @return control state
      */
     State getControlState();
 
@@ -27,7 +27,7 @@ public interface Controllable
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
     enum State
@@ -44,7 +44,7 @@ public interface Controllable
 
         /**
          * Returns whether this is NONE.
-         * @return boolean; whether this is NONE
+         * @return whether this is NONE
          */
         public boolean isNone()
         {
@@ -53,7 +53,7 @@ public interface Controllable
 
         /**
          * Returns whether this is DISABLED.
-         * @return boolean; whether this is DISABLED
+         * @return whether this is DISABLED
          */
         public boolean isDisabled()
         {
@@ -62,7 +62,7 @@ public interface Controllable
 
         /**
          * Returns whether this is ENABLED.
-         * @return boolean; whether this is ENABLED
+         * @return whether this is ENABLED
          */
         public boolean isEnabled()
         {

@@ -8,8 +8,8 @@ import java.rmi.RemoteException;
 
 import javax.naming.NamingException;
 
-import org.opentrafficsim.base.geometry.OtsLocatable;
 import org.opentrafficsim.base.geometry.OtsRenderable;
+import org.opentrafficsim.draw.ClickableLocatable;
 import org.opentrafficsim.draw.DrawLevel;
 import org.opentrafficsim.draw.TextAlignment;
 import org.opentrafficsim.draw.TextAnimation;
@@ -24,7 +24,7 @@ import nl.tudelft.simulation.naming.context.Contextualized;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class GtuGeneratorPositionAnimation extends OtsRenderable<GtuGeneratorPositionData>
@@ -47,7 +47,7 @@ public class GtuGeneratorPositionAnimation extends OtsRenderable<GtuGeneratorPos
     /**
      * Add chevron to drawing path.
      * @param path Path2D.Float; path.
-     * @param number int; number of the chevron.
+     * @param number number of the chevron.
      */
     private static void addChevron(final Path2D.Float path, final int number)
     {
@@ -63,8 +63,8 @@ public class GtuGeneratorPositionAnimation extends OtsRenderable<GtuGeneratorPos
 
     /**
      * Constructor.
-     * @param source GtuGeneratorPositionData; source.
-     * @param contextProvider OtsSimulatorInterface; simulator.
+     * @param source source.
+     * @param contextProvider simulator.
      * @throws NamingException when animation context cannot be created or retrieved
      * @throws RemoteException when remote context cannot be found
      */
@@ -93,7 +93,7 @@ public class GtuGeneratorPositionAnimation extends OtsRenderable<GtuGeneratorPos
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
     public class Queue extends TextAnimation<GtuGeneratorPositionData, Queue>
@@ -103,8 +103,8 @@ public class GtuGeneratorPositionAnimation extends OtsRenderable<GtuGeneratorPos
 
         /**
          * Constructor.
-         * @param source GtuGeneratorPositionData; source.
-         * @param contextualized Contextualized; context provider
+         * @param source source.
+         * @param contextualized context provider
          * @throws NamingException when animation context cannot be created or retrieved
          * @throws RemoteException when remote context cannot be found
          */
@@ -125,11 +125,11 @@ public class GtuGeneratorPositionAnimation extends OtsRenderable<GtuGeneratorPos
      * </p>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
-    public interface GtuGeneratorPositionData extends OtsLocatable
+    public interface GtuGeneratorPositionData extends ClickableLocatable
     {
         /**
          * Returns the queue count.
-         * @return int; queue count.
+         * @return queue count.
          */
         int getQueueCount();
 

@@ -12,7 +12,7 @@ import org.opentrafficsim.kpi.interfaces.LinkData;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class LinkDataSim0 implements LinkData<LaneDataSim0>
@@ -34,10 +34,10 @@ public class LinkDataSim0 implements LinkData<LaneDataSim0>
     private final Length length;
 
     /**
-     * @param linkName String; wrapped link name
-     * @param startNode NodeData; data of start node
-     * @param endNode NodeData; data of end node
-     * @param length Length; the length
+     * @param linkName wrapped link name
+     * @param startNode data of start node
+     * @param endNode data of end node
+     * @param length the length
      */
     public LinkDataSim0(final String linkName, final String startNode, final String endNode, final Length length)
     {
@@ -49,7 +49,7 @@ public class LinkDataSim0 implements LinkData<LaneDataSim0>
 
     /**
      * Add the lane to the list of lanes for this link.
-     * @param laneData LaneData; the lane to add
+     * @param laneData the lane to add
      */
     public void addLaneData(final LaneDataSim0 laneData)
     {

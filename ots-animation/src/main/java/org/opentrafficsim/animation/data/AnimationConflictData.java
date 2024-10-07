@@ -1,12 +1,15 @@
 package org.opentrafficsim.animation.data;
 
 import java.awt.Color;
-import java.util.List;
 
 import org.djunits.value.vdouble.scalar.Length;
+import org.djutils.draw.bounds.Bounds2d;
+import org.djutils.draw.line.PolyLine2d;
+import org.djutils.draw.line.Polygon2d;
 import org.djutils.draw.point.OrientedPoint2d;
-import org.djutils.draw.point.Point2d;
-import org.opentrafficsim.base.geometry.OtsBounds2d;
+import org.opentrafficsim.base.geometry.OtsLocatable;
+import org.opentrafficsim.base.geometry.OtsShape;
+import org.opentrafficsim.draw.ClickableLocatable;
 import org.opentrafficsim.draw.road.ConflictAnimation.ConflictData;
 import org.opentrafficsim.road.network.lane.conflict.Conflict;
 
@@ -24,12 +27,12 @@ public class AnimationConflictData implements ConflictData
     /** Conflict. */
     private final Conflict conflict;
 
-    /** Contour. */
-    private List<Point2d> contour = null;
+    /** Shape (cached). */
+    private OtsShape shape;
 
     /**
      * Constructor.
-     * @param conflict Conflict; conflict.
+     * @param conflict conflict.
      */
     public AnimationConflictData(final Conflict conflict)
     {
@@ -48,13 +51,6 @@ public class AnimationConflictData implements ConflictData
     public OrientedPoint2d getLocation()
     {
         return this.conflict.getLocation();
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public OtsBounds2d getBounds()
-    {
-        return this.conflict.getBounds();
     }
 
     /** {@inheritDoc} */
@@ -83,14 +79,34 @@ public class AnimationConflictData implements ConflictData
 
     /** {@inheritDoc} */
     @Override
-    public List<Point2d> getContour()
+    public Bounds2d getBounds()
     {
-        if (this.contour == null)
+        return ClickableLocatable.getBounds(this);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Polygon2d getContour()
+    {
+        return this.conflict.getContour();
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public OtsShape getShape()
+    {
+        if (this.shape == null)
         {
-            // this creates a new list every time, so we cache it
-            this.contour = this.conflict.getGeometry().getPointList();
+            this.shape = ConflictData.super.getShape();
         }
-        return this.contour;
+        return this.shape;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public PolyLine2d getLine()
+    {
+        return OtsLocatable.transformLine(this.conflict.getLine(), getLocation());
     }
 
     /** {@inheritDoc} */
@@ -109,7 +125,7 @@ public class AnimationConflictData implements ConflictData
 
     /**
      * Returns the Conflict.
-     * @return Conflict; GTU.
+     * @return GTU.
      */
     public Conflict getConflict()
     {

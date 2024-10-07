@@ -10,7 +10,7 @@ import org.djutils.metadata.MetaData;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public abstract class AbstractTransceiver implements TransceiverInterface
@@ -26,10 +26,10 @@ public abstract class AbstractTransceiver implements TransceiverInterface
 
     /**
      * Construct a new AbstractTransceiver.
-     * @param id String; the id of the new AbstractTransceiver
-     * @param addressFields MetaData; description of the elements of an address that the <code>get</code> method of this
+     * @param id the id of the new AbstractTransceiver
+     * @param addressFields description of the elements of an address that the <code>get</code> method of this
      *            AbstractTransceiver can handle
-     * @param resultFields MetaData; description of the result of the <code>get</code> method
+     * @param resultFields description of the result of the <code>get</code> method
      */
     public AbstractTransceiver(final String id, final MetaData addressFields, final MetaData resultFields)
     {
@@ -64,9 +64,9 @@ public abstract class AbstractTransceiver implements TransceiverInterface
 
     /**
      * Verify the composition of an Object[].
-     * @param metaData MetaData; the expected composition
-     * @param address Object[]; the object array that must be verified
-     * @return String; null if metaData is OK; descriptive text on error
+     * @param metaData the expected composition
+     * @param address the object array that must be verified
+     * @return null if metaData is OK; descriptive text on error
      */
     public static String verifyMetaData(final MetaData metaData, final Object[] address)
     {

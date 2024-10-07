@@ -20,8 +20,8 @@ import org.zeromq.ZMQ.Socket;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/current/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://www.tudelft.nl/pknoppers">Peter Knoppers</a>
- * @author <a href="https://www.transport.citg.tudelft.nl">Wouter Schakel</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
+ * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class ReturnWrapperImpl implements ReturnWrapper
 {
@@ -48,10 +48,10 @@ public class ReturnWrapperImpl implements ReturnWrapper
 
     /**
      * Construct a new ReturnWrapper.
-     * @param zContext ZContext; the ZContext needed to create sockets for returned messages
-     * @param receivedMessage byte[]; the received message from which the reply envelope will be derived
+     * @param zContext the ZContext needed to create sockets for returned messages
+     * @param receivedMessage the received message from which the reply envelope will be derived
      * @param socketMap Map&lt;Long, ZMQ.Socket&gt;; cache of created sockets for returned messages
-     * @param packetsSent AtomicInteger; counter for returned messages
+     * @param packetsSent counter for returned messages
      * @throws SerializationException when the received message has an incorrect envelope
      * @throws Sim0MQException when the received message cannot be decoded
      */
@@ -63,8 +63,8 @@ public class ReturnWrapperImpl implements ReturnWrapper
 
     /**
      * Construct a new ReturnWrapper.
-     * @param zContext ZContext; the ZContext needed to create sockets for returned messages
-     * @param decodedReceivedMessage Object[]; decoded Sim0MQ message
+     * @param zContext the ZContext needed to create sockets for returned messages
+     * @param decodedReceivedMessage decoded Sim0MQ message
      * @param socketMap Map&lt;Long, ZMQ.Socket&gt;; cache of created sockets for returned messages
      */
     public ReturnWrapperImpl(final ZContext zContext, final Object[] decodedReceivedMessage, final Map<Long, Socket> socketMap)
@@ -87,7 +87,7 @@ public class ReturnWrapperImpl implements ReturnWrapper
 
     /**
      * Central portal to send a message to the master.
-     * @param data byte[]; the data to send
+     * @param data the data to send
      */
     public synchronized void sendToMaster(final byte[] data)
     {

@@ -8,7 +8,7 @@ import nl.tudelft.simulation.language.d3.CartesianPoint;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class NodeDataDeprecated // implements NodeDataInterface
@@ -21,8 +21,8 @@ public class NodeDataDeprecated // implements NodeDataInterface
     private final CartesianPoint position;
 
     /**
-     * @param nodeName String; name of the node
-     * @param position CartesianPoint; position of the node
+     * @param nodeName name of the node
+     * @param position position of the node
      */
     public NodeDataDeprecated(final String nodeName, final CartesianPoint position)
     {

@@ -10,7 +10,7 @@ import org.djunits.value.vdouble.scalar.Time;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <T> value type
  */
@@ -22,7 +22,7 @@ public class NullHistorical<T> implements Historical<T>
 
     /**
      * Constructor.
-     * @param value T; value
+     * @param value value
      */
     public NullHistorical(final T value)
     {

@@ -27,7 +27,7 @@ import org.opentrafficsim.road.network.lane.LanePosition;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class TtcRoomChecker implements RoomChecker
@@ -38,7 +38,7 @@ public class TtcRoomChecker implements RoomChecker
 
     /**
      * Constructor.
-     * @param ttc Duration; time to collision
+     * @param ttc time to collision
      */
     public TtcRoomChecker(final Duration ttc)
     {
@@ -68,7 +68,7 @@ public class TtcRoomChecker implements RoomChecker
 
     /**
      * Returns the TTC value.
-     * @return Duration; TTC value
+     * @return TTC value
      */
     public final Duration getTtc()
     {

@@ -14,7 +14,7 @@ import org.opentrafficsim.base.TimeStampedObject;
  * Copyright (c) 2013-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class TimeStampedObjectTest
 {
@@ -38,9 +38,9 @@ public class TimeStampedObjectTest
 
     /**
      * Verify all fields in a TimeStampedObject.
-     * @param tso TimeStampedObject&lt;String&gt;; the TimeStampedObject
-     * @param string String; the object that should be returned by the getObject method of the TimeStampedObject
-     * @param time Time; the time that should be returned by the getTimeStamp method of the TimeStampedObject
+     * @param tso the TimeStampedObject
+     * @param string the object that should be returned by the getObject method of the TimeStampedObject
+     * @param time the time that should be returned by the getTimeStamp method of the TimeStampedObject
      */
     private void verifyFields(final TimeStampedObject<String> tso, final String string, final Time time)
     {

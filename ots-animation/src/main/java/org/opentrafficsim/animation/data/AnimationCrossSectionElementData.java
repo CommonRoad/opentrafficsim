@@ -1,8 +1,9 @@
 package org.opentrafficsim.animation.data;
 
 import org.djutils.draw.line.PolyLine2d;
+import org.djutils.draw.line.Polygon2d;
 import org.djutils.draw.point.Point2d;
-import org.opentrafficsim.base.geometry.OtsBounds2d;
+import org.opentrafficsim.base.geometry.OtsShape;
 import org.opentrafficsim.draw.road.CrossSectionElementAnimation.CrossSectionElementData;
 import org.opentrafficsim.road.network.lane.CrossSectionElement;
 
@@ -23,7 +24,7 @@ public class AnimationCrossSectionElementData<T extends CrossSectionElement> imp
 
     /**
      * Constructor.
-     * @param element T; cross section element.
+     * @param element cross section element.
      */
     public AnimationCrossSectionElementData(final T element)
     {
@@ -32,9 +33,16 @@ public class AnimationCrossSectionElementData<T extends CrossSectionElement> imp
 
     /** {@inheritDoc} */
     @Override
-    public OtsBounds2d getBounds()
+    public Polygon2d getContour()
     {
-        return this.element.getBounds();
+        return this.element.getContour();
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public OtsShape getShape()
+    {
+        return this.element.getShape();
     }
 
     /** {@inheritDoc} */
@@ -60,7 +68,7 @@ public class AnimationCrossSectionElementData<T extends CrossSectionElement> imp
 
     /**
      * Returns the cross section element.
-     * @return T; cross-section element.
+     * @return cross-section element.
      */
     public T getElement()
     {

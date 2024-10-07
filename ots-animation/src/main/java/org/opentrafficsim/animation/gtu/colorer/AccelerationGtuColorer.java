@@ -17,7 +17,7 @@ import org.opentrafficsim.draw.ColorInterpolator;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class AccelerationGtuColorer implements GtuColorer, Serializable
 {
@@ -41,9 +41,8 @@ public class AccelerationGtuColorer implements GtuColorer, Serializable
 
     /**
      * Construct a new AccelerationGtuColorer.
-     * @param maximumDeceleration Acceleration; the deceleration (negative acceleration) that corresponds to the first (red)
-     *            legend entry
-     * @param maximumAcceleration Acceleration; the deceleration that corresponds to the last (blue) legend entry
+     * @param maximumDeceleration the deceleration (negative acceleration) that corresponds to the first (red) legend entry
+     * @param maximumAcceleration the deceleration that corresponds to the last (blue) legend entry
      */
     public AccelerationGtuColorer(final Acceleration maximumDeceleration, final Acceleration maximumAcceleration)
     {

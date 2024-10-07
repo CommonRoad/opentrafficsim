@@ -16,7 +16,7 @@ import org.opentrafficsim.kpi.sampling.TrajectoryGroup;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class MeanDensity extends AbstractIndicator<LinearDensity>
@@ -26,7 +26,7 @@ public class MeanDensity extends AbstractIndicator<LinearDensity>
     private final TotalTravelTime travelTime;
 
     /**
-     * @param travelTime TotalTravelTime; travel time indicator
+     * @param travelTime travel time indicator
      */
     public MeanDensity(final TotalTravelTime travelTime)
     {
@@ -36,8 +36,8 @@ public class MeanDensity extends AbstractIndicator<LinearDensity>
     /** {@inheritDoc} */
     @Override
     // @docs/07-output/indicators.md
-    protected <G extends GtuData> LinearDensity calculate(final Query<G, ?> query, final Time startTime,
-            final Time endTime, final List<TrajectoryGroup<G>> trajectoryGroups)
+    protected <G extends GtuData> LinearDensity calculate(final Query<G, ?> query, final Time startTime, final Time endTime,
+            final List<TrajectoryGroup<G>> trajectoryGroups)
     {
         double ttt = this.travelTime.getValue(query, startTime, endTime, trajectoryGroups).si;
         double area = 0;

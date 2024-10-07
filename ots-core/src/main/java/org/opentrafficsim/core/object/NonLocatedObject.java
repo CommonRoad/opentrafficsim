@@ -3,7 +3,6 @@ package org.opentrafficsim.core.object;
 import java.io.Serializable;
 
 import org.djutils.base.Identifiable;
-import org.opentrafficsim.core.animation.Drawable;
 
 /**
  * Interface for objects that live in a Network, but cannot be drawn and which do not have a specific location. These objects do
@@ -14,10 +13,10 @@ import org.opentrafficsim.core.animation.Drawable;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
-public interface NonLocatedObject extends Identifiable, Drawable, Serializable
+public interface NonLocatedObject extends Identifiable, Serializable
 {
 
     /** @return the full id that makes the id unique in the network. */

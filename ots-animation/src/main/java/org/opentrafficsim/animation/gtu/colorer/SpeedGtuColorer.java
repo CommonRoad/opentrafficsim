@@ -18,7 +18,7 @@ import org.opentrafficsim.draw.ColorInterpolator;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class SpeedGtuColorer implements GtuColorer, Serializable
 {
@@ -33,7 +33,7 @@ public class SpeedGtuColorer implements GtuColorer, Serializable
 
     /**
      * Construct a new SpeedGtuColorer.
-     * @param maximumSpeed Speed; the speed at (and above) which the returned color will be green
+     * @param maximumSpeed the speed at (and above) which the returned color will be green
      */
     public SpeedGtuColorer(final Speed maximumSpeed)
     {

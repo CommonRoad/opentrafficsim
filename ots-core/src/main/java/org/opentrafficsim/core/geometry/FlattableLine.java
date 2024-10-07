@@ -9,7 +9,7 @@ import org.djutils.draw.point.Point2d;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface FlattableLine
@@ -18,8 +18,8 @@ public interface FlattableLine
     /**
      * Returns the point at the given fraction. The fraction may represent any parameter, such as <i>t</i> in a Bezier, <i>s</i>
      * in a Clothoid, or simply the fraction of length.
-     * @param fraction double; fraction.
-     * @return double; point at the given fraction.
+     * @param fraction fraction.
+     * @return point at the given fraction.
      */
     Point2d get(double fraction);
 
@@ -27,8 +27,8 @@ public interface FlattableLine
      * Returns the direction at the given fraction. The fraction may represent any parameter, such as <i>t</i> in a Bezier,
      * <i>s</i> in a Clothoid, or simply the fraction of length. The default implementation performs a numerical approach by
      * looking at the direction between the points at fraction, and a point 1e-6 away.
-     * @param fraction double; fraction.
-     * @return double; direction at the given fraction.
+     * @param fraction fraction.
+     * @return direction at the given fraction.
      */
     default double getDirection(final double fraction)
     {

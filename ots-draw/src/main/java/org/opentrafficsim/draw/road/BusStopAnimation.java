@@ -10,6 +10,7 @@ import javax.naming.NamingException;
 
 import org.djunits.unit.LengthUnit;
 import org.djunits.value.vdouble.scalar.Length;
+import org.opentrafficsim.draw.ClickableLineLocatable;
 import org.opentrafficsim.draw.TextAlignment;
 import org.opentrafficsim.draw.TextAnimation;
 import org.opentrafficsim.draw.road.AbstractLineAnimation.LaneBasedObjectData;
@@ -25,7 +26,7 @@ import nl.tudelft.simulation.naming.context.Contextualized;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class BusStopAnimation extends AbstractLineAnimation<BusStopData>
@@ -38,16 +39,17 @@ public class BusStopAnimation extends AbstractLineAnimation<BusStopData>
 
     /**
      * Construct a DetectorAnimation.
-     * @param laneDetector BusStopData; the lane detector to draw
-     * @param contextualized Contextualized; context provider
+     * @param laneDetector the lane detector to draw
+     * @param contextualized context provider
      * @throws NamingException in case of registration failure of the animation
      * @throws RemoteException in case of remote registration failure of the animation
      */
     public BusStopAnimation(final BusStopData laneDetector, final Contextualized contextualized)
             throws NamingException, RemoteException
     {
-        super(laneDetector, contextualized, .9, new Length(0.5, LengthUnit.SI));
-        this.text = new Text(laneDetector, laneDetector::getId, 0.0f, (float) getHalfLength() + 0.2f, TextAlignment.CENTER,
+        super(laneDetector, contextualized, new Length(0.5, LengthUnit.SI));
+        float halfLength = (float) (laneDetector.getLine().getLength() / 2.0);
+        this.text = new Text(laneDetector, laneDetector::getId, 0.0f, halfLength + 0.2f, TextAlignment.CENTER,
                 Color.BLACK, contextualized);
     }
 
@@ -90,7 +92,7 @@ public class BusStopAnimation extends AbstractLineAnimation<BusStopData>
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
     public class Text extends TextAnimation<BusStopData, Text>
@@ -99,13 +101,13 @@ public class BusStopAnimation extends AbstractLineAnimation<BusStopData>
         private static final long serialVersionUID = 20161211L;
 
         /**
-         * @param source BusStopData; the object for which the text is displayed
-         * @param text Supplier&lt;String&gt;; the text to display
-         * @param dx float; the horizontal movement of the text, in meters
-         * @param dy float; the vertical movement of the text, in meters
-         * @param textPlacement TextAlignment; where to place the text
-         * @param color Color; the color of the text
-         * @param contextualized Contextualized; context provider
+         * @param source the object for which the text is displayed
+         * @param text the text to display
+         * @param dx the horizontal movement of the text, in meters
+         * @param dy the vertical movement of the text, in meters
+         * @param textPlacement where to place the text
+         * @param color the color of the text
+         * @param contextualized context provider
          * @throws NamingException when animation context cannot be created or retrieved
          * @throws RemoteException - when remote context cannot be found
          */
@@ -133,7 +135,7 @@ public class BusStopAnimation extends AbstractLineAnimation<BusStopData>
      * </p>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
-    public interface BusStopData extends LaneBasedObjectData
+    public interface BusStopData extends LaneBasedObjectData, ClickableLineLocatable
     {
     }
 

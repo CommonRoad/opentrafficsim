@@ -11,7 +11,7 @@ import org.djunits.value.vdouble.scalar.Time;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <E> element type
  */
@@ -20,15 +20,15 @@ public interface HistoricalNavigableSet<E> extends HistoricalSortedSet<E>, Navig
 
     /**
      * Returns the current navigable set.
-     * @return NavigableSet; current navigable set
+     * @return current navigable set
      */
     @Override
     NavigableSet<E> get();
 
     /**
      * Returns a past navigable set.
-     * @param time Time; time to obtain the navigable set at
-     * @return NavigableSet; past navigable set
+     * @param time time to obtain the navigable set at
+     * @return past navigable set
      */
     @Override
     NavigableSet<E> get(Time time);

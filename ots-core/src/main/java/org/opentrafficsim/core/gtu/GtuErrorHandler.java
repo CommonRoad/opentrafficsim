@@ -7,7 +7,7 @@ package org.opentrafficsim.core.gtu;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface GtuErrorHandler
@@ -36,8 +36,8 @@ public interface GtuErrorHandler
 
     /**
      * Handle exception.
-     * @param gtu Gtu; GTU
-     * @param ex Exception; exception to handle
+     * @param gtu GTU
+     * @param ex exception to handle
      * @throws Exception the exception may be thrown
      */
     void handle(Gtu gtu, Exception ex) throws Exception;

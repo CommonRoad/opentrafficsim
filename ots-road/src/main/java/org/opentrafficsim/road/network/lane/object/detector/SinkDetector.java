@@ -23,7 +23,7 @@ import org.opentrafficsim.road.network.lane.object.LaneBasedObject;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class SinkDetector extends LaneDetector
@@ -65,10 +65,10 @@ public class SinkDetector extends LaneDetector
 
     /**
      * Constructor. All GTUs matching the {@code DetectorType} will be removed.
-     * @param lane Lane; the lane that triggers the deletion of the GTU.
-     * @param position Length; the position of the detector
-     * @param simulator OtsSimulatorInterface; the simulator to enable animation.
-     * @param detectorType DetectorType; detector type.
+     * @param lane the lane that triggers the deletion of the GTU.
+     * @param position the position of the detector
+     * @param simulator the simulator to enable animation.
+     * @param detectorType detector type.
      * @throws NetworkException when the position on the lane is out of bounds w.r.t. the center line of the lane
      */
     public SinkDetector(final Lane lane, final Length position, final OtsSimulatorInterface simulator,
@@ -79,18 +79,18 @@ public class SinkDetector extends LaneDetector
 
     /**
      * Constructor.
-     * @param lane Lane; the lane that triggers the deletion of the GTU.
-     * @param position Length; the position of the detector
-     * @param simulator OtsSimulatorInterface; the simulator to enable animation.
-     * @param detectorType DetectorType; detector type.
-     * @param predicate BiPredicate&lt;SinkDetector, LaneBasedGtu&gt;; predicate for what GTUs will be destroyed.
+     * @param lane the lane that triggers the deletion of the GTU.
+     * @param position the position of the detector
+     * @param simulator the simulator to enable animation.
+     * @param detectorType detector type.
+     * @param predicate predicate for what GTUs will be destroyed.
      * @throws NetworkException when the position on the lane is out of bounds w.r.t. the center line of the lane
      */
     public SinkDetector(final Lane lane, final Length position, final OtsSimulatorInterface simulator,
             final DetectorType detectorType, final BiPredicate<SinkDetector, LaneBasedGtu> predicate) throws NetworkException
     {
         super(String.format(Locale.US, "Sink@%.3fm", position.si), lane, position, RelativePosition.FRONT, simulator,
-                LaneBasedObject.makeGeometry(lane, position, 1.0), detectorType);
+                LaneBasedObject.makeLine(lane, position, 1.0), detectorType);
         this.predicate = predicate;
     }
 
@@ -106,8 +106,8 @@ public class SinkDetector extends LaneDetector
 
     /**
      * Returns whether the GTU will be removed by this sink.
-     * @param gtu LaneBasedGtu; gtu.
-     * @return boolean; whether the GTU will be removed by this sink.
+     * @param gtu gtu.
+     * @return whether the GTU will be removed by this sink.
      */
     public boolean willDestroy(final LaneBasedGtu gtu)
     {

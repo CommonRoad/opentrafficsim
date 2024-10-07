@@ -22,7 +22,7 @@ import nl.tudelft.simulation.jstats.streams.StreamInterface;
  * Copyright (c) 2013-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class DistributionTest
 {
@@ -419,15 +419,16 @@ public class DistributionTest
         FrequencyAndObject<String> fao2 = new FrequencyAndObject<>(Math.PI, "One");
         assertTrue(fao1.equals(fao2),
                 "FrequencyAndObject is equal to another FrequencyAndObject with same frequency and same object");
-        assertEquals(fao1.hashCode(),
-                fao2.hashCode(), "FrequencyAndObject has same hashCode as another FrequencyAndObject with same frequency and same object");
+        assertEquals(fao1.hashCode(), fao2.hashCode(),
+                "FrequencyAndObject has same hashCode as another FrequencyAndObject with same frequency and same object");
         fao2 = new FrequencyAndObject<>(Math.PI, "Two");
         assertFalse(fao1.equals(fao2),
                 "FrequencyAndObject is not equal to another FrequencyAndObject with same frequency but other object");
         fao2 = new FrequencyAndObject<>(Math.E, "One");
         assertFalse(fao1.equals(fao2),
                 "FrequencyAndObject is not equal to another FrequencyAndObject with different frequency but same object");
-        assertNotEquals(fao1.hashCode(), fao2.hashCode(), "FrequencyAndObject has different hashCode than another FrequencyAndObject with different frequency "
+        assertNotEquals(fao1.hashCode(), fao2.hashCode(),
+                "FrequencyAndObject has different hashCode than another FrequencyAndObject with different frequency "
                         + "and same object");
         fao2 = new FrequencyAndObject<>(Math.PI, null);
         assertFalse(fao1.equals(fao2),

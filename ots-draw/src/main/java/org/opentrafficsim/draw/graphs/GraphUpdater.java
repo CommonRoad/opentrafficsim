@@ -14,7 +14,7 @@ import org.djutils.logger.CategoryLogger;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <T> type of value in queue
  */
@@ -26,9 +26,9 @@ public class GraphUpdater<T>
 
     /**
      * Constructs and starts a thread that performs each given task from a queue.
-     * @param workerName String; name for the working thread
-     * @param invokingThread Thread; invoking thread, the worker will stop when this thread is interrupted
-     * @param updater Updater&lt;T&gt;; updater to perform with the queued value
+     * @param workerName name for the working thread
+     * @param invokingThread invoking thread, the worker will stop when this thread is interrupted
+     * @param updater updater to perform with the queued value
      */
     public GraphUpdater(final String workerName, final Thread invokingThread, final Updater<T> updater)
     {
@@ -61,7 +61,7 @@ public class GraphUpdater<T>
 
     /**
      * Offer a next value to the queue.
-     * @param t T; next value to offer to the queue
+     * @param t next value to offer to the queue
      */
     public final void offer(final T t)
     {
@@ -76,7 +76,7 @@ public class GraphUpdater<T>
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      * @param <T> type of value in queue
      */
@@ -85,7 +85,7 @@ public class GraphUpdater<T>
     {
         /**
          * Perform an update.
-         * @param t T; value to update by
+         * @param t value to update by
          */
         void update(T t);
     }

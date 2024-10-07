@@ -11,7 +11,7 @@ import java.net.URISyntaxException;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public final class Resource
@@ -25,7 +25,7 @@ public final class Resource
 
     /**
      * Obtains stream for resource, either in IDE or java.
-     * @param name String; name of resource
+     * @param name name of resource
      * @return the resolved input stream
      */
     public static InputStream getResourceAsStream(final String name)
@@ -42,10 +42,10 @@ public final class Resource
         }
         throw new RuntimeException("Unable to load resource " + name);
     }
-    
+
     /**
      * Obtains URI for resource, either in IDE or java.
-     * @param name String; name of resource
+     * @param name name of resource
      * @return the resolved URI
      * @throws URISyntaxException when the file name is malformed.
      */
@@ -62,7 +62,7 @@ public final class Resource
             return Resource.class.getResource("/resources" + name).toURI();
         }
         throw new RuntimeException("Unable to load resource " + name);
-        
+
     }
 
 }

@@ -20,7 +20,7 @@ import org.junit.jupiter.api.Test;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class Speed3dTest
 {
@@ -100,10 +100,10 @@ public class Speed3dTest
 
     /**
      * Verify the x, y, z, theta, phi and norm of a Speed3d object.
-     * @param s3d Speed3d; the Speed3d object
-     * @param x double; the expected x value
-     * @param y double; the expected y value
-     * @param z double; the expected z value
+     * @param s3d the Speed3d object
+     * @param x the expected x value
+     * @param y the expected y value
+     * @param z the expected z value
      */
     private void checkSpeed(final Speed3d s3d, final double x, final double y, final double z)
     {

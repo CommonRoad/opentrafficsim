@@ -12,7 +12,7 @@ import org.opentrafficsim.road.gtu.lane.perception.RelativeLane;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface TrafficPerception extends LaneBasedPerceptionCategory
@@ -20,7 +20,7 @@ public interface TrafficPerception extends LaneBasedPerceptionCategory
 
     /**
      * Returns the perceived speed on the given lane.
-     * @param lane RelativeLane; lane
+     * @param lane lane
      * @return Speed perceived speed on the given lane
      * @throws ParameterException on parameter exception
      */
@@ -28,7 +28,7 @@ public interface TrafficPerception extends LaneBasedPerceptionCategory
 
     /**
      * Returns the perceived density on the given lane.
-     * @param lane RelativeLane; lane
+     * @param lane lane
      * @return LinearDensity perceived density on the given lane
      * @throws ParameterException on parameter exception
      */

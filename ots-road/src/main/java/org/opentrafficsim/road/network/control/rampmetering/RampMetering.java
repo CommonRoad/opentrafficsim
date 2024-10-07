@@ -11,7 +11,7 @@ import nl.tudelft.simulation.dsol.SimRuntimeException;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class RampMetering
@@ -27,9 +27,9 @@ public class RampMetering
     private final RampMeteringLightController rampLightController;
 
     /**
-     * @param simulator OtsSimulatorInterface; simulator
-     * @param rampSwitch RampMeteringSwitch; ramp metering switch
-     * @param rampLightController RampMeteringLightController; ramp metering light controller
+     * @param simulator simulator
+     * @param rampSwitch ramp metering switch
+     * @param rampLightController ramp metering light controller
      */
     public RampMetering(final OtsSimulatorInterface simulator, final RampMeteringSwitch rampSwitch,
             final RampMeteringLightController rampLightController)

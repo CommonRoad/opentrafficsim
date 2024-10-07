@@ -15,7 +15,7 @@ import org.opentrafficsim.road.network.lane.Lane;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class SpeedSign extends AbstractLaneBasedObject
@@ -38,14 +38,14 @@ public class SpeedSign extends AbstractLaneBasedObject
 
     /**
      * Construct a new SpeedSign.
-     * @param id String; the id of the new SpeedSign
-     * @param lane Lane; Lane on/over which the SpeedSign is positioned
-     * @param longitudinalPosition Length; the longitudinal position along the lane of the new SpeedSign
-     * @param simulator OtsSimulatorInterface; the simulator
-     * @param speed Speed; the speed limit shown by the new SpeedSign
-     * @param gtuType GtuType; GTU type that should obey the speed sign
-     * @param startTimeOfDay Duration; start time-of-day
-     * @param endTimeOfDay Duration; end time-of-day
+     * @param id the id of the new SpeedSign
+     * @param lane Lane on/over which the SpeedSign is positioned
+     * @param longitudinalPosition the longitudinal position along the lane of the new SpeedSign
+     * @param simulator the simulator
+     * @param speed the speed limit shown by the new SpeedSign
+     * @param gtuType GTU type that should obey the speed sign
+     * @param startTimeOfDay start time-of-day
+     * @param endTimeOfDay end time-of-day
      * @throws NetworkException when the position on the lane is out of bounds
      */
     @SuppressWarnings("checkstyle:parameternumber")
@@ -53,7 +53,7 @@ public class SpeedSign extends AbstractLaneBasedObject
             final Speed speed, final GtuType gtuType, final Duration startTimeOfDay, final Duration endTimeOfDay)
             throws NetworkException
     {
-        super(id, lane, longitudinalPosition, LaneBasedObject.makeGeometry(lane, longitudinalPosition));
+        super(id, lane, longitudinalPosition, LaneBasedObject.makeLine(lane, longitudinalPosition));
         this.speed = speed;
         this.gtuType = gtuType;
         this.startTimeOfDay = startTimeOfDay;
@@ -64,8 +64,8 @@ public class SpeedSign extends AbstractLaneBasedObject
 
     /**
      * Return whether this speed limit is currently active.
-     * @param gtuTypeIn GtuType; GTU type
-     * @param time Duration; current time-of-day
+     * @param gtuTypeIn GTU type
+     * @param time current time-of-day
      * @return whether this speed limit is currently active
      */
     public final boolean isActive(final GtuType gtuTypeIn, final Duration time)

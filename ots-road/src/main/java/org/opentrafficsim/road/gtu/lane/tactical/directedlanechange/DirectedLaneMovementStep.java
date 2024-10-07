@@ -12,7 +12,7 @@ import org.opentrafficsim.road.gtu.lane.tactical.following.AccelerationStep;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class DirectedLaneMovementStep implements Serializable
 {
@@ -44,8 +44,8 @@ public class DirectedLaneMovementStep implements Serializable
 
     /**
      * Construct a new LaneChangeModelResult.
-     * @param accelerationStep AccelerationStep; the acceleration and duration of validity of this result.
-     * @param direction LateralDirectionality; this has one of the values:
+     * @param accelerationStep the acceleration and duration of validity of this result.
+     * @param direction this has one of the values:
      *            <table >
      *            <caption>&nbsp;</caption>
      *            <tr>

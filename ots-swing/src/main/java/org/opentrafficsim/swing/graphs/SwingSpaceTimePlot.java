@@ -15,7 +15,7 @@ import org.opentrafficsim.draw.graphs.AbstractSpaceTimePlot;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class SwingSpaceTimePlot extends SwingPlot
@@ -26,7 +26,7 @@ public class SwingSpaceTimePlot extends SwingPlot
 
     /**
      * Construct a new Swing container for SpaceTimePlot.
-     * @param plot SpaceTimePlot; the plot to embed
+     * @param plot the plot to embed
      */
     public SwingSpaceTimePlot(final AbstractSpaceTimePlot plot)
     {

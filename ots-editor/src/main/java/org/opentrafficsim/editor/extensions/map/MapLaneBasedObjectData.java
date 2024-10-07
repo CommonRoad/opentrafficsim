@@ -5,14 +5,16 @@ import java.util.Locale;
 
 import org.djunits.value.vdouble.scalar.Length;
 import org.djutils.draw.bounds.Bounds2d;
+import org.djutils.draw.line.PolyLine2d;
+import org.djutils.draw.line.Polygon2d;
 import org.djutils.draw.line.Ray2d;
 import org.djutils.draw.point.OrientedPoint2d;
 import org.djutils.event.Event;
 import org.djutils.event.EventListener;
 import org.djutils.event.reference.ReferenceType;
-import org.opentrafficsim.base.geometry.BoundingBox;
-import org.opentrafficsim.base.geometry.ClickableBounds;
-import org.opentrafficsim.base.geometry.OtsBounds2d;
+import org.opentrafficsim.base.geometry.OtsLocatable;
+import org.opentrafficsim.base.geometry.OtsShape;
+import org.opentrafficsim.base.geometry.RectangleShape;
 import org.opentrafficsim.draw.road.AbstractLineAnimation.LaneBasedObjectData;
 import org.opentrafficsim.editor.OtsEditor;
 import org.opentrafficsim.editor.XsdTreeNode;
@@ -21,10 +23,10 @@ import org.opentrafficsim.road.network.factory.xml.utils.ParseUtil;
 import org.opentrafficsim.xml.bindings.types.LengthBeginEndType.LengthBeginEnd;
 
 /**
- * Data class for objects that are drawn at a lane position. Implementations must call setLinkNode() in their constructor or
- * by some other dynamic means, or the XSD node must have a Link attribute that points to the XSD node of a link by a keyref.
- * This class will listen to attributes Id, Link, Lane and Position, and update visualization as needed. Attributes Id and Link
- * are optional.
+ * Data class for objects that are drawn at a lane position. Implementations must call setLinkNode() in their constructor or by
+ * some other dynamic means, or the XSD node must have a Link attribute that points to the XSD node of a link by a keyref. This
+ * class will listen to attributes Id, Link, Lane and Position, and update visualization as needed. Attributes Id and Link are
+ * optional.
  * <p>
  * Copyright (c) 2023-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
@@ -56,16 +58,25 @@ public abstract class MapLaneBasedObjectData extends MapData implements LaneBase
     private OrientedPoint2d location;
 
     /** Bounds. */
-    private OtsBounds2d bounds = new BoundingBox(1.0, 0.25);
+    private Bounds2d bounds;
+
+    /** Contour. */
+    private Polygon2d contour;
+
+    /** Shape (cached). */
+    private OtsShape shape;
+
+    /** Line on lane. */
+    private PolyLine2d line;
 
     /** Node of link. */
     private XsdTreeNode lastLinkNode;
 
     /**
      * Constructor.
-     * @param map Map; map.
-     * @param node XsdTreeNode; node.
-     * @param editor OtsEditor; editor.
+     * @param map map.
+     * @param node node.
+     * @param editor editor.
      */
     public MapLaneBasedObjectData(final EditorMap map, final XsdTreeNode node, final OtsEditor editor)
     {
@@ -96,7 +107,7 @@ public abstract class MapLaneBasedObjectData extends MapData implements LaneBase
     /**
      * Sets a node as link. Sub-classes may call this in their constructor if it is a fixed node. This class will listen to
      * changes in the Link attribute, and set a coupled node as link node if it exists.
-     * @param linkNode XsdTreeNode; link node.
+     * @param linkNode link node.
      */
     protected void setLinkNode(final XsdTreeNode linkNode)
     {
@@ -151,9 +162,30 @@ public abstract class MapLaneBasedObjectData extends MapData implements LaneBase
 
     /** {@inheritDoc} */
     @Override
-    public OtsBounds2d getBounds()
+    public Bounds2d getBounds()
     {
         return this.bounds;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Polygon2d getContour()
+    {
+        return this.contour;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public OtsShape getShape()
+    {
+        return this.shape;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public PolyLine2d getLine()
+    {
+        return this.line;
     }
 
     /** {@inheritDoc} */
@@ -165,7 +197,7 @@ public abstract class MapLaneBasedObjectData extends MapData implements LaneBase
 
     /**
      * Returns an id in the form {linkId}.{laneId}.{id} or {linkId}.{laneId}@{position} if the id is empty.
-     * @return String; id in link/lane/position form.
+     * @return id in link/lane/position form.
      */
     protected String getLinkLanePositionId()
     {
@@ -259,7 +291,7 @@ public abstract class MapLaneBasedObjectData extends MapData implements LaneBase
             return;
         }
         this.positionFromStart =
-                ParseUtil.parseLengthBeginEnd(this.position, Length.instantiateSI(linkData.getDesignLine().getLength()));
+                ParseUtil.parseLengthBeginEnd(this.position, Length.instantiateSI(linkData.getCenterLine().getLength()));
 
         Length w = laneData.getWidth(this.positionFromStart);
         if (this.laneWidth != null && !this.laneWidth.equals(w))
@@ -269,20 +301,14 @@ public abstract class MapLaneBasedObjectData extends MapData implements LaneBase
             return;
         }
         this.laneWidth = w;
-        this.bounds = calculateBounds();
+        double w45 = 0.45 * getLaneWidth().si;
         Ray2d ray = laneData.getCenterLine().getLocationExtended(this.positionFromStart.si);
         this.location = new OrientedPoint2d(ray.x, ray.y, ray.phi);
+        this.line = new PolyLine2d(new double[] {0.0, 0.0}, new double[] {-w45, w45});
+        this.shape = new RectangleShape(0.0, 2.0 * w45);
+        this.bounds = LaneBasedObjectData.super.getBounds();
+        this.contour = OtsLocatable.boundsAsContour(this);
         setValid();
-    }
-
-    /**
-     * Calculates the bounds. Can be overridden for objects with non-line shapes.
-     * @return OtsBounds2d; bounds of the object.
-     */
-    protected OtsBounds2d calculateBounds()
-    {
-        double w45 = 0.45 * getLaneWidth().si;
-        return ClickableBounds.get(new Bounds2d(0.0, 0.0, -w45, w45));
     }
 
 }

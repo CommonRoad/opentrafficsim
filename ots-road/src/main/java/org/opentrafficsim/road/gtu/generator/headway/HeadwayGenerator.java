@@ -15,7 +15,7 @@ import nl.tudelft.simulation.jstats.streams.StreamInterface;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class HeadwayGenerator implements Generator<Duration>
@@ -29,8 +29,8 @@ public class HeadwayGenerator implements Generator<Duration>
 
     /**
      * Constructor.
-     * @param demand Frequency; demand.
-     * @param stream StreamInterface; the stream to use for generation.
+     * @param demand demand.
+     * @param stream the stream to use for generation.
      */
     public HeadwayGenerator(final Frequency demand, final StreamInterface stream)
     {

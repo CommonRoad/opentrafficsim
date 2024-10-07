@@ -41,7 +41,7 @@ import nl.tudelft.simulation.language.DsolException;
  * Copyright (c) 2013-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class StraightSwing extends OtsSimulationApplication<StraightModel> implements UNITS
 {
@@ -50,9 +50,9 @@ public class StraightSwing extends OtsSimulationApplication<StraightModel> imple
 
     /**
      * Create a Straight Swing application.
-     * @param title String; the title of the Frame
-     * @param panel OtsAnimationPanel; the tabbed panel to display
-     * @param model StraightModel; the model
+     * @param title the title of the Frame
+     * @param panel the tabbed panel to display
+     * @param model the model
      * @throws OtsDrawingException on animation error
      */
     public StraightSwing(final String title, final OtsAnimationPanel panel, final StraightModel model)
@@ -70,7 +70,7 @@ public class StraightSwing extends OtsSimulationApplication<StraightModel> imple
 
     /**
      * Main program.
-     * @param args String[]; the command line arguments (not used)
+     * @param args the command line arguments (not used)
      */
     public static void main(final String[] args)
     {
@@ -79,7 +79,7 @@ public class StraightSwing extends OtsSimulationApplication<StraightModel> imple
 
     /**
      * Start the demo.
-     * @param exitOnClose boolean; when running stand-alone: true; when running as part of a demo: false
+     * @param exitOnClose when running stand-alone: true; when running as part of a demo: false
      */
     public static void demo(final boolean exitOnClose)
     {
@@ -112,7 +112,7 @@ public class StraightSwing extends OtsSimulationApplication<StraightModel> imple
 
     /**
      * Add the statistics tabs.
-     * @param simulator OtsSimulatorInterface; the simulator on which sampling can be scheduled
+     * @param simulator the simulator on which sampling can be scheduled
      */
     protected final void addStatisticsTabs(final OtsSimulatorInterface simulator)
     {
@@ -132,7 +132,7 @@ public class StraightSwing extends OtsSimulationApplication<StraightModel> imple
         TablePanel charts = new TablePanel(3, 2);
         SwingPlot plot = null;
         PlotScheduler scheduler = new OtsPlotScheduler(simulator);
-        
+
         plot = new SwingTrajectoryPlot(
                 new TrajectoryPlot("TrajectoryPlot", Duration.instantiateSI(10.0), scheduler, sampler.getSamplerData(), path));
         charts.setCell(plot.getContentPane(), 0, 0);

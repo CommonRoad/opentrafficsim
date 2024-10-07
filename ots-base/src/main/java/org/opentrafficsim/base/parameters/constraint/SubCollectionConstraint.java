@@ -12,7 +12,7 @@ import org.djutils.exceptions.Throw;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <T> object type
  */
@@ -24,7 +24,7 @@ public class SubCollectionConstraint<T> implements Constraint<Collection<T>>
     protected final Collection<T> objects;
 
     /**
-     * @param objects Collection&lt;T&gt;; acceptable objects
+     * @param objects acceptable objects
      */
     public SubCollectionConstraint(final Collection<T> objects)
     {
@@ -50,7 +50,7 @@ public class SubCollectionConstraint<T> implements Constraint<Collection<T>>
 
     /**
      * Creates a new instance with given collection.
-     * @param objs T...; acceptable objects
+     * @param objs acceptable objects
      * @param <T> type
      * @return new instance with given collection
      */

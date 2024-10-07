@@ -21,7 +21,7 @@ import org.opentrafficsim.road.network.lane.object.Distraction;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class TaskRoadSideDistraction extends AbstractTask
@@ -45,9 +45,8 @@ public class TaskRoadSideDistraction extends AbstractTask
 
         for (RelativeLane lane : perception.getLaneStructure().getRootCrossSection())
         {
-            for (org.opentrafficsim.road.gtu.lane.perception.structure.LaneStructure.Entry<
-                    Distraction> distraction : perception.getLaneStructure().getDownstreamObjects(lane, Distraction.class,
-                            RelativePosition.DRIVER, false))
+            for (org.opentrafficsim.road.gtu.lane.perception.structure.LaneStructure.Entry<Distraction> distraction : perception
+                    .getLaneStructure().getDownstreamObjects(lane, Distraction.class, RelativePosition.DRIVER, false))
             {
                 this.odos.put(distraction.object(), odo + distraction.distance().si);
             }

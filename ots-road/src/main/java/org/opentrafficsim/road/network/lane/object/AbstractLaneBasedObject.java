@@ -2,6 +2,7 @@ package org.opentrafficsim.road.network.lane.object;
 
 import org.djunits.value.vdouble.scalar.Length;
 import org.djutils.draw.line.PolyLine2d;
+import org.djutils.draw.line.Polygon2d;
 import org.djutils.draw.point.OrientedPoint2d;
 import org.djutils.exceptions.Throw;
 import org.opentrafficsim.core.network.NetworkException;
@@ -20,7 +21,7 @@ import org.opentrafficsim.road.network.lane.object.detector.LaneDetector;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public abstract class AbstractLaneBasedObject extends StaticObject implements LaneBasedObject
@@ -34,22 +35,45 @@ public abstract class AbstractLaneBasedObject extends StaticObject implements La
     /** The position (between 0.0 and the length of the Lane) of the sensor on the design line of the lane. */
     private final Length longitudinalPosition;
 
+    /** Line. */
+    private final PolyLine2d line;
+
     /**
      * Construct a new AbstractLanebasedObject with the required fields.
-     * @param id String; the id of the new object
-     * @param lane Lane; The lane on which the new object resides. If the new object is a Sensor; it is automatically registered
-     *            on the lane
-     * @param longitudinalPosition Length; The position (between 0.0 and the length of the Lane) of the sensor on the design
-     *            line of the lane
-     * @param geometry PolyLine2d; the geometry of the object, which provides its location and bounds as well
-     * @param height Length; the height of the object, in case it is a 3D object
+     * @param id the id of the new object
+     * @param lane The lane on which the new object resides. If the new object is a Sensor; it is automatically registered on
+     *            the lane
+     * @param longitudinalPosition The position (between 0.0 and the length of the Lane) of the sensor on the design line of the
+     *            lane
+     * @param line the line of the object on the lane, which provides its location and bounds as well
+     * @param height the height of the object, in case it is a 3D object
      * @throws NetworkException when the position on the lane is out of bounds
      */
     protected AbstractLaneBasedObject(final String id, final Lane lane, final Length longitudinalPosition,
-            final PolyLine2d geometry, final Length height) throws NetworkException
+            final PolyLine2d line, final Length height) throws NetworkException
     {
-        super(id, getPoint(lane, longitudinalPosition), geometry, height);
+        this(id, lane, longitudinalPosition, line, new Polygon2d(PolyLine2d.concatenate(line, line.reverse()).getPointList()),
+                height);
+    }
 
+    /**
+     * Construct a new AbstractLanebasedObject with the required fields.
+     * @param id the id of the new object
+     * @param lane The lane on which the new object resides. If the new object is a Sensor; it is automatically registered on
+     *            the lane
+     * @param longitudinalPosition The position (between 0.0 and the length of the Lane) of the sensor on the design line of the
+     *            lane
+     * @param line the line of the object on the lane
+     * @param contour contour of the object, which provides its location and bounds as well
+     * @param height the height of the object, in case it is a 3D object
+     * @throws NetworkException when the position on the lane is out of bounds
+     */
+    protected AbstractLaneBasedObject(final String id, final Lane lane, final Length longitudinalPosition,
+            final PolyLine2d line, final Polygon2d contour, final Length height) throws NetworkException
+    {
+        super(id, getPoint(lane, longitudinalPosition), contour, height);
+
+        Throw.when((line instanceof Polygon2d), RuntimeException.class, "Nope");
         Throw.whenNull(lane, "lane is null");
         Throw.whenNull(longitudinalPosition, "longitudinal position is null");
         Throw.when(longitudinalPosition.si < 0.0 || longitudinalPosition.si > lane.getCenterLine().getLength().si,
@@ -57,32 +81,49 @@ public abstract class AbstractLaneBasedObject extends StaticObject implements La
 
         this.lane = lane;
         this.longitudinalPosition = longitudinalPosition;
-    }
-
-    /**
-     * Returns the oriented point of the position on a lane.
-     * @param lane Lane; lane.
-     * @param longitudinalPosition Length; longitudinal position.
-     * @return OrientedPoint2d; oriented point of the position on a lane.
-     */
-    private static OrientedPoint2d getPoint(final Lane lane, final Length longitudinalPosition)
-    {
-        return lane.getCenterLine().getLocationExtended(longitudinalPosition);
+        this.line = line;
     }
 
     /**
      * Construct a new LaneBasedObject with the required fields.
-     * @param id String; the id of the new AbstractLaneBasedObject
-     * @param lane Lane; The lane for which this is a sensor
-     * @param longitudinalPosition Length; The position (between 0.0 and the length of the Lane) of the sensor on the design
-     *            line of the lane
-     * @param geometry PolyLine2d; the geometry of the object, which provides its location and bounds as well
+     * @param id the id of the new AbstractLaneBasedObject
+     * @param lane The lane for which this is a sensor
+     * @param longitudinalPosition The position (between 0.0 and the length of the Lane) of the sensor on the design line of the
+     *            lane
+     * @param line the line of the object on the lane, which provides its location and bounds as well
      * @throws NetworkException when the position on the lane is out of bounds
      */
     protected AbstractLaneBasedObject(final String id, final Lane lane, final Length longitudinalPosition,
-            final PolyLine2d geometry) throws NetworkException
+            final PolyLine2d line) throws NetworkException
     {
-        this(id, lane, longitudinalPosition, geometry, Length.ZERO);
+        this(id, lane, longitudinalPosition, line, Length.ZERO);
+    }
+
+    /**
+     * Construct a new LaneBasedObject with the required fields.
+     * @param id the id of the new AbstractLaneBasedObject
+     * @param lane The lane for which this is a sensor
+     * @param longitudinalPosition The position (between 0.0 and the length of the Lane) of the sensor on the design line of the
+     *            lane
+     * @param line the line of the object on the lane
+     * @param contour contour of the object, which provides its location and bounds as well
+     * @throws NetworkException when the position on the lane is out of bounds
+     */
+    protected AbstractLaneBasedObject(final String id, final Lane lane, final Length longitudinalPosition,
+            final PolyLine2d line, final Polygon2d contour) throws NetworkException
+    {
+        this(id, lane, longitudinalPosition, line, contour, Length.ZERO);
+    }
+
+    /**
+     * Returns the oriented point of the position on a lane.
+     * @param lane lane.
+     * @param longitudinalPosition longitudinal position.
+     * @return oriented point of the position on a lane.
+     */
+    private static OrientedPoint2d getPoint(final Lane lane, final Length longitudinalPosition)
+    {
+        return lane.getCenterLine().getLocationExtended(longitudinalPosition);
     }
 
     /** {@inheritDoc} */
@@ -117,6 +158,15 @@ public abstract class AbstractLaneBasedObject extends StaticObject implements La
     public final Length getLongitudinalPosition()
     {
         return this.longitudinalPosition;
+    }
+
+    /**
+     * Returns the line.
+     * @return line.
+     */
+    public PolyLine2d getLine()
+    {
+        return this.line;
     }
 
     /** {@inheritDoc} */

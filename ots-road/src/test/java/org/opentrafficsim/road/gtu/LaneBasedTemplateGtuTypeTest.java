@@ -51,7 +51,7 @@ import nl.tudelft.simulation.jstats.streams.StreamInterface;
  * Copyright (c) 2013-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class LaneBasedTemplateGtuTypeTest implements UNITS
 {
@@ -139,7 +139,7 @@ public class LaneBasedTemplateGtuTypeTest implements UNITS
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
     private class DummyStrategicalPlannerFactory implements LaneBasedStrategicalPlannerFactory<LaneBasedStrategicalPlanner>
@@ -258,11 +258,11 @@ public class LaneBasedTemplateGtuTypeTest implements UNITS
 
     /**
      * Verify all the values in a TemplateGTUType&lt;String&gt;.
-     * @param templateGtuType TemplateGTUType&lt;String&gt;; the TemplateGTUType
-     * @param gtuType String; the expected id
-     * @param length Length; the expected length
-     * @param width Length; the expected width
-     * @param maximumSpeed Speed; the expected maximum speed
+     * @param templateGtuType the TemplateGTUType
+     * @param gtuType the expected id
+     * @param length the expected length
+     * @param width the expected width
+     * @param maximumSpeed the expected maximum speed
      * @throws ProbabilityException in case of probability drawing exception
      * @throws ParameterException in case of a parameter problem.
      * @throws GtuException in case of a GTU exception
@@ -278,8 +278,8 @@ public class LaneBasedTemplateGtuTypeTest implements UNITS
         LaneBasedGtuCharacteristics characteristics = templateGtuType.draw();
         assertEquals(length.draw().getSI(), characteristics.getLength().getSI(), 0.0001, "Length should be " + length);
         assertEquals(width.draw().getSI(), characteristics.getWidth().getSI(), 0.0001, "Width should be " + width);
-        assertEquals(maximumSpeed.draw().getSI(), characteristics.getMaximumSpeed().getSI(),
-                0.0001, "Maximum speed should be " + maximumSpeed);
+        assertEquals(maximumSpeed.draw().getSI(), characteristics.getMaximumSpeed().getSI(), 0.0001,
+                "Maximum speed should be " + maximumSpeed);
     }
 
     /**
@@ -289,7 +289,7 @@ public class LaneBasedTemplateGtuTypeTest implements UNITS
      * <br>
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      */
     static class DummyModelForTemplateGTUTest extends AbstractOtsModel
     {

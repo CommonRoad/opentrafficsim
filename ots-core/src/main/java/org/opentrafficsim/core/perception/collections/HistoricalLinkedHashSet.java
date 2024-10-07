@@ -17,7 +17,7 @@ import org.opentrafficsim.core.perception.HistoryManager;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <E> element type
  */
@@ -26,7 +26,7 @@ public class HistoricalLinkedHashSet<E> extends AbstractHistoricalCollection<E, 
 
     /**
      * Constructor.
-     * @param historyManager HistoryManager; history manager
+     * @param historyManager history manager
      */
     public HistoricalLinkedHashSet(final HistoryManager historyManager)
     {
@@ -35,8 +35,8 @@ public class HistoricalLinkedHashSet<E> extends AbstractHistoricalCollection<E, 
 
     /**
      * Constructor.
-     * @param historyManager HistoryManager; history manager
-     * @param c Collection&lt;? extends E&gt;; initial collection
+     * @param historyManager history manager
+     * @param c initial collection
      */
     public HistoricalLinkedHashSet(final HistoryManager historyManager, final Collection<? extends E> c)
     {

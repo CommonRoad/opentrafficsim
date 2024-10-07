@@ -15,7 +15,7 @@ import org.opentrafficsim.draw.ColorInterpolator;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public abstract class DesireColorer implements GtuColorer, Serializable
@@ -65,8 +65,8 @@ public abstract class DesireColorer implements GtuColorer, Serializable
 
     /**
      * Returns a color based on desire.
-     * @param dLeft double; left desire
-     * @param dRight double; right desire
+     * @param dLeft left desire
+     * @param dRight right desire
      * @return color based on desire
      */
     protected final Color getColor(final double dLeft, final double dRight)

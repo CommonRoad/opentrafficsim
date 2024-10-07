@@ -14,7 +14,7 @@ import org.opentrafficsim.draw.egtf.Quantity;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class TypedFilter implements Filter
@@ -25,7 +25,7 @@ public class TypedFilter implements Filter
 
     /**
      * Constructor.
-     * @param filter Filter; wrapped filter
+     * @param filter wrapped filter
      */
     TypedFilter(final Filter filter)
     {
@@ -41,7 +41,7 @@ public class TypedFilter implements Filter
 
     /**
      * Returns the grid location.
-     * @return LengthVector; grid location
+     * @return grid location
      */
     public LengthVector getLocationVector()
     {
@@ -57,7 +57,7 @@ public class TypedFilter implements Filter
 
     /**
      * Returns the grid time.
-     * @return DurationVector; grid time
+     * @return grid time
      */
     public DurationVector getTimeVector()
     {

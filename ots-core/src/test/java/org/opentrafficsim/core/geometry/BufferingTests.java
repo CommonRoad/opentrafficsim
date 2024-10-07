@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test the alternative offset line classes. <br>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class BufferingTests
 {
@@ -64,8 +64,8 @@ public class BufferingTests
             // Ignore expected exception
         }
 
-        //OtsLine2d offsetLine = referenceLine.offsetLine(relativeFractions, offsets);
-        //System.out.println(offsetLine.toPlot());
+        // OtsLine2d offsetLine = referenceLine.offsetLine(relativeFractions, offsets);
+        // System.out.println(offsetLine.toPlot());
     }
 
 }

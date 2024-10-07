@@ -19,7 +19,7 @@ import nl.tudelft.simulation.dsol.SimRuntimeException;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class GtuDumper
@@ -63,11 +63,11 @@ public class GtuDumper
 
     /**
      * Construct a new GTUDumper.
-     * @param firstDumpTime Time; the time of the first dump
-     * @param interval Duration; the interval until each subsequent dump
-     * @param network Network; the network (that will contain the GTUs to dump)
-     * @param fileNamePrefix String; directory and first part if the file names; the simulation time of the dump will be
-     *            appended to the file name. The file type will be .txt
+     * @param firstDumpTime the time of the first dump
+     * @param interval the interval until each subsequent dump
+     * @param network the network (that will contain the GTUs to dump)
+     * @param fileNamePrefix directory and first part if the file names; the simulation time of the dump will be appended to the
+     *            file name. The file type will be .txt
      * @throws SimRuntimeException when scheduling the first dump time fails
      */
     public GtuDumper(final Time firstDumpTime, final Duration interval, final Network network, final String fileNamePrefix)

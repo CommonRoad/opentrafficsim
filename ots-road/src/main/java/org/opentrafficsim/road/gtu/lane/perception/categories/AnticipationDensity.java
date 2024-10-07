@@ -1,5 +1,6 @@
 package org.opentrafficsim.road.gtu.lane.perception.categories;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import org.djunits.value.vdouble.scalar.Length;
@@ -8,7 +9,6 @@ import org.opentrafficsim.core.gtu.Gtu;
 import org.opentrafficsim.road.gtu.lane.perception.PerceptionCollectable.Intermediate;
 import org.opentrafficsim.road.gtu.lane.perception.PerceptionCollectable.PerceptionAccumulator;
 import org.opentrafficsim.road.gtu.lane.perception.PerceptionCollectable.PerceptionCollector;
-import org.opentrafficsim.road.gtu.lane.perception.PerceptionCollectable.PerceptionFinalizer;
 import org.opentrafficsim.road.gtu.lane.perception.categories.AnticipationDensity.CountAndDistance;
 
 /**
@@ -18,7 +18,7 @@ import org.opentrafficsim.road.gtu.lane.perception.categories.AnticipationDensit
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class AnticipationDensity implements PerceptionCollector<LinearDensity, Gtu, CountAndDistance>
@@ -59,13 +59,13 @@ public class AnticipationDensity implements PerceptionCollector<LinearDensity, G
 
     /** {@inheritDoc} */
     @Override
-    public PerceptionFinalizer<LinearDensity, CountAndDistance> getFinalizer()
+    public Function<CountAndDistance, LinearDensity> getFinalizer()
     {
-        return new PerceptionFinalizer<LinearDensity, CountAndDistance>()
+        return new Function<CountAndDistance, LinearDensity>()
         {
             /** {@inheritDoc} */
             @Override
-            public LinearDensity collect(final CountAndDistance intermediate)
+            public LinearDensity apply(final CountAndDistance intermediate)
             {
                 return LinearDensity.instantiateSI(intermediate.getDistance().si / intermediate.getCount());
             }
@@ -80,7 +80,7 @@ public class AnticipationDensity implements PerceptionCollector<LinearDensity, G
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
     public static class CountAndDistance
@@ -117,7 +117,7 @@ public class AnticipationDensity implements PerceptionCollector<LinearDensity, G
         }
 
         /**
-         * @param distance Length; set distance.
+         * @param distance set distance.
          */
         public void setDistance(final Length distance)
         {

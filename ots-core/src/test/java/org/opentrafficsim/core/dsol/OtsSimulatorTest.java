@@ -21,7 +21,7 @@ import nl.tudelft.simulation.dsol.SimRuntimeException;
  * Copyright (c) 2013-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class OtsSimulatorTest
 {
@@ -49,7 +49,8 @@ public class OtsSimulatorTest
         assertEquals(runLength, simulator.getReplication().getRunLength(), "runLength is returned");
         assertTrue(simulator.toString().startsWith("OtsSimulator"), "toString returns something descriptive");
         String testArgument = "test argument";
-        simulator.scheduleEventAbsTime(new Time(400, TimeUnit.BASE_SECOND), (short) 0, this, "eventReceiver", new Object[] {testArgument});
+        simulator.scheduleEventAbsTime(new Time(400, TimeUnit.BASE_SECOND), (short) 0, this, "eventReceiver",
+                new Object[] {testArgument});
         simulator.start();
         while (simulator.isStartingOrRunning())
         {
@@ -62,7 +63,7 @@ public class OtsSimulatorTest
 
     /**
      * Tests that scheduled event gets executed.
-     * @param argument String; argument of this method
+     * @param argument argument of this method
      */
     public void eventReceiver(final String argument)
     {

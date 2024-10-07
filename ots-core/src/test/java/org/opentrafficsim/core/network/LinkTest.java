@@ -28,7 +28,7 @@ import org.opentrafficsim.core.mock.MockSimulator;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class LinkTest implements EventListener
@@ -114,8 +114,8 @@ public class LinkTest implements EventListener
         assertEquals(linkType, link.getType(), "LinkType is correctly returned");
         Point2d location = link.getLocation();
         OrientedPoint2d expectedLocation = designLine.getLocationFraction(0.5);
-        assertEquals(expectedLocation.distance(location),
-                0.0, 0.1, "location is at halfway point of design line (because design line contains only two points)");
+        assertEquals(expectedLocation.distance(location), 0.0, 0.1,
+                "location is at halfway point of design line (because design line contains only two points)");
         // RotZ of location is bogus; makes no sense to test that
         Bounds bounds = link.getBounds();
         assertNotNull(bounds, "bounds should not be null");

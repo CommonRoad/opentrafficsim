@@ -15,7 +15,7 @@ import org.djunits.value.vdouble.scalar.Speed;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class HeadwayDistance implements Headway
 {
@@ -28,7 +28,7 @@ public class HeadwayDistance implements Headway
     /**
      * Construct a new Headway information object with just a distance, without any further information about the object; it
      * assumes a speed of 0 at the headway, so it also good to store information about a lane drop.
-     * @param distance double; the distance that needs to be stored.
+     * @param distance the distance that needs to be stored.
      */
     public HeadwayDistance(final double distance)
     {
@@ -38,7 +38,7 @@ public class HeadwayDistance implements Headway
     /**
      * Construct a new Headway information object with just a distance, without any further information about the object; it
      * assumes a speed of 0 at the headway, so it also good to store information about a lane drop.
-     * @param distance Length; the distance that needs to be stored.
+     * @param distance the distance that needs to be stored.
      */
     public HeadwayDistance(final Length distance)
     {

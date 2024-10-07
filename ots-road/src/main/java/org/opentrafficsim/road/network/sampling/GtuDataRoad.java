@@ -13,7 +13,7 @@ import org.opentrafficsim.road.gtu.lane.LaneBasedGtu;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class GtuDataRoad implements GtuData
@@ -23,7 +23,7 @@ public class GtuDataRoad implements GtuData
     private final LaneBasedGtu gtu;
 
     /**
-     * @param gtu LaneBasedGtu; gtu
+     * @param gtu gtu
      */
     public GtuDataRoad(final LaneBasedGtu gtu)
     {

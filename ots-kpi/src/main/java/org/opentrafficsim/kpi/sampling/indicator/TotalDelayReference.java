@@ -24,7 +24,7 @@ import org.opentrafficsim.kpi.sampling.data.ReferenceSpeed;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class TotalDelayReference extends AbstractIndicator<Duration>
@@ -35,8 +35,8 @@ public class TotalDelayReference extends AbstractIndicator<Duration>
 
     /** {@inheritDoc} */
     @Override
-    protected final <G extends GtuData> Duration calculate(final Query<G, ?> query, final Time startTime,
-            final Time endTime, final List<TrajectoryGroup<G>> trajectoryGroups)
+    protected final <G extends GtuData> Duration calculate(final Query<G, ?> query, final Time startTime, final Time endTime,
+            final List<TrajectoryGroup<G>> trajectoryGroups)
     {
         Map<String, Duration> gtuTimes = new LinkedHashMap<>();
         Map<String, Duration> gtuRefTimes = new LinkedHashMap<>();

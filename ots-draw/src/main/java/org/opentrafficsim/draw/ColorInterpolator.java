@@ -8,7 +8,7 @@ import java.awt.Color;
  * Copyright (c) 2013-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public final class ColorInterpolator
 {
@@ -20,10 +20,10 @@ public final class ColorInterpolator
 
     /**
      * Generate a Color that is interpolated between two given Color values. Interpolation is simply done per channel (R, G, B).
-     * @param zero Color; the color that corresponds to ratio == 0
-     * @param one Color; the color that corresponds to ratio == 1
-     * @param ratio double; the ratio (should be between 0 and 1)
-     * @return Color; the interpolated color
+     * @param zero the color that corresponds to ratio == 0
+     * @param one the color that corresponds to ratio == 1
+     * @param ratio the ratio (should be between 0 and 1)
+     * @return the interpolated color
      */
     public static Color interpolateColor(final Color zero, final Color one, final double ratio)
     {

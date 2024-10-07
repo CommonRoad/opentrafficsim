@@ -17,7 +17,7 @@ import org.opentrafficsim.core.perception.HistoryManager;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <E> element type
  * @param <S> navigable set type
@@ -28,8 +28,8 @@ public abstract class AbstractHistoricalNavigableSet<E, S extends NavigableSet<E
 
     /**
      * Constructor.
-     * @param historyManager HistoryManager; history manager
-     * @param set S; initial set
+     * @param historyManager history manager
+     * @param set initial set
      */
     protected AbstractHistoricalNavigableSet(final HistoryManager historyManager, final S set)
     {

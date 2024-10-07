@@ -15,21 +15,21 @@ import org.opentrafficsim.road.network.lane.Lane;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface LaneBasedObject extends LocatedObject
 {
-    
+
     /** @return The lane for which this is a sensor. */
     Lane getLane();
 
     /** @return the position (between 0.0 and the length of the Lane) of the sensor on the design line of the lane. */
     Length getLongitudinalPosition();
-    
+
     /**
      * Returns the length of the object. The default value is zero.
-     * @return Length; length of the object.
+     * @return length of the object.
      */
     default Length getLength()
     {
@@ -41,24 +41,33 @@ public interface LaneBasedObject extends LocatedObject
     OrientedPoint2d getLocation();
 
     /**
-     * Make a geometry perpendicular to the center line of the lane with a length 90% of the width of the lane.
-     * @param lane Lane; the lane for which to make a perpendicular geometry
-     * @param longitudinalPosition Length; the position on the lane
-     * @return an OtsLine2d that describes the line
+     * Returns the line that represent the location of this object on the lane.
+     * @return the line that represent the location of this object on the lane.
      */
-    static PolyLine2d makeGeometry(final Lane lane, final Length longitudinalPosition)
+    default PolyLine2d getLine()
     {
-        return makeGeometry(lane, longitudinalPosition, 0.9);
+        return makeLine(getLane(), getLongitudinalPosition());
+    }
+
+    /**
+     * Make a geometry perpendicular to the center line of the lane with a length 90% of the width of the lane.
+     * @param lane the lane for which to make a perpendicular geometry
+     * @param longitudinalPosition the position on the lane
+     * @return an polygon that describes the object
+     */
+    static PolyLine2d makeLine(final Lane lane, final Length longitudinalPosition)
+    {
+        return makeLine(lane, longitudinalPosition, 0.9);
     }
 
     /**
      * Make a geometry perpendicular to the center line of the lane with a length of given fraction of the width of the lane.
-     * @param lane Lane; the lane for which to make a perpendicular geometry
-     * @param longitudinalPosition Length; the position on the lane
-     * @param relativeWidth double; lane width to use
+     * @param lane the lane for which to make a perpendicular geometry
+     * @param longitudinalPosition the position on the lane
+     * @param relativeWidth lane width to use
      * @return an OtsLine2d that describes the line
      */
-    static PolyLine2d makeGeometry(final Lane lane, final Length longitudinalPosition, final double relativeWidth)
+    static PolyLine2d makeLine(final Lane lane, final Length longitudinalPosition, final double relativeWidth)
     {
         Throw.whenNull(lane, "lane is null");
         Throw.whenNull(longitudinalPosition, "position is null");

@@ -13,22 +13,22 @@ import org.opentrafficsim.road.gtu.lane.perception.structure.LaneStructure;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public interface LanePerception extends Perception<LaneBasedGtu>
 {
-    
+
     /**
      * Return the lane structure.
-     * @return LaneStructure; lane structure.
+     * @return lane structure.
      * @throws ParameterException on exception.
      */
     LaneStructure getLaneStructure() throws ParameterException;
 
     /**
      * Returns the mental module of perception.
-     * @return Mental; mental module of perception, may be {@code null} if not used
+     * @return mental module of perception, may be {@code null} if not used
      */
     Mental getMental();
 

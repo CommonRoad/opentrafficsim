@@ -19,7 +19,7 @@ import org.opentrafficsim.road.network.lane.object.LaneBasedObject;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public interface DirectionalOccupancyDetector extends Serializable, Identifiable
 {
@@ -31,13 +31,13 @@ public interface DirectionalOccupancyDetector extends Serializable, Identifiable
 
     /**
      * Return the entry position of this DirectionalOccupancyDetector.
-     * @return LaneBasedObject; the lane and position on the lane where GTU entry is detected
+     * @return the lane and position on the lane where GTU entry is detected
      */
     LaneBasedObject getLanePositionEntry();
 
     /**
      * Return the exit position of this DirectionalOccupancyDetector.
-     * @return LaneBasedObject; the lane and position on the lane where GTU exit is detected
+     * @return the lane and position on the lane where GTU exit is detected
      */
     LaneBasedObject getLanePositionExit();
 

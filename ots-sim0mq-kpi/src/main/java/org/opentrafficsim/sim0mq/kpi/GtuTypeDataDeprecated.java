@@ -6,7 +6,7 @@ package org.opentrafficsim.sim0mq.kpi;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class GtuTypeDataDeprecated
@@ -15,7 +15,7 @@ public class GtuTypeDataDeprecated
     private final String gtuTypeName;
 
     /**
-     * @param gtuTypeName String; gtu type name
+     * @param gtuTypeName gtu type name
      */
     public GtuTypeDataDeprecated(final String gtuTypeName)
     {
@@ -31,7 +31,7 @@ public class GtuTypeDataDeprecated
     }
 
     /** {@inheritDoc} */
-    //@Override
+    // @Override
     public String getId()
     {
         return this.gtuTypeName;

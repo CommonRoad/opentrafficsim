@@ -1,8 +1,8 @@
 package org.opentrafficsim.animation.data;
 
-import org.djutils.draw.line.PolyLine2d;
+import org.djutils.draw.bounds.Bounds2d;
+import org.djutils.draw.line.Polygon2d;
 import org.djutils.draw.point.OrientedPoint2d;
-import org.opentrafficsim.base.geometry.OtsBounds2d;
 import org.opentrafficsim.draw.road.TrafficLightDetectorAnimation.TrafficLightDetectorData;
 import org.opentrafficsim.road.network.lane.object.detector.TrafficLightDetector;
 
@@ -22,7 +22,7 @@ public class AnimationTrafficLightDetectorData implements TrafficLightDetectorDa
 
     /**
      * Constructor.
-     * @param trafficLigthDetector TrafficLightDetector; traffic light detector.
+     * @param trafficLigthDetector traffic light detector.
      */
     public AnimationTrafficLightDetectorData(final TrafficLightDetector trafficLigthDetector)
     {
@@ -38,16 +38,16 @@ public class AnimationTrafficLightDetectorData implements TrafficLightDetectorDa
 
     /** {@inheritDoc} */
     @Override
-    public OtsBounds2d getBounds()
+    public Bounds2d getBounds()
     {
         return this.trafficLigthDetector.getBounds();
     }
 
     /** {@inheritDoc} */
     @Override
-    public PolyLine2d getGeometry()
+    public Polygon2d getContour()
     {
-        return this.trafficLigthDetector.getGeometry();
+        return this.trafficLigthDetector.getContour();
     }
 
     /** {@inheritDoc} */
@@ -66,7 +66,7 @@ public class AnimationTrafficLightDetectorData implements TrafficLightDetectorDa
 
     /**
      * Returns the traffic light detector.
-     * @return TrafficLightDetector; traffic light detector.
+     * @return traffic light detector.
      */
     public TrafficLightDetector getTrafficLightDetector()
     {

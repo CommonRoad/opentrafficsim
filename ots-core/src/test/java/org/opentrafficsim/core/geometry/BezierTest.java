@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class BezierTest
@@ -74,7 +74,8 @@ public class BezierTest
             }
         }
         // Pity that the value 64 is private in the Bezier class.
-        assertEquals(64, Bezier.cubic(new OrientedPoint2d(from.x, from.y, 0), new OrientedPoint2d(to.x, to.y, -Math.PI / 2)).size(),
+        assertEquals(64,
+                Bezier.cubic(new OrientedPoint2d(from.x, from.y, 0), new OrientedPoint2d(to.x, to.y, -Math.PI / 2)).size(),
                 "Number of points is 64");
         assertEquals(64, Bezier.bezier(from, control1, control2, to).size(), "Number of points is 64");
         control1 = new Point2d(5, 0);

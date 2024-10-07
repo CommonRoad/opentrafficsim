@@ -15,7 +15,7 @@ import org.opentrafficsim.road.gtu.lane.perception.headway.HeadwayGtu;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class LinearAcc extends AbstractLinearFreeControl
@@ -31,7 +31,7 @@ public class LinearAcc extends AbstractLinearFreeControl
 
     /**
      * Constructor using default sensors with no delay.
-     * @param delayedActuation DelayedActuation; delayed actuation
+     * @param delayedActuation delayed actuation
      */
     public LinearAcc(final DelayedActuation delayedActuation)
     {

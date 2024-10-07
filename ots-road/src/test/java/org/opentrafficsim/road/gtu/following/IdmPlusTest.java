@@ -49,7 +49,7 @@ import nl.tudelft.simulation.dsol.SimRuntimeException;
  * Copyright (c) 2013-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class IdmPlusTest implements UNITS
 {
@@ -87,8 +87,7 @@ public class IdmPlusTest implements UNITS
         Length lookAhead = new Length(250, LengthUnit.SI);
         // LaneBasedBehavioralCharacteristics drivingCharacteristicsIDM =
         // new LaneBasedBehavioralCharacteristics(carFollowingModel, laneChangeModel);
-        LaneBasedGtu referenceCar10 =
-                new LaneBasedGtu("10", gtuType, length, width, maxSpeed, length.times(0.5), network);
+        LaneBasedGtu referenceCar10 = new LaneBasedGtu("10", gtuType, length, width, maxSpeed, length.times(0.5), network);
         LaneBasedStrategicalPlanner strategicalPlannerIDM = new LaneBasedStrategicalRoutePlanner(
                 new LaneBasedGtuFollowingTacticalPlanner(carFollowingModel, referenceCar10), referenceCar10);
         referenceCar10.setParameters(parametersIDM);
@@ -113,8 +112,7 @@ public class IdmPlusTest implements UNITS
         // LaneBasedBehavioralCharacteristics drivingCharacteristicsFAM =
         // new LaneBasedBehavioralCharacteristics(fam, laneChangeModel);
 
-        LaneBasedGtu leaderCar11 =
-                new LaneBasedGtu("11", gtuType, length, width, maxSpeed, length.times(0.5), network);
+        LaneBasedGtu leaderCar11 = new LaneBasedGtu("11", gtuType, length, width, maxSpeed, length.times(0.5), network);
         LaneBasedStrategicalPlanner strategicalPlannerFAM =
                 new LaneBasedStrategicalRoutePlanner(new LaneBasedGtuFollowingTacticalPlanner(fam, leaderCar11), leaderCar11);
         leaderCar11.setParameters(parametersFAM);
@@ -133,8 +131,7 @@ public class IdmPlusTest implements UNITS
         // Exercise the if statement that ignores leaders that are further ahead
         parametersFAM = DefaultTestParameters.create();
         // drivingCharacteristicsFAM = new LaneBasedBehavioralCharacteristics(fam, laneChangeModel);
-        LaneBasedGtu leaderCar12 =
-                new LaneBasedGtu("12", gtuType, length, width, maxSpeed, length.times(0.5), network);
+        LaneBasedGtu leaderCar12 = new LaneBasedGtu("12", gtuType, length, width, maxSpeed, length.times(0.5), network);
         strategicalPlannerFAM =
                 new LaneBasedStrategicalRoutePlanner(new LaneBasedGtuFollowingTacticalPlanner(fam, leaderCar12), leaderCar12);
         leaderCar12.setParameters(parametersFAM);
@@ -162,8 +159,7 @@ public class IdmPlusTest implements UNITS
         leaderCar12.destroy();
 
         // Test 2, cars have #20 and up
-        LaneBasedGtu referenceCar20 =
-                new LaneBasedGtu("20", gtuType, length, width, maxSpeed, length.times(0.5), network);
+        LaneBasedGtu referenceCar20 = new LaneBasedGtu("20", gtuType, length, width, maxSpeed, length.times(0.5), network);
         strategicalPlannerIDM = new LaneBasedStrategicalRoutePlanner(
                 new LaneBasedGtuFollowingTacticalPlanner(carFollowingModel, referenceCar20), referenceCar20);
         referenceCar20.setParameters(parametersIDM);
@@ -172,8 +168,7 @@ public class IdmPlusTest implements UNITS
         leaderPosition = new Length(-(3 + referenceCar20.getLength().getSI())
                 + referenceCar20.position(lane, referenceCar20.getFront(), initialTime).getSI(), METER);
         leaderPositions = new LanePosition(lane, leaderPosition);
-        LaneBasedGtu leaderCar21 =
-                new LaneBasedGtu("21", gtuType, length, width, maxSpeed, length.times(0.5), network);
+        LaneBasedGtu leaderCar21 = new LaneBasedGtu("21", gtuType, length, width, maxSpeed, length.times(0.5), network);
         strategicalPlannerFAM =
                 new LaneBasedStrategicalRoutePlanner(new LaneBasedGtuFollowingTacticalPlanner(fam, leaderCar21), leaderCar21);
         leaderCar21.setParameters(parametersFAM);
@@ -198,8 +193,7 @@ public class IdmPlusTest implements UNITS
             leaderPosition = new Length(spareDistance + (3 + referenceCar20.getLength().getSI()
                     + referenceCar20.position(lane, referenceCar20.getFront(), initialTime).getSI()), METER);
             leaderPositions = new LanePosition(lane, leaderPosition);
-            LaneBasedGtu leaderCar22 =
-                    new LaneBasedGtu("0", gtuType, length, width, maxSpeed, length.times(0.5), network);
+            LaneBasedGtu leaderCar22 = new LaneBasedGtu("0", gtuType, length, width, maxSpeed, length.times(0.5), network);
             strategicalPlannerFAM = new LaneBasedStrategicalRoutePlanner(
                     new LaneBasedGtuFollowingTacticalPlanner(fam, leaderCar22), leaderCar22);
             leaderCar22.setParameters(parametersFAM);
@@ -225,8 +219,7 @@ public class IdmPlusTest implements UNITS
 
         // Test 3. Check that the returned acceleration increases with the speed of the leader
         // cars have #30 and up
-        LaneBasedGtu referenceCar30 =
-                new LaneBasedGtu("30", gtuType, length, width, maxSpeed, length.times(0.5), network);
+        LaneBasedGtu referenceCar30 = new LaneBasedGtu("30", gtuType, length, width, maxSpeed, length.times(0.5), network);
         strategicalPlannerIDM = new LaneBasedStrategicalRoutePlanner(
                 new LaneBasedGtuFollowingTacticalPlanner(carFollowingModel, referenceCar30), referenceCar30);
         referenceCar30.setParameters(parametersIDM);
@@ -244,8 +237,7 @@ public class IdmPlusTest implements UNITS
             referenceCar30.destroy();
             // parametersIDM = new BehavioralCharacteristics();
             // drivingCharacteristicsIDM = new LaneBasedBehavioralCharacteristics(carFollowingModel, laneChangeModel);
-            referenceCar30 =
-                    new LaneBasedGtu("30", gtuType, length, width, maxSpeed, length.times(0.5), network);
+            referenceCar30 = new LaneBasedGtu("30", gtuType, length, width, maxSpeed, length.times(0.5), network);
             strategicalPlannerIDM = new LaneBasedStrategicalRoutePlanner(
                     new LaneBasedGtuFollowingTacticalPlanner(carFollowingModel, referenceCar30), referenceCar30);
             referenceCar30.setParameters(parametersIDM);
@@ -254,8 +246,7 @@ public class IdmPlusTest implements UNITS
             Speed leaderSpeed = new Speed(integerLeaderSpeed, METER_PER_SECOND);
             parametersFAM = DefaultTestParameters.create(); // new BehavioralCharacteristics();
             // drivingCharacteristicsFAM = new LaneBasedBehavioralCharacteristics(fam, laneChangeModel);
-            LaneBasedGtu leaderCar31 =
-                    new LaneBasedGtu("31", gtuType, length, width, maxSpeed, length.times(0.5), network);
+            LaneBasedGtu leaderCar31 = new LaneBasedGtu("31", gtuType, length, width, maxSpeed, length.times(0.5), network);
             strategicalPlannerFAM = new LaneBasedStrategicalRoutePlanner(
                     new LaneBasedGtuFollowingTacticalPlanner(fam, leaderCar31), leaderCar31);
             leaderCar31.setParameters(parametersFAM);
@@ -289,8 +280,7 @@ public class IdmPlusTest implements UNITS
         initialSpeed = new Speed(0, METER_PER_SECOND);
         parametersIDM = DefaultTestParameters.create(); // new BehavioralCharacteristics();
         // drivingCharacteristicsIDM = new LaneBasedBehavioralCharacteristics(carFollowingModel, laneChangeModel);
-        LaneBasedGtu referenceCar40 =
-                new LaneBasedGtu("40", gtuType, length, width, maxSpeed, length.times(0.5), network);
+        LaneBasedGtu referenceCar40 = new LaneBasedGtu("40", gtuType, length, width, maxSpeed, length.times(0.5), network);
         strategicalPlannerIDM = new LaneBasedStrategicalRoutePlanner(
                 new LaneBasedGtuFollowingTacticalPlanner(carFollowingModel, referenceCar40), referenceCar40);
         referenceCar40.setParameters(parametersIDM);
@@ -300,8 +290,7 @@ public class IdmPlusTest implements UNITS
                 + referenceCar40.position(lane, referenceCar40.getFront(), initialTime).getSI(), METER);
         parametersFAM = DefaultTestParameters.create(); // new BehavioralCharacteristics();
         // drivingCharacteristicsFAM = new LaneBasedBehavioralCharacteristics(fam, laneChangeModel);
-        LaneBasedGtu leaderCar41 =
-                new LaneBasedGtu("41", gtuType, length, width, maxSpeed, length.times(0.5), network);
+        LaneBasedGtu leaderCar41 = new LaneBasedGtu("41", gtuType, length, width, maxSpeed, length.times(0.5), network);
         strategicalPlannerFAM =
                 new LaneBasedStrategicalRoutePlanner(new LaneBasedGtuFollowingTacticalPlanner(fam, leaderCar41), leaderCar41);
         leaderCar41.setParameters(parametersFAM);
@@ -329,12 +318,11 @@ public class IdmPlusTest implements UNITS
             if (timeStep > 120)
             {
                 double position = referenceCar40.position(lane, referenceCar40.getFront()).getSI();
-                assertEquals(
-                        leaderCar41.position(lane, referenceCar40.getRear()).getSI() - s0.getSI(),
-                        position, 0.2, "After 20 seconds the referenceCar should now be very close to " + s0
+                assertEquals(leaderCar41.position(lane, referenceCar40.getRear()).getSI() - s0.getSI(), position, 0.2,
+                        "After 20 seconds the referenceCar should now be very close to " + s0
                                 + " before the rear of the leader");
-                assertEquals(0, referenceCar40.getSpeed().getSI(),
-                        0.2, "After 20 seconds the speed of the referenceCar should be almost 0");
+                assertEquals(0, referenceCar40.getSpeed().getSI(), 0.2,
+                        "After 20 seconds the speed of the referenceCar should be almost 0");
             }
         }
         referenceCar40.destroy();
@@ -349,7 +337,7 @@ public class IdmPlusTest implements UNITS
  * Copyright (c) 2013-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 class IDMPlusTestModel extends AbstractOtsModel
 {

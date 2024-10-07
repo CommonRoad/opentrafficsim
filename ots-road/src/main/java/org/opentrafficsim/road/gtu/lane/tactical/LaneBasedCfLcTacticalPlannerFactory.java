@@ -20,7 +20,7 @@ import org.opentrafficsim.road.gtu.lane.tactical.lanechangemobil.LaneChangeModel
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 
@@ -39,8 +39,8 @@ public class LaneBasedCfLcTacticalPlannerFactory
 
     /**
      * Constructor with fixed stateless car-following and lane change model.
-     * @param carFollowingModel GtuFollowingModelOld; car following model
-     * @param laneChangeModel LaneChangeModel; lane change model
+     * @param carFollowingModel car following model
+     * @param laneChangeModel lane change model
      */
     public LaneBasedCfLcTacticalPlannerFactory(final GtuFollowingModelOld carFollowingModel,
             final LaneChangeModel laneChangeModel)

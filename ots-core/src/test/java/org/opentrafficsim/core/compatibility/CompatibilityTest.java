@@ -9,7 +9,7 @@ import org.opentrafficsim.base.HierarchicallyTyped;
  * Copyright (c) 2013-2024 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  */
 public class CompatibilityTest
 {
@@ -34,16 +34,16 @@ public class CompatibilityTest
         {
             return null;
         }
-        
+
     }
-    
+
     /** InfraType as a hierarchical type. */
     static class InfraType extends GtuCompatibleInfraType<InfraType, Infra>
     {
         /**
          * Instantiate an infrastructure type.
-         * @param id String; the id
-         * @param parent InfraType; the parent
+         * @param id the id
+         * @param parent the parent
          */
         InfraType(final String id, final InfraType parent)
         {
@@ -52,7 +52,7 @@ public class CompatibilityTest
 
         /**
          * Instantiate an infrastructure type without a parent.
-         * @param id String; the id
+         * @param id the id
          */
         InfraType(final String id)
         {

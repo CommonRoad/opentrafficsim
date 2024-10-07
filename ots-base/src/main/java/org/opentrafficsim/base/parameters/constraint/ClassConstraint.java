@@ -11,7 +11,7 @@ import java.util.LinkedHashSet;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <T> super type for all possible classes, e.g. TacticalPlanner
  */
@@ -19,7 +19,7 @@ public final class ClassConstraint<T> extends CollectionConstraint<Class<? exten
 {
 
     /**
-     * @param classes Collection&lt;Class&lt;? extends T&gt;&gt;; acceptable classes
+     * @param classes acceptable classes
      */
     private ClassConstraint(final Collection<Class<? extends T>> classes)
     {
@@ -28,7 +28,7 @@ public final class ClassConstraint<T> extends CollectionConstraint<Class<? exten
 
     /**
      * Creates a new instance with given collection.
-     * @param objs Class&lt;? extends T&gt;...; acceptable classes
+     * @param objs acceptable classes
      * @param <T> type class
      * @return new instance with given collection
      */

@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class HierarchicalTypeTest
@@ -106,8 +106,8 @@ public class HierarchicalTypeTest
 
         /**
          * Construct a new SubType instance.
-         * @param id String; id of the new SubType
-         * @param parent SubType; parent of the new SubType instance
+         * @param id id of the new SubType
+         * @param parent parent of the new SubType instance
          * @throws NullPointerException ...
          */
         SubType(final String id, final SubType parent) throws NullPointerException
@@ -117,7 +117,7 @@ public class HierarchicalTypeTest
 
         /**
          * Construct a new SubType instance.
-         * @param id String; id of the new SubType
+         * @param id id of the new SubType
          * @throws NullPointerException ...
          */
         SubType(final String id) throws NullPointerException
@@ -162,7 +162,7 @@ public class HierarchicalTypeTest
 
         /**
          * Instantiate hierarchical type.
-         * @param id String; the id
+         * @param id the id
          * @param parent the parent or null
          * @throws NullPointerException when id is null
          */
@@ -201,7 +201,7 @@ public class HierarchicalTypeTest
 
         /**
          * Instantiate hierarchical type.
-         * @param id String; the id
+         * @param id the id
          * @param parent the parent or null
          * @throws NullPointerException when id is null
          */
@@ -219,7 +219,7 @@ public class HierarchicalTypeTest
 
         /**
          * Instantiate hierarchical type.
-         * @param id String; the id
+         * @param id the id
          * @param parent the parent or null
          * @throws NullPointerException when id is null
          */
@@ -249,11 +249,19 @@ public class HierarchicalTypeTest
         YType highway = new YType("highway", road);
         assertTrue(highway.isOfType(road));
         assertFalse(road.isOfType(highway));
-        // this does not compile: YType yt1 = new YType("yt1", vehicle);
+        // this should not compile: YType yt1 = new YType("yt1", vehicle);
         ZType zt1 = new ZType("zt1", car);
         assertEquals(car, zt1.getParent());
         assertTrue(zt1.isOfType(car));
         assertTrue(zt1.isOfType(vehicle));
-        // Ztype is of course strange. So this does not compile: ZType zt2 = new ZType("zt2", zt1);
+        // Ztype is of course strange. So this should not compile: ZType zt2 = new ZType("zt2", zt1);
+        
+        // ofType tests
+        X xCar = new X(car);
+        X xVehicle = new X(vehicle);
+        assertTrue(xCar.isOfType(vehicle));
+        assertFalse(xCar.isOfType(truck));
+        assertFalse(xVehicle.isOfType(car));
+        // this should not compile: xCar.isOfType(highway);
     }
 }

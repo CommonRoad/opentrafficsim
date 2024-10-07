@@ -15,7 +15,7 @@ import nl.tudelft.simulation.dsol.animation.gis.transform.CoordinateTransform;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class CoordinateTransformWgs84toRdNew implements CoordinateTransform, Serializable
@@ -30,10 +30,8 @@ public class CoordinateTransformWgs84toRdNew implements CoordinateTransform, Ser
     private final double dy;
 
     /**
-     * @param dx double; the coordinate shift dx w.r.t. the origin if not in Amersfoort. dx will be subtracted from each RD.x
-     *            coordinate
-     * @param dy double; the coordinate shift dy w.r.t. the origin if not in Amersfoort. dy will be subtracted from each RD.y
-     *            coordinate
+     * @param dx the coordinate shift dx w.r.t. the origin if not in Amersfoort. dx will be subtracted from each RD.x coordinate
+     * @param dy the coordinate shift dy w.r.t. the origin if not in Amersfoort. dy will be subtracted from each RD.y coordinate
      */
     public CoordinateTransformWgs84toRdNew(final double dx, final double dy)
     {

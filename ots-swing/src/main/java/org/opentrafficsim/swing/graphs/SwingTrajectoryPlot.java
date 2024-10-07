@@ -23,7 +23,7 @@ import org.opentrafficsim.draw.graphs.TrajectoryPlot;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class SwingTrajectoryPlot extends SwingSpaceTimePlot
@@ -51,7 +51,7 @@ public class SwingTrajectoryPlot extends SwingSpaceTimePlot
 
     /**
      * Construct a new Swing container for a TrajectoryPlot.
-     * @param plot TrajectoryPlot; the plot to embed
+     * @param plot the plot to embed
      */
     public SwingTrajectoryPlot(final TrajectoryPlot plot)
     {
@@ -143,7 +143,7 @@ public class SwingTrajectoryPlot extends SwingSpaceTimePlot
 
     /**
      * Returns point in data coordinates based on mouse coordinates.
-     * @param event ChartMouseEvent; event.
+     * @param event event.
      * @return point in data coordinates
      */
     private Point2D.Double getValuePoint(final ChartMouseEvent event)
@@ -258,7 +258,7 @@ public class SwingTrajectoryPlot extends SwingSpaceTimePlot
 
     /**
      * Retrieve the plot.
-     * @return AbstractPlot; the plot
+     * @return the plot
      */
     @Override
     public TrajectoryPlot getPlot()

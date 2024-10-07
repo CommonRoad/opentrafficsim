@@ -75,7 +75,7 @@ import nl.tudelft.simulation.jstats.streams.StreamInterface;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class OdApplierTest
@@ -386,13 +386,13 @@ public class OdApplierTest
 
     /**
      * Creates an OD from input.
-     * @param timeVec double[]; time vector [s]
-     * @param demandVec double[]; demand vector [veh/h]
-     * @param interpolation Interpolation; interpolation
-     * @param nodeA Node; from node
-     * @param nodeB Node; to node
-     * @param lane1 Lane; lane 1 (60% of all traffic, all cars)
-     * @param lane2 Lane; lane 2 (40% of all traffic, half of which is trucks)
+     * @param timeVec time vector [s]
+     * @param demandVec demand vector [veh/h]
+     * @param interpolation interpolation
+     * @param nodeA from node
+     * @param nodeB to node
+     * @param lane1 lane 1 (60% of all traffic, all cars)
+     * @param lane2 lane 2 (40% of all traffic, half of which is trucks)
      * @return OD
      * @throws ValueRuntimeException on exception
      * @throws NetworkException on exception
@@ -422,14 +422,14 @@ public class OdApplierTest
 
     /**
      * Trapezoidal integration for linearly interpolated demand.
-     * @param t1 double; start time of demand period [s]
-     * @param f1 double; start frequency of demand period [veh/h]
-     * @param t2 double; end time of demand period [s]
-     * @param f2 double; end frequency of demand period [veh/h]
-     * @param tFrom double; start time of integrated period [s]
-     * @param tTo double; end time of integrated period [s]
-     * @param factor double; demand factor [-]
-     * @return double; integrated demand [veh]
+     * @param t1 start time of demand period [s]
+     * @param f1 start frequency of demand period [veh/h]
+     * @param t2 end time of demand period [s]
+     * @param f2 end frequency of demand period [veh/h]
+     * @param tFrom start time of integrated period [s]
+     * @param tTo end time of integrated period [s]
+     * @param factor demand factor [-]
+     * @return integrated demand [veh]
      */
     private double trapezoidal(final double t1, final double f1, final double t2, final double f2, final double tFrom,
             final double tTo, final double factor)
@@ -448,14 +448,14 @@ public class OdApplierTest
     /**
      * Inverse trapezoidal rule. Finds the time such that demand integrates to a value of {@code rem}. This function is only
      * valid if demand {@code rem} is present before the demand line crosses 0.
-     * @param rem double; remainder to integrate to [veh]
-     * @param t1 double; start time of demand period [s]
-     * @param f1 double; start frequency of demand period [veh/h]
-     * @param t2 double; end time of demand period [s]
-     * @param f2 double; end frequency of demand period [veh/h]
-     * @param tFrom double; start time of integrated period [s]
-     * @param factor double; demand factor [-]
-     * @return double; time [s]
+     * @param rem remainder to integrate to [veh]
+     * @param t1 start time of demand period [s]
+     * @param f1 start frequency of demand period [veh/h]
+     * @param t2 end time of demand period [s]
+     * @param f2 end frequency of demand period [veh/h]
+     * @param tFrom start time of integrated period [s]
+     * @param factor demand factor [-]
+     * @return time [s]
      */
     private double inverseTrapezoidal(final double rem, final double t1, final double f1, final double t2, final double f2,
             final double tFrom, final double factor)

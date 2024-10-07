@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import org.djunits.value.vdouble.scalar.Length;
+import org.djutils.draw.bounds.Bounds2d;
 import org.djutils.draw.line.Polygon2d;
 import org.djutils.draw.line.Ray2d;
 import org.djutils.draw.point.OrientedPoint2d;
@@ -20,8 +21,6 @@ import org.djutils.event.LocalEventProducer;
 import org.djutils.exceptions.Throw;
 import org.djutils.metadata.MetaData;
 import org.djutils.metadata.ObjectDescriptor;
-import org.opentrafficsim.base.geometry.BoundingPolygon;
-import org.opentrafficsim.base.geometry.OtsBounds2d;
 import org.opentrafficsim.core.dsol.OtsSimulatorInterface;
 import org.opentrafficsim.core.geometry.OtsGeometryException;
 import org.opentrafficsim.core.geometry.OtsLine2d;
@@ -44,7 +43,7 @@ import org.opentrafficsim.road.network.lane.Lane;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class TrafficLightDetector extends LocalEventProducer implements EventListener, Detector
@@ -80,7 +79,7 @@ public class TrafficLightDetector extends LocalEventProducer implements EventLis
     private final OrientedPoint2d location;
 
     /** Geometry of the detector. */
-    private final BoundingPolygon geometry;
+    private final Polygon2d contour;
 
     /**
      * The <b>timed</b> event type for pub/sub indicating the triggering of the entry of a NonDirectionalOccupancyDetector. <br>
@@ -102,16 +101,16 @@ public class TrafficLightDetector extends LocalEventProducer implements EventLis
     /**
      * Construct a new traffic light detector.<br>
      * TODO Possibly provide the GtuTypes that trigger the detector as an argument for the constructor
-     * @param id String; id of this detector
-     * @param laneA Lane; the lane of the A detection point of this traffic light detector
-     * @param positionA Length; the position of the A detection point of this traffic light detector
-     * @param laneB Lane; the lane of the B detection point of this traffic light detector
-     * @param positionB Length; the position of the B detection point of this traffic light detector
-     * @param intermediateLanes List&lt;Lane&gt;; list of intermediate lanes
-     * @param entryPosition TYPE; the position on the GTUs that trigger the entry events
-     * @param exitPosition TYPE; the position on the GTUs that trigger the exit events
-     * @param simulator OtsSimulatorInterface; the simulator
-     * @param detectorType DetectorType; detector type.
+     * @param id id of this detector
+     * @param laneA the lane of the A detection point of this traffic light detector
+     * @param positionA the position of the A detection point of this traffic light detector
+     * @param laneB the lane of the B detection point of this traffic light detector
+     * @param positionB the position of the B detection point of this traffic light detector
+     * @param intermediateLanes list of intermediate lanes
+     * @param entryPosition the position on the GTUs that trigger the entry events
+     * @param exitPosition the position on the GTUs that trigger the exit events
+     * @param simulator the simulator
+     * @param detectorType detector type.
      * @throws NetworkException when the network is inconsistent.
      */
     @SuppressWarnings("checkstyle:parameternumber")
@@ -173,7 +172,7 @@ public class TrafficLightDetector extends LocalEventProducer implements EventLis
             {
                 geometryPoints.add(new Point2d(p.x - dx, p.y - dy));
             }
-            this.geometry = new BoundingPolygon(new Polygon2d(geometryPoints));
+            this.contour = new Polygon2d(geometryPoints);
         }
         catch (OtsGeometryException exception)
         {
@@ -184,7 +183,7 @@ public class TrafficLightDetector extends LocalEventProducer implements EventLis
 
     /**
      * Add a GTU to the set.
-     * @param gtu LaneBasedGtu; the GTU that must be added
+     * @param gtu the GTU that must be added
      */
     protected final void addGtu(final LaneBasedGtu gtu)
     {
@@ -197,7 +196,7 @@ public class TrafficLightDetector extends LocalEventProducer implements EventLis
 
     /**
      * Remove a GTU from the set.
-     * @param gtu LaneBasedGtu; the GTU that must be removed
+     * @param gtu the GTU that must be removed
      */
     protected final void removeGtu(final LaneBasedGtu gtu)
     {
@@ -351,7 +350,7 @@ public class TrafficLightDetector extends LocalEventProducer implements EventLis
 
     /**
      * Return the A position of this NonDirectionalOccupancyDetector.
-     * @return Length; the lane and position on the lane where GTU entry is detected
+     * @return the lane and position on the lane where GTU entry is detected
      */
     public final Length getLanePositionA()
     {
@@ -360,7 +359,7 @@ public class TrafficLightDetector extends LocalEventProducer implements EventLis
 
     /**
      * Return the B position of this NonDirectionalOccupancyDetector.
-     * @return Length; the lane and position on the lane where GTU exit is detected
+     * @return the lane and position on the lane where GTU exit is detected
      */
     public final Length getLanePositionB()
     {
@@ -369,8 +368,8 @@ public class TrafficLightDetector extends LocalEventProducer implements EventLis
 
     /**
      * One of our start/end detectors has triggered.
-     * @param detector StartEndDetector; the detector that was triggered
-     * @param gtu LaneBasedGtu; the gtu that triggered the flank detector
+     * @param detector the detector that was triggered
+     * @param gtu the gtu that triggered the flank detector
      */
     public final void signalDetection(final StartEndDetector detector, final LaneBasedGtu gtu)
     {
@@ -412,14 +411,14 @@ public class TrafficLightDetector extends LocalEventProducer implements EventLis
 
     /** {@inheritDoc} */
     @Override
-    public final OtsBounds2d getBounds()
+    public final Bounds2d getBounds()
     {
-        return this.geometry;
+        return this.contour.getBounds();
     }
 
     /**
      * Return the state of this traffic light detector.
-     * @return boolean; true if one or more GTUs are currently detected; false of no GTUs are currently detected
+     * @return true if one or more GTUs are currently detected; false of no GTUs are currently detected
      */
     public final boolean getOccupancy()
     {
@@ -428,9 +427,9 @@ public class TrafficLightDetector extends LocalEventProducer implements EventLis
 
     /** {@inheritDoc} */
     @Override
-    public Polygon2d getGeometry()
+    public Polygon2d getContour()
     {
-        return this.geometry.asPolygon();
+        return this.contour;
     }
 
     /** {@inheritDoc} */
@@ -459,7 +458,7 @@ public class TrafficLightDetector extends LocalEventProducer implements EventLis
     public final String toString()
     {
         return "TrafficLightDetector [id=" + this.id + ", entryA=" + this.entryA + ", exitB=" + this.exitB + ", currentGTUs="
-                + this.currentGTUs + ", lanes=" + this.lanes + ", geometry=" + this.geometry + "]";
+                + this.currentGTUs + ", lanes=" + this.lanes + ", geometry=" + this.contour + "]";
     }
 
     /**
@@ -470,7 +469,7 @@ public class TrafficLightDetector extends LocalEventProducer implements EventLis
      * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
      * </p>
      * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
-     * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+     * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
      * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
      */
     public class StartEndDetector extends LaneDetector
@@ -480,12 +479,12 @@ public class TrafficLightDetector extends LocalEventProducer implements EventLis
 
         /**
          * Construct a new StartEndDetector.
-         * @param id String; the name of the new StartEndDetector
-         * @param lane Lane; the lane of the new StartEndDetector
-         * @param longitudinalPosition Length; the longitudinal position of the new StartEndDetector
-         * @param positionType TYPE; the position on the GTUs that triggers the new StartEndDetector
-         * @param simulator OtsSimulatorInterface; the simulator engine
-         * @param detectorType DetectorType; detector type.
+         * @param id the name of the new StartEndDetector
+         * @param lane the lane of the new StartEndDetector
+         * @param longitudinalPosition the longitudinal position of the new StartEndDetector
+         * @param positionType the position on the GTUs that triggers the new StartEndDetector
+         * @param simulator the simulator engine
+         * @param detectorType detector type.
          * @throws NetworkException when the network is inconsistent
          */
         public StartEndDetector(final String id, final Lane lane, final Length longitudinalPosition, final Type positionType,
@@ -510,7 +509,7 @@ public class TrafficLightDetector extends LocalEventProducer implements EventLis
 
         /**
          * Returns the parent TrafficLightDetector.
-         * @return TrafficLightDetector; parent.
+         * @return parent.
          */
         public TrafficLightDetector getParent()
         {

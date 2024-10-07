@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class TimeStampedObjectTest
@@ -34,7 +34,7 @@ public class TimeStampedObjectTest
         assertEquals("tso1", tso1.object(), "string matches");
         assertFalse("String".equals(tso1.object()), "some other string does not match payload");
         TimeStampedObject<Double> tso2 = new TimeStampedObject<Double>(12.34, timeStamp2);
-        assertEquals(tso2.object(), new Double(12.34), "payload matches");
+        assertEquals(tso2.object(), Double.valueOf(12.34), "payload matches");
         TimeStampedObject<String> tso3 = new TimeStampedObject<String>("tso1", timeStamp2);
         assertFalse(tso1.equals(tso3), "tso's with different time stamp are not equal");
         tso2 = new TimeStampedObject<Double>(12.34, timeStamp1);

@@ -15,7 +15,7 @@ import nl.tudelft.simulation.jstats.streams.StreamInterface;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  * @param <T> IDM class
  */
@@ -30,8 +30,8 @@ public class AbstractIdmFactory<T extends AbstractIdm> implements CarFollowingMo
 
     /**
      * Sets the idm model, which should be state-less.
-     * @param idm T; idm model, which should be state-less
-     * @param randomStream StreamInterface; random number stream
+     * @param idm idm model, which should be state-less
+     * @param randomStream random number stream
      */
     public AbstractIdmFactory(final T idm, final StreamInterface randomStream)
     {

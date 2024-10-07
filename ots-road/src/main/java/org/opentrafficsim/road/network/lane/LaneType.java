@@ -11,7 +11,7 @@ import org.opentrafficsim.core.compatibility.GtuCompatibleInfraType;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://www.citg.tudelft.nl">Guus Tamminga</a>
  */
 public class LaneType extends GtuCompatibleInfraType<LaneType, Lane>
@@ -21,7 +21,7 @@ public class LaneType extends GtuCompatibleInfraType<LaneType, Lane>
 
     /**
      * Constructor for root-level Lane types. The parent will be {@code null}.
-     * @param id String; the id of the lane type.
+     * @param id the id of the lane type.
      * @throws NullPointerException if the id is null
      */
     public LaneType(final String id) throws NullPointerException
@@ -31,8 +31,8 @@ public class LaneType extends GtuCompatibleInfraType<LaneType, Lane>
 
     /**
      * Create a new Lane type with a compatibility set.
-     * @param id String; the id of the lane type.
-     * @param parent LaneType; parent type
+     * @param id the id of the lane type.
+     * @param parent parent type
      * @throws NullPointerException if the id is null
      */
     public LaneType(final String id, final LaneType parent) throws NullPointerException

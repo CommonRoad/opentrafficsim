@@ -19,7 +19,7 @@ import nl.tudelft.simulation.dsol.experiment.Replication;
  * BSD-style license. See <a href="https://opentrafficsim.org/docs/license.html">OpenTrafficSim License</a>.
  * </p>
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
- * @author <a href="https://tudelft.nl/staff/p.knoppers-1">Peter Knoppers</a>
+ * @author <a href="https://github.com/peter-knoppers">Peter Knoppers</a>
  * @author <a href="https://github.com/wjschakel">Wouter Schakel</a>
  */
 public class HistoryManagerDevs extends HistoryManager implements EventListener
@@ -41,9 +41,9 @@ public class HistoryManagerDevs extends HistoryManager implements EventListener
 
     /**
      * Constructor.
-     * @param simulator OtsSimulatorInterface; simulator
-     * @param history Duration; time over which history is guaranteed
-     * @param cleanUpInterval Duration; clean-up interval
+     * @param simulator simulator
+     * @param history time over which history is guaranteed
+     * @param cleanUpInterval clean-up interval
      */
     public HistoryManagerDevs(final OtsSimulatorInterface simulator, final Duration history, final Duration cleanUpInterval)
     {
@@ -51,8 +51,7 @@ public class HistoryManagerDevs extends HistoryManager implements EventListener
         this.history = history;
         this.cleanUpInterval = cleanUpInterval;
         cleanUpHistory(); // start clean-up event chain
-        Try.execute(() -> this.simulator.addListener(this, Replication.END_REPLICATION_EVENT),
-                "Unable to add listener.");
+        Try.execute(() -> this.simulator.addListener(this, Replication.END_REPLICATION_EVENT), "Unable to add listener.");
     }
 
     /** {@inheritDoc} */
